@@ -1,0 +1,423 @@
+/* App Container */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
+  overflow-x: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;
+  background-color: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 6px rgb(0 0 0 / 0.05);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  z-index: 20;
+}
+
+/* Sidebar mobile toggle */
+@media (max-width: 767px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+/* Mobile Menu Buttons */
+.mobile-menu-btn,
+.mobile-menu-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 30;
+  align-self: flex-end;
+  margin-right: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Always hide close button */
+.mobile-menu-close-btn {
+  display: none !important;
+}
+
+/* Hide hamburger by default on desktop */
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0 2px 6px rgb(37 99 235 / 0.5);
+}
+
+/* Show hamburger on mobile */
+@media (max-width: 767px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+}
+
+/* Sidebar Links */
+.sidebar a,
+.sidebar a.active-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-decoration: none;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  border-radius: 4px;
+  padding: 6px 4px 6px 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Professional Experience fix */
+main h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #1e40af;
+  justify-content: flex-start;
+}
+
+/* Ensure icons vertically centered */
+main h2 svg,
+main h2 .menu-icon {
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Default link hover */
+.sidebar a:hover {
+  text-decoration: none;
+}
+
+/* Menu-text style */
+.menu-text {
+  flex-grow: 1;
+  text-align: right;
+  padding-right: 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 2px;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: ellipsis;
+}
+
+/* Menu icon */
+.menu-icon {
+  min-width: 1.2rem;
+  min-height: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit !important;
+}
+
+/* Main Content */
+main {
+  padding: 0 3rem 0 4rem;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  flex-grow: 1;
+  margin: 0 0 0 260px;
+  overflow-x: hidden;
+  transition: margin-left 0.3s ease;
+}
+
+/* Mobile main adjustments */
+@media (max-width: 767px) {
+  main {
+    margin-left: 0 !important;
+    padding: 5rem 1.5rem 2rem;
+    box-shadow: none;
+    border-radius: 0;
+    width: 100vw;
+  }
+}
+
+/* Theme Transitions */
+body,
+.sidebar,
+main {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Theme Icons */
+.theme-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.theme-icon.dark {
+  background-color: #000;
+}
+.theme-icon.light {
+  background-color: #fff;
+  border: 1px solid #000;
+}
+.theme-icon.orange {
+  background-color: #ffa500;
+  border: 1px solid #cc8400;
+}
+.theme-icon.lime {
+  background-color: #a6e22e;
+  border: 1px solid #7da61f;
+}
+.theme-icon.cherry {
+  background-color: #fbb6ce;
+  border: 1px solid #e88aa8;
+}
+
+/* === DARK THEME + NEON YELLOW UPDATE === */
+body.theme-dark {
+  background-color: #121212;
+  color: #eee;
+}
+body.theme-dark a {
+  color: #ffff33;
+}
+body.theme-dark .sidebar {
+  background-color: #1f1f1f;
+  color: #ffff33;
+  border-right-color: #333;
+}
+body.theme-dark main {
+  background-color: #181818;
+  color: #eee;
+}
+body.theme-dark h2,
+body.theme-dark .sidebar a,
+body.theme-dark .menu-icon,
+body.theme-dark .mobile-menu-btn {
+  color: #ffff33;
+}
+body.theme-dark .sidebar a:hover {
+  background-color: #333333;
+  color: #ffff33;
+}
+body.theme-dark .sidebar a.active-menu-item {
+  background-color: #444444;
+  color: #ffff33;
+}
+body.theme-dark .mobile-menu-btn {
+  background-color: #ffff33;
+  color: #000;
+  box-shadow: 0 2px 6px rgb(255 255 51 / 0.5);
+}
+body.theme-dark .mobile-menu-btn:hover {
+  background-color: #cccc00;
+}
+
+/* NEW: neon yellow background & black moon icon for dark theme selector */
+body.theme-dark .theme-selector {
+  background-color: #ffff33; /* neon yellow bg */
+  border-radius: 50%;
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.theme-dark .theme-selector-icon {
+  color: #000 !important; /* black moon icon */
+}
+
+/* Dark theme overrides for Theme Selector opener button */
+body.theme-dark .theme-selector-opener {
+  background-color: #ffff33 !important; /* bright yellow background */
+}
+
+/* Assuming moon icon has class .moon-icon or similar */
+body.theme-dark .theme-selector-opener .moon-icon {
+  color: #000 !important; /* black icon color */
+}
+
+
+/* === LIGHT THEME === */
+body.theme-light {
+  background-color: #fff;
+  color: #111;
+}
+body.theme-light a {
+  color: #2563eb;
+}
+body.theme-light .sidebar {
+  background-color: #fefefe;
+  color: #111;
+  border-right-color: #e5e7eb;
+}
+body.theme-light main {
+  background-color: #fafafa;
+  color: #111;
+}
+body.theme-light h2,
+body.theme-light .sidebar a,
+body.theme-light .menu-icon,
+body.theme-light .mobile-menu-btn {
+  color: #2563eb;
+}
+body.theme-light .sidebar a:hover {
+  background-color: #e0e7ff;
+  color: #1d4ed8;
+}
+body.theme-light .sidebar a.active-menu-item {
+  background-color: #c7d2fe;
+  color: #1e40af;
+}
+body.theme-light .mobile-menu-btn {
+  background-color: #2563eb;
+  color: white;
+  box-shadow: 0 2px 6px rgb(37 99 235 / 0.5);
+}
+body.theme-light .mobile-menu-btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* === ORANGE THEME === */
+body.theme-orange {
+  background-color: #fff4e5;
+  color: #6a3e00;
+}
+body.theme-orange a {
+  color: #d2691e;
+}
+body.theme-orange .sidebar {
+  background-color: #fbe6c2;
+  color: #6a3e00;
+  border-right-color: #d9a066;
+}
+body.theme-orange main {
+  background-color: #fcebd4;
+  color: #6a3e00;
+}
+body.theme-orange h2,
+body.theme-orange .sidebar a,
+body.theme-orange .menu-icon,
+body.theme-orange .mobile-menu-btn {
+  color: #6a3e00;
+}
+body.theme-orange .sidebar a:hover {
+  background-color: #f3d9a5;
+  color: #d9822b;
+}
+body.theme-orange .sidebar a.active-menu-item {
+  background-color: #f3d9a5;
+  color: #bf6e00;
+}
+body.theme-orange .mobile-menu-btn {
+  background-color: #ffa500;
+  color: white;
+  box-shadow: 0 2px 6px rgb(255 165 0 / 0.5);
+}
+body.theme-orange .mobile-menu-btn:hover {
+  background-color: #cc8400;
+}
+
+/* === CHERRY THEME === */
+body.theme-cherry {
+  background-color: #ffe4ec;
+  color: #5a1a2f;
+}
+body.theme-cherry a {
+  color: #bb3e5b;
+}
+body.theme-cherry .sidebar {
+  background-color: #ffd1dd;
+  color: #5a1a2f;
+  border-right-color: #bb3e5b;
+}
+body.theme-cherry main {
+  background-color: #ffd9e2;
+  color: #5a1a2f;
+}
+body.theme-cherry h2,
+body.theme-cherry .sidebar a,
+body.theme-cherry .menu-icon,
+body.theme-cherry .mobile-menu-btn {
+  color: #5a1a2f;
+}
+body.theme-cherry .sidebar a:hover {
+  background-color: #f7c8d6;
+  color: #c64573;
+}
+body.theme-cherry .sidebar a.active-menu-item {
+  background-color: #f7c8d6;
+  color: #7f213f;
+}
+body.theme-cherry .mobile-menu-btn {
+  background-color: #ff69b4;
+  color: white;
+  box-shadow: 0 2px 6px rgb(255 105 180 / 0.5);
+}
+body.theme-cherry .mobile-menu-btn:hover {
+  background-color: #d86b88;
+}
+
+/* === LIME THEME === */
+body.theme-lime {
+  background-color: #f3f9d2;
+  color: #486b00;
+}
+body.theme-lime a {
+  color: #739e00;
+}
+body.theme-lime .sidebar {
+  background-color: #e9f0a8;
+  color: #486b00;
+  border-right-color: #739e00;
+}
+body.theme-lime main {
+  background-color: #eaf1aa;
+  color: #486b00;
+}
+body.theme-lime h2,
+body.theme-lime .sidebar a,
+body.theme-lime .menu-icon,
+body.theme-lime .mobile-menu-btn {
+  color: #486b00;
+}
+body.theme-lime .sidebar a:hover {
+  background-color: #d8e2a6;
+  color: #7ea500;
+}
+body.theme-lime .sidebar a.active-menu-item {
+  background-color: #d8e2a6;
+  color: #5a7d00;
+}
+body.theme-lime .mobile-menu-btn {
+  background-color: #739e00;
+  color: white;
+  box-shadow: 0 2px 6px rgb(115 158 0 / 0.5);
+}
+body.theme-lime .mobile-menu-btn:hover {
+  background-color: #5a7d00;
+}
