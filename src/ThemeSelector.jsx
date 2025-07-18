@@ -63,10 +63,10 @@ export default function ThemeSelector() {
             top: 16,
             right: 16,
             zIndex: 1500,
-            bgcolor: theme === "dark" ? "#ffff33" : "background.paper",
+            bgcolor: theme === "dark" ? "#D9FEFF" : "background.paper",
             boxShadow: 3,
             "&:hover": {
-              bgcolor: theme === "dark" ? "#cccc00" : "background.default",
+              bgcolor: theme === "dark" ? "#8EFBFF" : "background.default",
             },
           }}
           size="large"

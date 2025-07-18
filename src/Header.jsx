@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { MdArrowBack, MdClose, MdMenu } from "react-icons/md";
+import { MdArrowBack } from "react-icons/md";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "../ThemeContext";
 import "../ReactResume.css";
 
@@ -45,14 +47,13 @@ const Header = ({ onNavigate }) => {
 
   return (
     <header className="header">
-      {/* Hamburger Icon - Always in Top Right */}
-      <button
-        className="menu-button"
+      <IconButton
         onClick={toggleMenu}
-        aria-label="Toggle menu"
+        aria-label="Open menu"
+        className="icon-button"
       >
-        <MdMenu />
-      </button>
+        <MenuIcon />
+      </IconButton>
 
       {/* Navigation Drawer */}
       <nav className={`sidebar ${menuOpen ? "open" : ""}`}>

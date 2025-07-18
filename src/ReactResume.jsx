@@ -18,7 +18,7 @@ import {
   NavLink,
   Navigate,
 } from "react-router-dom";
-import ThemeSelector from './ThemeSelector';
+import ThemeSelector from "./ThemeSelector";
 import "./ReactResume.css";
 
 const sections = [
@@ -84,18 +84,53 @@ const sections = [
       </>
     ),
   },
-  {
-    id: "experience",
-    title: "Professional Experience",
-    icon: <FaBuilding className="text-xl" />,
-    content: `November 2022 - April 2025: 365 Retail Markets / FullCount\nSenior UI/UX Designer and Developer\nSan Luis Obispo, CA\nWorked remotely on touchscreen applications for senior living centers with a team of developers based in Iowa.\nCreated wireframes and designed prototypes for new features and enhancements.\nDeveloped javascript and front end code in React and worked to ensure that the designs were implemented to the specifications.\nEnsured that the designs delivered and the code written was accessible and easy for all users.\n\nApr 2020 - Jan 2022: Gaine Solutions\nWeb Application Development / User Interface / Technical Writing\nSan Luis Obispo, CA\nDeveloped web applications using Angular/typescript.\nCreated XD prototypes for new additions to the web product as primary graphic designer for the user interface layout of the Coperor Console.\nDeveloped various applications including the Coperor Console, Gaine Centralized IFA Issue Tracking Application, Metadata Repository, and the Symphony Provider Registry.\nComposed and created application-specific technical documents.\nResearched, evaluated and implemented web accessibility best practices.\nWorked closely with the Product Manager to conceive and develop prototypes for user interface designs to extend the product suite.\nApplied Agile Scrum methodology for team and project planning.\nGaine employee of the month for October 2021.`,
-  },
-  {
-    id: "history",
-    title: "Earlier Career History",
-    icon: <FaHistory className="text-xl" />,
-    content: `2008 - 2020: Independent Consultant, Website and Application Development\nCentral Coast, CA/Southern CA\nDeveloped and maintained websites for a range of clients including, but not limited to, PSSC Labs, Artizen HPC, Brandon Mulloy, Ribbon, Innovative Learning, Project Optimal, Penn Air Group, and eatalbacore.com.\n\n2008: First American Title\nWebsite Developer\nSanta Ana, CA\nCollaborated with the First American Document Solutions team to develop and test the “eTree” website.\nWrote and published the website html, css, javascript, and asp.\n\n2002 - 2007: Bear Stearns/Encore Credit\nWebsite Developer/Technical Writer\nIrvine, CA\nDeveloped and managed the company website and corporate intranet.\nPerformed technical writing and editing as well as marketing copywriting.`,
-  },
+{
+  id: "experience",
+  title: "Professional Experience",
+  icon: <FaBuilding className="text-xl" />,
+  content: (
+    <>
+      <p><strong>November 2022 – April 2025: 365 Retail Markets / FullCount</strong><br />
+      <em>Senior UI/UX Designer and Developer – San Luis Obispo, CA (Remote)</em><br />
+      Sole designer embedded in a React development team, creating touchscreen and support applications for senior living centers.<br />
+      Prototyped accessible interfaces in Figma and implemented them using React and Material UI.<br />
+      Prioritized usability and accessibility across devices, ensuring compliance with best practices.<br />
+      Researched image optimization methods and authored internal documentation and user guides.<br />
+      Contributed front-end code with a focus on consistency, responsiveness, and accessibility.
+      </p>
+
+      <p><strong>April 2020 – January 2022: Gaine Solutions</strong><br />
+      <em>Web Application Development / UI Design / Technical Writing – San Luis Obispo, CA</em><br />
+      Led UI design and development for Angular/TypeScript web applications serving enterprise clients.<br />
+      Designed and built the Coperor Console and other tools for managing metadata and data governance.<br />
+      Created XD-based prototypes and guided implementation of reusable components.<br />
+      Collaborated on Agile teams to meet accessibility and UX goals.<br />
+      Honored as Employee of the Month for cross-functional leadership and delivery.
+      </p>
+    </>
+  )
+},
+{
+  id: "history",
+  title: "Earlier Career History",
+  icon: <FaHistory className="text-xl" />,
+  content: (
+    <>
+      <p><strong>2008 – 2020: Independent Consultant</strong><br />
+      <em>Website and Application Development – Central Coast / Southern CA</em><br />
+      Designed and developed websites and branding materials for clients including PSSC Labs, Ribbon, Artizen HPC, and others.</p>
+
+      <p><strong>2008: First American Title</strong><br />
+      <em>Website Developer – Santa Ana, CA</em><br />
+      Developed and maintained the “eTree” website for First American Document Solutions using HTML, CSS, JavaScript, and ASP.</p>
+
+      <p><strong>2002 – 2007: Bear Stearns / Encore Credit</strong><br />
+      <em>Website Developer & Technical Writer – Irvine, CA</em><br />
+      Built corporate intranet and external websites, and authored technical documentation and marketing materials.</p>
+    </>
+  )
+},
+
   {
     id: "education",
     title: "Education",
@@ -118,7 +153,12 @@ const sections = [
     id: "contact",
     title: "Contact",
     icon: <FaAddressCard className="text-xl" />,
-    content: `Email: kevinmccalley@proton.me\nLinkedIn: kevin-mccalley`,
+    content: (
+    <div className="contact-content">
+      <div><strong>Email:</strong> kevinmccalley@proton.me</div>
+      <div><strong>LinkedIn:</strong> kevin-mccalley</div>
+    </div>
+  ),
   },
 ];
 

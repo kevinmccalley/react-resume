@@ -14,7 +14,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 240px;
+  width: 260px;
   height: 100vh;
   background-color: #ffffff;
   border-right: 1px solid #e5e7eb;
@@ -79,7 +79,7 @@
   justify-content: flex-end;
   text-decoration: none;
   gap: 0.25rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: .5rem;
   font-weight: 700;
   font-size: 1.25rem;
   border-radius: 4px;
@@ -118,7 +118,7 @@ main h2 .menu-icon {
   text-align: right;
   padding-right: 0.5rem;
   font-size: 1.1rem;
-  line-height: 1;
+  line-height: 2;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -136,6 +136,7 @@ main h2 .menu-icon {
   align-items: center;
   justify-content: center;
   color: inherit !important;
+  margin-right: .7rem;
 }
 
 /* Main Content */
@@ -203,11 +204,11 @@ body.theme-dark {
   color: #eee;
 }
 body.theme-dark a {
-  color: #ffff33;
+  color: #D9FEFF;
 }
 body.theme-dark .sidebar {
   background-color: #1f1f1f;
-  color: #ffff33;
+  color: #D9FEFF;
   border-right-color: #333;
 }
 body.theme-dark main {
@@ -218,28 +219,28 @@ body.theme-dark h2,
 body.theme-dark .sidebar a,
 body.theme-dark .menu-icon,
 body.theme-dark .mobile-menu-btn {
-  color: #ffff33;
+  color: #D9FEFF;
 }
 body.theme-dark .sidebar a:hover {
   background-color: #333333;
-  color: #ffff33;
+  color: #D9FEFF;
 }
 body.theme-dark .sidebar a.active-menu-item {
   background-color: #444444;
-  color: #ffff33;
+  color: #D9FEFF;
 }
 body.theme-dark .mobile-menu-btn {
-  background-color: #ffff33;
+  background-color: #D9FEFF;
   color: #000;
   box-shadow: 0 2px 6px rgb(255 255 51 / 0.5);
 }
 body.theme-dark .mobile-menu-btn:hover {
-  background-color: #cccc00;
+  background-color: #8EFBFF;
 }
 
 /* NEW: neon yellow background & black moon icon for dark theme selector */
 body.theme-dark .theme-selector {
-  background-color: #ffff33; /* neon yellow bg */
+  background-color: #D9FEFF; /* neon yellow bg */
   border-radius: 50%;
   padding: 4px;
   display: inline-flex;
@@ -253,7 +254,7 @@ body.theme-dark .theme-selector-icon {
 
 /* Dark theme overrides for Theme Selector opener button */
 body.theme-dark .theme-selector-opener {
-  background-color: #ffff33 !important; /* bright yellow background */
+  background-color: #D9FEFF !important; /* bright yellow background */
 }
 
 /* Assuming moon icon has class .moon-icon or similar */
@@ -268,38 +269,38 @@ body.theme-light {
   color: #111;
 }
 body.theme-light a {
-  color: #2563eb;
+  color: #FCFEEC;
 }
 body.theme-light .sidebar {
-  background-color: #fefefe;
+  background-color: #FCFEEC;
   color: #111;
   border-right-color: #e5e7eb;
 }
 body.theme-light main {
-  background-color: #fafafa;
+  background-color: #FCFEEC;
   color: #111;
 }
 body.theme-light h2,
 body.theme-light .sidebar a,
 body.theme-light .menu-icon,
 body.theme-light .mobile-menu-btn {
-  color: #2563eb;
+  color: #4E5151;
 }
 body.theme-light .sidebar a:hover {
-  background-color: #e0e7ff;
-  color: #1d4ed8;
+  background-color: #F1F4D9;
+  color: #000000;
 }
 body.theme-light .sidebar a.active-menu-item {
-  background-color: #c7d2fe;
-  color: #1e40af;
+  background-color: #F1F4D9;
+  color: #000000;
 }
 body.theme-light .mobile-menu-btn {
-  background-color: #2563eb;
+  background-color: #FFFCEA;
   color: white;
-  box-shadow: 0 2px 6px rgb(37 99 235 / 0.5);
+  box-shadow: 0 2px 6px;
 }
 body.theme-light .mobile-menu-btn:hover {
-  background-color: #1d4ed8;
+  background-color: #FCFEEC;
 }
 
 /* === ORANGE THEME === */
@@ -420,4 +421,99 @@ body.theme-lime .mobile-menu-btn {
 }
 body.theme-lime .mobile-menu-btn:hover {
   background-color: #5a7d00;
+}
+
+/* === HAMBURGER BUTTON (THEMED) === */
+body.theme-light .hamburger-button {
+  background-color: white;
+  color: black;
+}
+
+body.theme-dark .hamburger-button {
+  background-color: #1f2937;
+  color: white;
+}
+
+body.theme-cherry .hamburger-button {
+  background-color: #ffebee;
+  color: #880e4f;
+}
+
+body.theme-orange .hamburger-button {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+body.theme-lime .hamburger-button {
+  background-color: #f9fbe7;
+  color: #827717;
+}
+
+.hamburger-button {
+  margin-left: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.hamburger-button svg {
+  color: inherit;
+}
+
+/* Default styles for IconButton */
+.icon-button {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1500;
+  background-color: var(--menu-bg);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+
+/* Icon style inside the button */
+.icon-button svg {
+  color: var(--menu-icon-color);
+  width: 24px;
+  height: 24px;
+}
+
+/* Light Theme */
+.theme-light .icon-button {
+  --menu-bg: #ffffff;
+  --menu-icon-color: #000000;
+}
+
+/* Dark Theme */
+.theme-dark .icon-button {
+  --menu-bg: #D9FEFF;
+  --menu-icon-color: #000000;
+}
+
+/* Cherry Theme */
+.theme-cherry .icon-button {
+  --menu-bg: #f9a8d4;
+  --menu-icon-color: #000000;
+}
+
+/* Orange Theme */
+.theme-orange .icon-button {
+  --menu-bg: #f97316;
+  --menu-icon-color: #ffffff;
+}
+
+/* Lime Theme */
+.theme-lime .icon-button {
+  --menu-bg: #84cc16;
+  --menu-icon-color: #ffffff;
+}
+
+/* Optional hover tweak */
+.icon-button:hover {
+  filter: brightness(0.95);
+}
+
+.nav-links li.selected {
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
