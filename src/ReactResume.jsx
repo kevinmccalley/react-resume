@@ -194,8 +194,8 @@ export default function ReactResume() {
                 isActive ? "active-menu-item" : undefined
               }
             >
-              <span className="menu-text">{title}</span>
               <span className="menu-icon">{icon}</span>
+              <span className="menu-text">{title}</span>
             </NavLink>
           ))}
         </nav>

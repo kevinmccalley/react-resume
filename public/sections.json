@@ -1,0 +1,136 @@
+[
+  {
+    "id": "overview",
+    "title": "Overview",
+    "icon": "FaFilter",
+    "content": "Insightful, experienced website and web application developer and technical writer with a B.A. and a proclivity for managing and conveying compelling digital content. Knowledgeable IT professional with a proven ability to generate successful results through effective use of cutting-edge technology, meticulous usability testing, and user interface design optimization. Astute individual skilled at determining technical standards, coding protocols, tools, and platforms. Strong background planning, designing, developing, and testing websites. Highly skilled at creative design and development using single-page web application frameworks and content management systems."
+  },
+  {
+    "id": "highlights",
+    "title": "Qualifications",
+    "icon": "FaGavel",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Technical Writing: Over six years' experience with technical writing and editing for various projects such as instructions, manuals, website content, API Endpoint documentation and multimedia presentations."
+      },
+      {
+        "type": "paragraph",
+        "text": "Communication: Articulate communicator adept at developing and delivering training and technical demonstrations. Consistent success contributing to cross-functional teams and exhibiting efficiency, quality, and flexibility managing and prioritizing project components."
+      },
+      {
+        "type": "list",
+        "title": "Technology Tools",
+        "items": [
+          "Graphic Design and Prototyping: Adobe Creative Suite (XD, Photoshop, Illustrator), Figma, Lunacy",
+          "Programming: TypeScript, ES6 Javascript, php, asp, aspx, and html scripting; JSON and xml data-structuring; and css/scss style sheets",
+          "Scripting Libraries: Angular, React, jQuery",
+          "Development: Visual Studio, Visual Studio Code, Node Package Manager",
+          "Platforms: Windows, Linux",
+          "Documentation: Confluence, Postman, draw.io",
+          "System Management: Terminal (CLI), Windows PowerShell, RDC virtual machines, remote management",
+          "Agile: Jira"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "experience",
+    "title": "Professional Experience",
+    "icon": "FaBuilding",
+    "content": [
+      {
+        "type": "position",
+        "title": "365 Retail Markets / FullCount",
+        "date": "November 2022 \u2013 April 2025",
+        "location": "San Luis Obispo, CA (Remote)",
+        "role": "Senior UI/UX Designer and Developer",
+        "bullets": [
+          "Sole designer embedded in a React development team, creating touchscreen and support applications for senior living centers.",
+          "Prototyped accessible interfaces in Figma and implemented them using React and Material UI.",
+          "Prioritized usability and accessibility across devices, ensuring compliance with best practices.",
+          "Researched image optimization methods and authored internal documentation and user guides.",
+          "Contributed front-end code with a focus on consistency, responsiveness, and accessibility."
+        ]
+      },
+      {
+        "type": "position",
+        "title": "Gaine Solutions",
+        "date": "April 2020 \u2013 January 2022",
+        "location": "San Luis Obispo, CA",
+        "role": "Web Application Development / UI Design / Technical Writing",
+        "bullets": [
+          "Led UI design and development for Angular/TypeScript web applications serving enterprise clients.",
+          "Designed and built the Coperor Console and other tools for managing metadata and data governance.",
+          "Created XD-based prototypes and guided implementation of reusable components.",
+          "Collaborated on Agile teams to meet accessibility and UX goals.",
+          "Honored as Employee of the Month for cross-functional leadership and delivery."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "history",
+    "title": "Earlier Career History",
+    "icon": "FaHistory",
+    "content": [
+      {
+        "type": "position",
+        "title": "Independent Consultant",
+        "date": "2008 \u2013 2020",
+        "location": "Central Coast / Southern CA",
+        "role": "Website and Application Development",
+        "bullets": [
+          "Designed and developed websites and branding materials for clients including PSSC Labs, Ribbon, Artizen HPC, and others."
+        ]
+      },
+      {
+        "type": "position",
+        "title": "First American Title",
+        "date": "2008",
+        "location": "Santa Ana, CA",
+        "role": "Website Developer",
+        "bullets": [
+          "Developed and maintained the \u201ceTree\u201d website for First American Document Solutions using HTML, CSS, JavaScript, and ASP."
+        ]
+      },
+      {
+        "type": "position",
+        "title": "Bear Stearns / Encore Credit",
+        "date": "2002 \u2013 2007",
+        "location": "Irvine, CA",
+        "role": "Website Developer & Technical Writer",
+        "bullets": [
+          "Built corporate intranet and external websites, and authored technical documentation and marketing materials."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "education",
+    "title": "Education",
+    "icon": "FaSchool",
+    "content": "1994: Bachelor of Arts, English\nUniversity of California, Berkeley\nBerkeley, CA"
+  },
+  {
+    "id": "strengths",
+    "title": "Key Strengths",
+    "icon": "FaBullseye",
+    "content": "Website Design Development, Website Development, User Interface Design, Graphic Design, Web Programming, Application Development, Content Management, Single-Page Web Applications, Prototyping, UI/UX Design, Web Accessibility, Debugging, Technical Writing, Marketing Strategy, Agile Scrum Team Planning"
+  },
+  {
+    "id": "accessibility",
+    "title": "Accessibility",
+    "icon": "FaUniversalAccess",
+    "content": "I am committed to building applications that meet WAI WCAG guidelines, Section 508 standards for accessibility on government and/or federally-funded applications, and in compliance with the Americans with Disabilities Act (ADA)."
+  },
+  {
+    "id": "contact",
+    "title": "Contact",
+    "icon": "FaAddressCard",
+    "content": {
+      "email": "kevinmccalley@proton.me",
+      "linkedin": "kevin-mccalley"
+    }
+  }
+]

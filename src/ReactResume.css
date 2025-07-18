@@ -61,7 +61,7 @@
   left: 1rem;
   border-radius: 6px;
   padding: 0.5rem 0.75rem;
-  box-shadow: 0 2px 6px rgb(37 99 235 / 0.5);
+  box-shadow: 0 2px 6px rgba(129, 129, 129, 0.5);
 }
 
 /* Show hamburger on mobile */
@@ -76,7 +76,7 @@
 .sidebar a.active-menu-item {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   text-decoration: none;
   gap: 0.25rem;
   margin-bottom: .5rem;
@@ -89,7 +89,8 @@
 
 /* Professional Experience fix */
 main h2 {
-  font-size: 2rem;
+  font-size: 2rem; 
+  line-height: 2rem;
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -120,7 +121,7 @@ main h2 .menu-icon {
   font-size: 1.1rem;
   line-height: 2;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 2px;
   white-space: normal;
@@ -295,9 +296,8 @@ body.theme-light .sidebar a.active-menu-item {
   color: #000000;
 }
 body.theme-light .mobile-menu-btn {
-  background-color: #FFFCEA;
-  color: white;
-  box-shadow: 0 2px 6px;
+  background-color: #ffffff;
+  color: #000000;
 }
 body.theme-light .mobile-menu-btn:hover {
   background-color: #FCFEEC;
