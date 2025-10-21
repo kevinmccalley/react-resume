@@ -1,9 +1,9 @@
 [
   {
     "id": "overview",
-    "title": "Overview",
+    "title": "Senior Front-End Engineer & UI/UX Designer",
     "icon": "FaFilter",
-    "content": "Insightful, experienced website and web application developer and technical writer with a B.A. and a proclivity for managing and conveying compelling digital content. Knowledgeable IT professional with a proven ability to generate successful results through effective use of cutting-edge technology, meticulous usability testing, and user interface design optimization. Astute individual skilled at determining technical standards, coding protocols, tools, and platforms. Strong background planning, designing, developing, and testing websites. Highly skilled at creative design and development using single-page web application frameworks and content management systems."
+    "content": "Experienced in building accessible, responsive web applications using React, TypeScript, and Figma. I bridge the gap between design and development, delivering clean, performant, and visually compelling interfaces. Strong foundation in accessibility, usability testing, and component-driven design systems. Passionate about crafting intuitive user experiences and efficient front-end architectures."
   },
   {
     "id": "highlights",
@@ -22,14 +22,11 @@
         "type": "list",
         "title": "Technology Tools",
         "items": [
-          "Graphic Design and Prototyping: Adobe Creative Suite (XD, Photoshop, Illustrator), Figma, Lunacy",
-          "Programming: TypeScript, ES6 Javascript, php, asp, aspx, and html scripting; JSON and xml data-structuring; and css/scss style sheets",
-          "Scripting Libraries: Angular, React, jQuery",
-          "Development: Visual Studio, Visual Studio Code, Node Package Manager",
-          "Platforms: Windows, Linux",
-          "Documentation: Confluence, Postman, draw.io",
-          "System Management: Terminal (CLI), Windows PowerShell, RDC virtual machines, remote management",
-          "Agile: Jira"
+          "Languages & Frameworks: React, TypeScript, JavaScript (ES6+), HTML5, CSS3, SCSS, PHP, ASP",
+          "UI & Design Tools: Figma, Adobe XD, Photoshop, Illustrator, Framer Motion, Material UI",
+          "Development Tools: VS Code, Git, Node.js, NPM, Vite, Postman, Confluence, Jira",
+          "Systems: Windows, Linux",
+          "Other: Accessibility (WCAG 2.1), Responsive Design, Usability Testing, Agile, Technical Writing"
         ]
       }
     ]
@@ -42,29 +39,29 @@
       {
         "type": "position",
         "title": "365 Retail Markets / FullCount",
-        "date": "November 2022 \u2013 April 2025",
-        "location": "San Luis Obispo, CA (Remote)",
-        "role": "Senior UI/UX Designer and Developer",
+        "date": "2022 - 2025",
+        "location": "Remote",
+        "role": "Senior UI/UX Designer & React Developer",
         "bullets": [
-          "Sole designer embedded in a React development team, creating touchscreen and support applications for senior living centers.",
-          "Prototyped accessible interfaces in Figma and implemented them using React and Material UI.",
-          "Prioritized usability and accessibility across devices, ensuring compliance with best practices.",
-          "Researched image optimization methods and authored internal documentation and user guides.",
-          "Contributed front-end code with a focus on consistency, responsiveness, and accessibility."
+          "Designed and built touchscreen and support apps for senior living facilities using React + Material UI.",
+          "Created Figma prototypes and implemented accessible interfaces for diverse users.",
+          "Ensured WCAG-compliant layouts and optimized asset delivery for performance.",
+          "Wrote internal documentation and user guides improving dev team onboarding.",
+          "Advocated for design consistency and led UI reviews across Agile sprints."
         ]
       },
       {
         "type": "position",
         "title": "Gaine Solutions",
-        "date": "April 2020 \u2013 January 2022",
-        "location": "San Luis Obispo, CA",
-        "role": "Web Application Development / UI Design / Technical Writing",
+        "date": "2020 \u2013 2022",
+        "location": "Remote",
+        "role": "UI Developer / Technical Writer",
         "bullets": [
-          "Led UI design and development for Angular/TypeScript web applications serving enterprise clients.",
-          "Designed and built the Coperor Console and other tools for managing metadata and data governance.",
-          "Created XD-based prototypes and guided implementation of reusable components.",
-          "Collaborated on Agile teams to meet accessibility and UX goals.",
-          "Honored as Employee of the Month for cross-functional leadership and delivery."
+          "Designed and developed Angular/TypeScript web tools for enterprise data governance.",
+          "Built the Coperor Console app with reusable UI components and accessible layouts.",
+          "Produced Adobe XD prototypes and front-end guidelines for engineering teams.",
+          "Recognized for leadership in UX accessibility initiatives.",
+          "Stack: Angular, TypeScript, Material UI, Adobe XD, Jira, Confluence, Agile"
         ]
       }
     ]
