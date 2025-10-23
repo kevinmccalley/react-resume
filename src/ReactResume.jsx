@@ -1,3 +1,4 @@
+// ReactResume.jsx
 import React, { useState } from "react";
 import {
   FaFilter,
@@ -9,7 +10,7 @@ import {
   FaUniversalAccess,
   FaAddressCard,
   FaBars,
-  FaBriefcase
+  FaBriefcase,
 } from "react-icons/fa";
 import {
   BrowserRouter as Router,
@@ -19,10 +20,13 @@ import {
   Navigate,
 } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import ThemeSelector from "./ThemeSelector";
 import ContactForm from "./ContactForm";
+import ResumePDF from "./ResumePDF";
 import "./ReactResume.css";
 import { useQuery } from "@tanstack/react-query";
+import { useTheme } from "./ThemeContext";
 
 // Map icon names from JSON to components
 const iconMap = {
@@ -121,7 +125,7 @@ function PortfolioSection() {
       icon: "/assets/react.png",
       thumbnail: "/assets/thumb_math.png",
       footer: "View Application - React",
-      link: "https://times-table-kvv9kc70x-kevin-mccalleys-projects.vercel.app/",
+      link: "/portfolio",
     },
     {
       title: "Translation",
@@ -216,17 +220,9 @@ function PortfolioSection() {
                 <strong>{p.title}</strong>
                 <div className="portfolio-subtitle">{p.subtitle}</div>
               </div>
-              <img
-                src={p.icon}
-                alt={`${p.title} icon`}
-                className="portfolio-icon"
-              />
+              <img src={p.icon} alt={`${p.title} icon`} className="portfolio-icon" />
             </div>
-            <img
-              src={p.thumbnail}
-              alt={p.title}
-              className="portfolio-thumbnail"
-            />
+            <img src={p.thumbnail} alt={p.title} className="portfolio-thumbnail" />
             <div className="portfolio-footer">{p.footer}</div>
           </a>
         ))}
@@ -283,12 +279,9 @@ function SectionContent({ section }) {
 // ---------- Main Component ----------
 export default function ReactResume() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme } = useTheme(); // <-- use context theme
 
-  const {
-    data: sections,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data: sections, isLoading, error } = useQuery({
     queryKey: ["sections"],
     queryFn: () =>
       fetch("/sections.json").then((res) => {
@@ -302,14 +295,21 @@ export default function ReactResume() {
   if (!sections || !sections.length)
     return <div>No sections found in resume data.</div>;
 
-  // Add Portfolio to nav
-  const allSections = [
-    ...sections
-  ];
+  const allSections = [...sections];
+
+  // Theme-based button styling
+  const themeStyles = {
+    dark: { backgroundColor: "#1f2937", color: "#fff" },
+    light: { backgroundColor: "#4f46e5", color: "#fff" },
+    orange: { backgroundColor: "#FFA500", color: "#000" },
+    cherry: { backgroundColor: "#fbb6ce", color: "#000" },
+    lime: { backgroundColor: "#a6e22e", color: "#000" },
+  };
 
   return (
     <Router>
       <ThemeSelector />
+
       <div className="app-container">
         <nav className={`sidebar ${mobileMenuOpen ? "open" : ""}`}>
           {allSections.map(({ id, title, icon }) => (
@@ -352,6 +352,30 @@ export default function ReactResume() {
             <Route path="*" element={<div>Page not found.</div>} />
           </Routes>
         </main>
+
+        {/* PDF Download Button */}
+        <div
+          style={{
+            position: "fixed",
+            bottom: "20px",
+            right: "20px",
+            zIndex: 1000,
+          }}
+        >
+          <PDFDownloadLink
+            document={<ResumePDF />}
+            fileName="Kevin_McCalley_Resume.pdf"
+            style={{
+              padding: "10px 20px",
+              borderRadius: "8px",
+              fontWeight: "bold",
+              textDecoration: "none",
+              ...themeStyles[theme], // <-- dynamic based on context
+            }}
+          >
+            {({ loading }) => (loading ? "Preparing PDF..." : "Download PDF")}
+          </PDFDownloadLink>
+        </div>
       </div>
     </Router>
   );
