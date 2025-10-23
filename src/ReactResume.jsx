@@ -118,6 +118,18 @@ function RenderContent({ content }) {
 
 // ---------- Portfolio Section ----------
 function PortfolioSection() {
+  const { theme } = useTheme();
+
+  const themeTextColors = {
+    dark: "#FFFFFF",
+    light: "#000000",
+    orange: "#000000",
+    cherry: "#000000",
+    lime: "#000000",
+  };
+
+  const textColor = themeTextColors[theme] || "#000";
+
   const projects = [
     {
       title: "Math Fun",
@@ -125,7 +137,7 @@ function PortfolioSection() {
       icon: "/assets/react.png",
       thumbnail: "/assets/thumb_math.png",
       footer: "View Application - React",
-      link: "/portfolio",
+      link: "https://times-table-kvv9kc70x-kevin-mccalleys-projects.vercel.app/",
     },
     {
       title: "Translation",
@@ -203,7 +215,7 @@ function PortfolioSection() {
 
   return (
     <section id="portfolio" className="scroll-mt-20">
-      <h2>
+      <h2 style={{ color: textColor }}>
         {iconMap.FaBriefcase} Portfolio
       </h2>
       <div className="portfolio-grid">
@@ -214,6 +226,7 @@ function PortfolioSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="portfolio-item"
+            style={{ color: textColor }}
           >
             <div className="portfolio-header">
               <div className="portfolio-title">
@@ -305,7 +318,6 @@ export default function ReactResume() {
 
   const allSections = [...sections];
 
-  // Updated theme-based button styling with correct dark mode colors
   const themeStyles = {
     dark: {
       backgroundColor: "#D9FEFF",
@@ -373,7 +385,6 @@ export default function ReactResume() {
           </Routes>
         </main>
 
-        {/* ✅ Updated PDF Download Button with correct dark theme colors */}
         <div
           style={{
             position: "fixed",

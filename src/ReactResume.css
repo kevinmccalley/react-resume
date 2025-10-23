@@ -605,8 +605,11 @@ body.theme-lime .hamburger-button {
   color: var(--text-color, #000);
 }
 
-
-
+.portfolio-title,
+.portfolio-subtitle,
+.portfolio-footer {
+  color: var(--text-color);
+}
 
 
 
