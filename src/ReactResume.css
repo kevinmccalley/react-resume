@@ -520,3 +520,114 @@ body.theme-lime .hamburger-button {
   background-color: #ffffff !important;
   color: #000000 !important;
 }
+
+/* Skip Link Styles */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--background-color, #000);
+  color: var(--text-color, #fff);
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+  transition: top 0.3s;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0 0 5px 0;
+}
+.skip-link:focus {
+  top: 0;
+}
+/* --- Portfolio Grid --- */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.portfolio-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  padding: 1rem;
+  background: var(--card-bg, rgba(255, 255, 255, 0.05));
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.portfolio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-title {
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--text-color, #000);
+}
+
+.portfolio-subtitle {
+  font-weight: normal;
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin-top: 0.25rem;
+}
+
+.portfolio-icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+
+.portfolio-thumbnail {
+  width: 100%;
+  border-radius: 8px;
+  margin: 0.5rem 0;
+  object-fit: cover;
+}
+
+.portfolio-footer {
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  color: var(--text-color, #000);
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1024px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}

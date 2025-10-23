@@ -9,6 +9,7 @@ import {
   FaUniversalAccess,
   FaAddressCard,
   FaBars,
+  FaBriefcase
 } from "react-icons/fa";
 import {
   BrowserRouter as Router,
@@ -17,12 +18,13 @@ import {
   NavLink,
   Navigate,
 } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 import ThemeSelector from "./ThemeSelector";
-import ContactForm from "./ContactForm"; // Import ContactForm here
+import ContactForm from "./ContactForm";
 import "./ReactResume.css";
 import { useQuery } from "@tanstack/react-query";
 
-// Map icon names from JSON to actual components
+// Map icon names from JSON to components
 const iconMap = {
   FaFilter: <FaFilter className="text-xl" />,
   FaGavel: <FaGavel className="text-xl" />,
@@ -32,21 +34,16 @@ const iconMap = {
   FaBullseye: <FaBullseye className="text-xl" />,
   FaUniversalAccess: <FaUniversalAccess className="text-xl" />,
   FaAddressCard: <FaAddressCard className="text-xl" />,
-  // add more if needed
+  FaBriefcase: <FaBriefcase className="text-xl" />,
 };
 
-// Helper to render content based on type
+// ---------- RenderContent ----------
 function RenderContent({ content }) {
   if (typeof content === "string") {
-    // simple string content with newlines to <br />
-    return content.split("\n").map((line, i) => (
-      <p key={i} style={{ marginTop: i === 0 ? 0 : "0.75rem" }}>
-        {line}
-      </p>
-    ));
+    return <p>{content}</p>;
   }
+
   if (Array.isArray(content)) {
-    // content is an array of objects (like paragraphs, lists, positions)
     return content.map((item, idx) => {
       switch (item.type) {
         case "paragraph":
@@ -55,42 +52,47 @@ function RenderContent({ content }) {
               {item.text}
             </p>
           );
-        case "list":
+
+        case "markdown":
           return (
-            <div key={idx} style={{ marginBottom: "1rem" }}>
-              {item.title && <strong>{item.title}:</strong>}
-              <ul className="list-disc pl-5">
-                {item.items.map((li, i) => (
-                  <li key={i}>{li}</li>
-                ))}
-              </ul>
+            <div key={idx} style={{ marginBottom: "0.75rem" }}>
+              <ReactMarkdown>{item.text}</ReactMarkdown>
             </div>
           );
+
+        case "markdownListitem":
+          return (
+            <div
+              key={idx}
+              style={{
+                marginBottom: "-1rem",
+                marginLeft: "1rem",
+                marginRight: "1rem",
+              }}
+            >
+              <ReactMarkdown>{item.text}</ReactMarkdown>
+            </div>
+          );
+
         case "position":
           return (
-            <div key={idx} style={{ marginBottom: "1rem" }}>
-              <p>
-                <strong>{item.title}</strong> <br />
-                <em>
-                  {item.role} – {item.location}
-                </em>{" "}
-                <br />
-                <small>{item.date}</small>
-              </p>
-              <ul className="list-disc pl-5 mt-1">
-                {item.bullets.map((b, i) => (
-                  <li key={i}>{b}</li>
-                ))}
-              </ul>
+            <div key={idx} style={{ marginTop: idx !== 0 ? "3rem" : "0rem" }}>
+              <strong>{item.title}</strong> <br />
+              <em>
+                {item.role} – {item.location}
+              </em>{" "}
+              <br />
+              <small>{item.date}</small>
             </div>
           );
+
         default:
           return null;
       }
     });
   }
+
   if (typeof content === "object" && content !== null) {
-    // For example, contact info object
     return (
       <div className="contact-content">
         {content.email && (
@@ -106,11 +108,139 @@ function RenderContent({ content }) {
       </div>
     );
   }
+
   return null;
 }
 
+// ---------- Portfolio Section ----------
+function PortfolioSection() {
+  const projects = [
+    {
+      title: "Math Fun",
+      subtitle: "Math Learning Games",
+      icon: "src/react.png",
+      thumbnail: "src/thumb_math.png",
+      footer: "View Application - React",
+      link: "https://times-table-kvv9kc70x-kevin-mccalleys-projects.vercel.app/",
+    },
+    {
+      title: "Translation",
+      subtitle: "Translation Application",
+      icon: "src/react.png",
+      thumbnail: "src/thumb_translator.png",
+      footer: "View Application - React",
+      link: "https://translate-app-bice-three.vercel.app/",
+    },
+    {
+      title: "Enhanced Search",
+      subtitle: "Coperor Console",
+      icon: "src/xd.png",
+      thumbnail: "src/thumb_search.png",
+      footer: "View Prototype - Adobe XD",
+      link: "https://xd.adobe.com/view/afb9a196-0f8f-4fc7-8091-e7390a6582d2-faea/",
+    },
+    {
+      title: "Centralized IFA",
+      subtitle: "Coperor Console",
+      icon: "src/xd.png",
+      thumbnail: "src/thumb_ifa.png",
+      footer: "View Prototype - Adobe XD",
+      link: "https://xd.adobe.com/view/ad579ed9-bf28-4d6e-a8ac-06c268f1b1ba-f804/",
+    },
+    {
+      title: "Create Jira Issue",
+      subtitle: "Coperor Console",
+      icon: "src/xd.png",
+      thumbnail: "src/thumb_jira.png",
+      footer: "View Prototype - Adobe XD",
+      link: "https://xd.adobe.com/view/1b64d2fe-2e87-4b01-9737-7d559559d5bf-4e37/",
+    },
+    {
+      title: "Skeleton Loader",
+      subtitle: "Coperor Console",
+      icon: "src/xd.png",
+      thumbnail: "src/thumb_skeleton.png",
+      footer: "View Prototype - Adobe XD",
+      link: "https://xd.adobe.com/view/84f50ce3-f1f5-464a-b52a-31165d37f377-d1a6/screen/b10d3788-d02c-4607-a07d-cb6a636141d4",
+    },
+    {
+      title: "Match Decision Adjudication",
+      subtitle: "Coperor / Salesforce",
+      icon: "src/xd.png",
+      thumbnail: "src/thumb_match.png",
+      footer: "View Prototype - Adobe XD",
+      link: "https://xd.adobe.com/view/a17f0a80-3516-46de-95a8-558002c7753a-f42c/",
+    },
+    {
+      title: "XD Prototype",
+      subtitle: "4Spheres Design Process",
+      icon: "src/xd.png",
+      thumbnail: "src/thumb_spheres.png",
+      footer: "View Prototype - Adobe XD",
+      link: "https://xd.adobe.com/view/8319b7e6-69b2-4c9f-908e-6d5d81bef4ff-d64a/",
+    },
+    {
+      title: "Figma Prototype",
+      subtitle: "4Spheres Design Process",
+      icon: "src/figma.svg",
+      thumbnail: "src/thumb_spheres.png",
+      footer: "View Prototype - Figma",
+      link: "https://www.figma.com/design/M6wK582bEJt8AKhf1qCzr5/4Spheres?node-id=3-2&p=f",
+    },
+    {
+      title: "Single Page Application",
+      subtitle: "4Spheres Design Process",
+      icon: "src/react.png",
+      thumbnail: "src/thumb_spheres.png",
+      footer: "View Application - React",
+      link: "https://kevinmccalley.github.io/4spheres/",
+    },
+  ];
+
+  return (
+    <section id="portfolio" className="scroll-mt-20">
+      <h2>
+        {iconMap.FaBriefcase} Portfolio
+      </h2>
+      <div className="portfolio-grid">
+        {projects.map((p, idx) => (
+          <a
+            key={idx}
+            href={p.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="portfolio-item"
+          >
+            <div className="portfolio-header">
+              <div className="portfolio-title">
+                <strong>{p.title}</strong>
+                <div className="portfolio-subtitle">{p.subtitle}</div>
+              </div>
+              <img
+                src={p.icon}
+                alt={`${p.title} icon`}
+                className="portfolio-icon"
+              />
+            </div>
+            <img
+              src={p.thumbnail}
+              alt={p.title}
+              className="portfolio-thumbnail"
+            />
+            <div className="portfolio-footer">{p.footer}</div>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ---------- SectionContent ----------
 function SectionContent({ section }) {
-  // Special case for Contact section to include ContactForm above contact info
+  if (section.id === "portfolio") {
+    return <PortfolioSection />;
+  }
+
   if (section.id === "contact") {
     return (
       <section id={section.id} className="scroll-mt-20">
@@ -127,12 +257,22 @@ function SectionContent({ section }) {
     );
   }
 
-  // Default rendering for other sections
   return (
     <section id={section.id} className="scroll-mt-20">
       <h2>
         {iconMap[section.icon] || null} {section.title}
       </h2>
+      {section.subtitle && (
+        <h3
+          style={{
+            fontWeight: "bold",
+            marginTop: "0.25rem",
+            marginBottom: "1rem",
+          }}
+        >
+          {section.subtitle}
+        </h3>
+      )}
       <div>
         <RenderContent content={section.content} />
       </div>
@@ -140,10 +280,15 @@ function SectionContent({ section }) {
   );
 }
 
+// ---------- Main Component ----------
 export default function ReactResume() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const { data: sections, isLoading, error } = useQuery({
+  const {
+    data: sections,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["sections"],
     queryFn: () =>
       fetch("/sections.json").then((res) => {
@@ -157,12 +302,17 @@ export default function ReactResume() {
   if (!sections || !sections.length)
     return <div>No sections found in resume data.</div>;
 
+  // Add Portfolio to nav
+  const allSections = [
+    ...sections
+  ];
+
   return (
     <Router>
       <ThemeSelector />
       <div className="app-container">
         <nav className={`sidebar ${mobileMenuOpen ? "open" : ""}`}>
-          {sections.map(({ id, title, icon }) => (
+          {allSections.map(({ id, title, icon }) => (
             <NavLink
               key={id}
               to={`/${id}`}
@@ -188,11 +338,15 @@ export default function ReactResume() {
         <main>
           <Routes>
             <Route path="/" element={<Navigate to="/overview" replace />} />
-            {sections.map(({ id }) => (
+            {allSections.map(({ id }) => (
               <Route
                 key={id}
                 path={`/${id}`}
-                element={<SectionContent section={sections.find((s) => s.id === id)} />}
+                element={
+                  <SectionContent
+                    section={allSections.find((s) => s.id === id)}
+                  />
+                }
               />
             ))}
             <Route path="*" element={<div>Page not found.</div>} />

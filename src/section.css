@@ -1,0 +1,52 @@
+section {
+  margin-bottom: 3rem;
+}
+
+section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+section h3 {
+  font-size: 1.125rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.job-position p {
+  margin-bottom: 0.5rem;
+}
+
+.contact-content {
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+/* Markdown bullet fix for tight spacing like real list */
+.markdown-bullet {
+  display: list-item;         /* behave like <li> */
+  list-style-type: disc;      /* standard bullet symbol */
+  margin: 0.15rem 0;          /* very small vertical spacing */
+  padding-left: 1.5rem;       /* indent like normal list */
+}
+
+.markdown-bullet p {
+  margin: 0;                  /* remove default <p> margin from ReactMarkdown */
+}
+
+/* Apply inset margins for sections like Qualifications */
+.section-content {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+/* Make sure bullets inside this content have consistent left indent */
+.section-content .markdown-bullet {
+  padding-left: 1.25rem;
+  margin-left: 0.75rem;
+}

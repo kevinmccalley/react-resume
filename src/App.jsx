@@ -32,8 +32,8 @@ const App = () => {
   }, []);
 
   return (
-    <div className="font-sans text-gray-900 bg-gray-100 min-h-screen">
-      <header className="sticky top-0 z-50 bg-white shadow-md flex justify-around p-4">
+    <div className="font-sans text-gray-900 bg-gray-100 min-h-screen relative">
+      <header className="sticky top-0 z-40 bg-white shadow-md flex justify-around p-4">
         {sections.map(({ id, label }) => (
           <a
             key={id}
@@ -46,7 +46,11 @@ const App = () => {
         ))}
       </header>
 
-      <main className="max-w-4xl mx-auto p-4 space-y-16">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="max-w-4xl mx-auto p-4 space-y-16 focus:outline-none"
+      >
         {sections.map(({ id, label }) => {
           const SectionComponent = lazy(() =>
             import(`./sections/${capitalizeFirst(id)}.jsx`)

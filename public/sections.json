@@ -2,8 +2,18 @@
   {
     "id": "overview",
     "title": "Overview",
+    "subtitle": "Senior Front-End Engineer & UI/UX Designer",
     "icon": "FaFilter",
-    "content": "Senior Front-End Engineer & UI/UX Designer, experienced in building accessible, responsive web applications using React, TypeScript, and Figma. I bridge the gap between design and development, delivering clean, performant, and visually compelling interfaces. Strong foundation in accessibility, usability testing, and component-driven design systems. Passionate about crafting intuitive user experiences and efficient front-end architectures."
+    "content": [
+      {
+        "type": "markdown",
+        "text": "I design and build **accessible, responsive web applications** using **React**, **TypeScript**, and **Figma**. With a background spanning both visual design and front-end development, I bridge the gap between creativity and code — crafting clean, performant, and visually compelling interfaces."
+      },
+      {
+        "type": "markdown",
+        "text": "I'm deeply experienced in **accessibility**, **usability testing**, and **component-driven design systems**, and I’m passionate about delivering intuitive user experiences that combine elegant design with reliable engineering."
+      }
+    ]
   },
   {
     "id": "highlights",
@@ -11,23 +21,28 @@
     "icon": "FaGavel",
     "content": [
       {
-        "type": "paragraph",
-        "text": "Technical Writing: Over six years' experience with technical writing and editing for various projects such as instructions, manuals, website content, API Endpoint documentation and multimedia presentations."
+        "type": "markdown",
+        "text": "Experienced in **technical writing**, **design systems**, and **cross-functional collaboration**. Skilled communicator with a proven ability to translate complex ideas into actionable solutions and accessible interfaces."
       },
       {
-        "type": "paragraph",
-        "text": "Communication: Articulate communicator adept at developing and delivering training and technical demonstrations. Consistent success contributing to cross-functional teams and exhibiting efficiency, quality, and flexibility managing and prioritizing project components."
+        "type": "markdownListitem",
+        "text": "• **Languages & Frameworks:** React, TypeScript, JavaScript (ES6+), HTML5, CSS3, SCSS, PHP, ASP"
       },
       {
-        "type": "list",
-        "title": "Technology Tools",
-        "items": [
-          "Languages & Frameworks: React, TypeScript, JavaScript (ES6+), HTML5, CSS3, SCSS, PHP, ASP",
-          "UI & Design Tools: Figma, Adobe XD, Photoshop, Illustrator, Framer Motion, Material UI",
-          "Development Tools: VS Code, Git, Node.js, NPM, Vite, Postman, Confluence, Jira",
-          "Systems: Windows, Linux",
-          "Other: Accessibility (WCAG 2.1), Responsive Design, Usability Testing, Agile, Technical Writing"
-        ]
+        "type": "markdownListitem",
+        "text": "• **UI & Design Tools:** Figma, Adobe XD, Photoshop, Illustrator, Framer Motion, Material UI"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Development Tools:** VS Code, Git, Node.js, NPM, Vite, Postman, Confluence, Jira"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Systems:** Windows, Linux"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Other:** Accessibility (WCAG 2.1), Responsive Design, Usability Testing, Agile, Technical Writing"
       }
     ]
   },
@@ -39,30 +54,66 @@
       {
         "type": "position",
         "title": "365 Retail Markets / FullCount",
-        "date": "2022 - 2025",
+        "date": "2022 – 2025",
         "location": "Remote",
-        "role": "Senior UI/UX Designer & React Developer",
-        "bullets": [
-          "Designed and built touchscreen and support apps for senior living facilities using React + Material UI.",
-          "Created Figma prototypes and implemented accessible interfaces for diverse users.",
-          "Ensured WCAG-compliant layouts and optimized asset delivery for performance.",
-          "Wrote internal documentation and user guides improving dev team onboarding.",
-          "Advocated for design consistency and led UI reviews across Agile sprints."
-        ]
+        "role": "Senior UI/UX Designer & React Developer"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Designed and built touchscreen and support apps** for senior living facilities using React and Material UI."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Created detailed Figma prototypes** and implemented accessible, inclusive interfaces for diverse user groups."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Ensured WCAG-compliant layouts**, optimized asset delivery, and improved performance across browsers."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Authored internal documentation and onboarding guides**, streamlining developer ramp-up time."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Led UI reviews and design consistency efforts** within Agile sprints."
       },
       {
         "type": "position",
         "title": "Gaine Solutions",
-        "date": "2020 \u2013 2022",
+        "date": "2020 – 2022",
         "location": "Remote",
-        "role": "UI Developer / Technical Writer",
-        "bullets": [
-          "Designed and developed Angular/TypeScript web tools for enterprise data governance.",
-          "Built the Coperor Console app with reusable UI components and accessible layouts.",
-          "Produced Adobe XD prototypes and front-end guidelines for engineering teams.",
-          "Recognized for leadership in UX accessibility initiatives.",
-          "Stack: Angular, TypeScript, Material UI, Adobe XD, Jira, Confluence, Agile"
-        ]
+        "role": "UI Developer / Technical Writer"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Designed and developed Angular + TypeScript web tools** for enterprise data governance."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Built the Coperor Console app** with reusable UI components and accessible layouts."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Produced Adobe XD prototypes** and front-end style guidelines for engineering teams."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Recognized for leadership in UX accessibility and design standardization initiatives**."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• _Stack:_ Angular, TypeScript, Material UI, Adobe XD, Jira, Confluence, Agile"
+      }
+    ]
+  },
+  {
+    "id": "portfolio",
+    "title": "Portfolio",
+    "icon": "FaBriefcase",
+    "content": [
+      {
+        "type": "portfolioGrid"
       }
     ]
   },
@@ -72,34 +123,49 @@
     "icon": "FaHistory",
     "content": [
       {
+        "type": "markdown",
+        "text": "Prior to my front-end and design specialization, I worked across **web development, writing, and marketing** roles. This multidisciplinary background continues to shape my approach to building user-centered digital experiences."
+      },
+      {
         "type": "position",
         "title": "Independent Consultant",
-        "date": "2008 \u2013 2020",
+        "date": "2008 – 2020",
         "location": "Central Coast / Southern CA",
-        "role": "Website and Application Development",
-        "bullets": [
-          "Designed and developed websites and branding materials for clients including PSSC Labs, Ribbon, Artizen HPC, and others."
-        ]
+        "role": "Web Developer & Designer"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Designed and developed websites and brand assets** for clients such as PSSC Labs, Ribbon, and Artizen HPC."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Delivered full-stack projects blending front-end design and custom CMS implementations**."
       },
       {
         "type": "position",
         "title": "First American Title",
         "date": "2008",
         "location": "Santa Ana, CA",
-        "role": "Website Developer",
-        "bullets": [
-          "Developed and maintained the \u201ceTree\u201d website for First American Document Solutions using HTML, CSS, JavaScript, and ASP."
-        ]
+        "role": "Website Developer"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Developed and maintained the eTree website** for First American Document Solutions using HTML, CSS, JavaScript, and ASP."
       },
       {
         "type": "position",
         "title": "Bear Stearns / Encore Credit",
-        "date": "2002 \u2013 2007",
+        "date": "2002 – 2007",
         "location": "Irvine, CA",
-        "role": "Website Developer & Technical Writer",
-        "bullets": [
-          "Built corporate intranet and external websites, and authored technical documentation and marketing materials."
-        ]
+        "role": "Website Developer & Technical Writer"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Built and maintained corporate intranet and public-facing websites** supporting multiple departments."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Authored technical documentation, internal guides, and marketing materials** to unify branding and product messaging."
       }
     ]
   },
@@ -107,19 +173,62 @@
     "id": "education",
     "title": "Education",
     "icon": "FaSchool",
-    "content": "1994: Bachelor of Arts, English\nUniversity of California, Berkeley\nBerkeley, CA"
+    "content": [
+      {
+        "type": "markdown",
+        "text": "**Bachelor of Arts, English**  \n_University of California, Berkeley_  \n1994"
+      }
+    ]
   },
   {
     "id": "strengths",
     "title": "Key Strengths",
     "icon": "FaBullseye",
-    "content": "Website Design Development, Website Development, User Interface Design, Graphic Design, Web Programming, Application Development, Content Management, Single-Page Web Applications, Prototyping, UI/UX Design, Web Accessibility, Debugging, Technical Writing, Marketing Strategy, Agile Scrum Team Planning"
+    "content": [
+      {
+        "type": "markdownListitem",
+        "text": "• UI/UX Design & Prototyping"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• React Front-End Development"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• Accessibility (WCAG / ADA / Section 508)"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• Usability Testing & Iterative Design"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• Technical Writing & Documentation"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• Component-Driven Design Systems"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• Responsive Layouts & CSS Architecture"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• Agile Collaboration & Sprint Planning"
+      }
+    ]
   },
   {
     "id": "accessibility",
     "title": "Accessibility",
     "icon": "FaUniversalAccess",
-    "content": "I am committed to building applications that meet WAI WCAG guidelines, Section 508 standards for accessibility on government and/or federally-funded applications, and in compliance with the Americans with Disabilities Act (ADA)."
+    "content": [
+      {
+        "type": "markdown",
+        "text": "I am committed to building applications that meet **WAI WCAG 2.1**, **Section 508**, and **ADA** standards for accessibility. My goal is to ensure that every product I design or develop can be used effectively by all people — regardless of ability or device."
+      }
+    ]
   },
   {
     "id": "contact",
