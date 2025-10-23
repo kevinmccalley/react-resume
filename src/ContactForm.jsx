@@ -12,7 +12,7 @@ import { useTheme } from "./ThemeContext";
 
 const focusColors = {
   light: "#1976d2",
-  dark: "#90caf9",
+  dark: "#D9FEFF", // corrected light blue for dark theme
   orange: "#f97316",
   cherry: "#f9a8d4",
   lime: "#84cc16",
@@ -20,7 +20,7 @@ const focusColors = {
 
 const defaultBorderColors = {
   light: "#999",
-  dark: "#bbb",
+  dark: "#888",
   orange: "#c75a0d",
   cherry: "#c77aa0",
   lime: "#67910e",
@@ -49,8 +49,8 @@ const buttonColors = {
     text: "#fff",
   },
   dark: {
-    bg: "#90caf9",
-    hover: "#5d99c6",
+    bg: "#D9FEFF", // corrected blue for dark mode
+    hover: "#b2f5f7",
     text: "#000",
   },
   orange: {
@@ -81,7 +81,7 @@ const ContactForm = () => {
   });
 
   const [isHuman, setIsHuman] = useState(false);
-  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [status, setStatus] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -101,7 +101,6 @@ const ContactForm = () => {
     return null;
   };
 
-  // Update button enabled/disabled state dynamically
   useEffect(() => {
     const invalidField = validateForm();
     setIsFormValid(!invalidField);
@@ -122,9 +121,7 @@ const ContactForm = () => {
     try {
       const response = await fetch("https://formspree.io/f/mzzvzala", {
         method: "POST",
-        headers: {
-          Accept: "application/json",
-        },
+        headers: { Accept: "application/json" },
         body: new FormData(e.target),
       });
 
@@ -145,6 +142,27 @@ const ContactForm = () => {
   };
 
   const btnColors = buttonColors[theme] || buttonColors.light;
+  const isDark = theme === "dark";
+
+  const disabledDark = {
+    backgroundColor: "#555",
+    color: "#f4f4f4",
+    border: "1px solid #7a7a7a",
+  };
+
+  const disabledLight = {
+    backgroundColor: "#ccc",
+    color: "#666",
+    border: "1px solid #bdbdbd",
+  };
+
+  const disabledStyles = isDark ? disabledDark : disabledLight;
+
+  // Assign proper color for the toggle depending on theme
+  const toggleColor =
+    theme === "dark"
+      ? "#D9FEFF"
+      : buttonColors[theme]?.bg || focusColors.light;
 
   return (
     <Box
@@ -170,7 +188,7 @@ const ContactForm = () => {
           value={formData[field]}
           onChange={handleChange}
           sx={{
-            backgroundColor: "transparent",
+            backgroundColor: isDark ? "#0e0e0e" : "transparent",
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
                 borderColor: defaultBorderColors[theme] || "#999",
@@ -185,10 +203,14 @@ const ContactForm = () => {
                 }`,
               },
             },
-            input: {
+            "& .MuiInputBase-input, & textarea": {
               color: inputTextColors[theme] || "#222",
             },
-            label: {
+            "& .MuiInputBase-input::placeholder, & textarea::placeholder": {
+              color: isDark ? "#aaa" : "#888",
+              opacity: 1,
+            },
+            "& label": {
               color: labelColors[theme] || "#555",
               "&.Mui-focused": {
                 color: focusColors[theme] || "#1976d2",
@@ -203,11 +225,14 @@ const ContactForm = () => {
           <Switch
             checked={isHuman}
             onChange={(e) => setIsHuman(e.target.checked)}
-            color={
-              ["primary", "secondary", "warning", "error", "success"][
-                Object.keys(buttonColors).indexOf(theme)
-              ] || "primary"
-            }
+            sx={{
+              "& .MuiSwitch-switchBase.Mui-checked": {
+                color: toggleColor,
+              },
+              "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+                backgroundColor: toggleColor,
+              },
+            }}
           />
         }
         label="I am human"
@@ -220,18 +245,40 @@ const ContactForm = () => {
           variant="contained"
           disabled={!isFormValid || status === "sending"}
           sx={{
-            backgroundColor: !isFormValid
-              ? "#ccc"
-              : btnColors.bg,
-            color: !isFormValid ? "#666" : btnColors.text,
+            backgroundColor: !(!isFormValid || status === "sending")
+              ? btnColors.bg
+              : disabledStyles.backgroundColor,
+            color: !(!isFormValid || status === "sending")
+              ? btnColors.text
+              : disabledStyles.color,
             textTransform: "none",
+            border: !(!isFormValid || status === "sending")
+              ? undefined
+              : disabledStyles.border,
             cursor: !isFormValid ? "not-allowed" : "pointer",
-            "&:hover": {
-              backgroundColor: !isFormValid
-                ? "#ccc"
-                : btnColors.hover,
+            "&.Mui-disabled": {
+              backgroundColor: `${disabledStyles.backgroundColor} !important`,
+              color: `${disabledStyles.color} !important`,
+              border: disabledStyles.border,
+              opacity: 1,
+              pointerEvents: "none",
+              boxShadow: "none",
             },
-            transition: "background-color 0.2s ease",
+            "&.Mui-disabled:hover": {
+              backgroundColor: `${disabledStyles.backgroundColor} !important`,
+            },
+            "&:hover": {
+              backgroundColor:
+                !(!isFormValid || status === "sending")
+                  ? btnColors.hover
+                  : disabledStyles.backgroundColor,
+            },
+            transition: "background-color 0.18s ease, color 0.18s ease",
+            "& .MuiButton-startIcon, & .MuiButton-endIcon, & > span": {
+              color: !(!isFormValid || status === "sending")
+                ? btnColors.text
+                : disabledStyles.color,
+            },
           }}
         >
           {status === "sending" ? (

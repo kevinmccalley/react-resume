@@ -220,9 +220,17 @@ function PortfolioSection() {
                 <strong>{p.title}</strong>
                 <div className="portfolio-subtitle">{p.subtitle}</div>
               </div>
-              <img src={p.icon} alt={`${p.title} icon`} className="portfolio-icon" />
+              <img
+                src={p.icon}
+                alt={`${p.title} icon`}
+                className="portfolio-icon"
+              />
             </div>
-            <img src={p.thumbnail} alt={p.title} className="portfolio-thumbnail" />
+            <img
+              src={p.thumbnail}
+              alt={p.title}
+              className="portfolio-thumbnail"
+            />
             <div className="portfolio-footer">{p.footer}</div>
           </a>
         ))}
@@ -279,7 +287,7 @@ function SectionContent({ section }) {
 // ---------- Main Component ----------
 export default function ReactResume() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { theme } = useTheme(); // <-- use context theme
+  const { theme } = useTheme();
 
   const { data: sections, isLoading, error } = useQuery({
     queryKey: ["sections"],
@@ -297,13 +305,25 @@ export default function ReactResume() {
 
   const allSections = [...sections];
 
-  // Theme-based button styling
+  // Updated theme-based button styling with correct dark mode colors
   const themeStyles = {
-    dark: { backgroundColor: "#1f2937", color: "#fff" },
+    dark: {
+      backgroundColor: "#D9FEFF",
+      color: "#000",
+      transition: "background-color 0.2s ease",
+    },
     light: { backgroundColor: "#4f46e5", color: "#fff" },
     orange: { backgroundColor: "#FFA500", color: "#000" },
     cherry: { backgroundColor: "#fbb6ce", color: "#000" },
     lime: { backgroundColor: "#a6e22e", color: "#000" },
+  };
+
+  const hoverStyles = {
+    dark: { backgroundColor: "#8EFBFF" },
+    light: { backgroundColor: "#3730a3" },
+    orange: { backgroundColor: "#cc8400" },
+    cherry: { backgroundColor: "#f497b8" },
+    lime: { backgroundColor: "#89cc1e" },
   };
 
   return (
@@ -353,7 +373,7 @@ export default function ReactResume() {
           </Routes>
         </main>
 
-        {/* PDF Download Button */}
+        {/* ✅ Updated PDF Download Button with correct dark theme colors */}
         <div
           style={{
             position: "fixed",
@@ -370,7 +390,14 @@ export default function ReactResume() {
               borderRadius: "8px",
               fontWeight: "bold",
               textDecoration: "none",
-              ...themeStyles[theme], // <-- dynamic based on context
+              cursor: "pointer",
+              ...themeStyles[theme],
+            }}
+            onMouseOver={(e) => {
+              Object.assign(e.target.style, hoverStyles[theme]);
+            }}
+            onMouseOut={(e) => {
+              Object.assign(e.target.style, themeStyles[theme]);
             }}
           >
             {({ loading }) => (loading ? "Preparing PDF..." : "Download PDF")}
