@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   TextField,
@@ -83,6 +83,7 @@ const ContactForm = () => {
   const [isHuman, setIsHuman] = useState(false);
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
   const [errorMsg, setErrorMsg] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -99,6 +100,12 @@ const ContactForm = () => {
     if (!isHuman) return "Human Verification";
     return null;
   };
+
+  // Update button enabled/disabled state dynamically
+  useEffect(() => {
+    const invalidField = validateForm();
+    setIsFormValid(!invalidField);
+  }, [formData, isHuman]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -211,14 +218,20 @@ const ContactForm = () => {
         <Button
           type="submit"
           variant="contained"
-          disabled={status === "sending"}
+          disabled={!isFormValid || status === "sending"}
           sx={{
-            backgroundColor: btnColors.bg,
-            color: btnColors.text,
+            backgroundColor: !isFormValid
+              ? "#ccc"
+              : btnColors.bg,
+            color: !isFormValid ? "#666" : btnColors.text,
             textTransform: "none",
+            cursor: !isFormValid ? "not-allowed" : "pointer",
             "&:hover": {
-              backgroundColor: btnColors.hover,
+              backgroundColor: !isFormValid
+                ? "#ccc"
+                : btnColors.hover,
             },
+            transition: "background-color 0.2s ease",
           }}
         >
           {status === "sending" ? (
