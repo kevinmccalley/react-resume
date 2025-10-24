@@ -132,6 +132,14 @@ function PortfolioSection() {
 
   const projects = [
     {
+      title: "Keyboard User Interface",
+      subtitle: "Figma Prototype",
+      icon: "/assets/figma.svg",
+      thumbnail: "/assets/thumb_keyboard.png",
+      footer: "View Prototype - Figma",
+      link: "https://www.figma.com/community/file/1563421262526349742",
+    },
+    {
       title: "Math Fun",
       subtitle: "Math Learning Games",
       icon: "/assets/react.png",
