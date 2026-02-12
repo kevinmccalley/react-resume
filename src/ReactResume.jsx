@@ -140,6 +140,14 @@ function PortfolioSection() {
       link: "https://www.figma.com/community/file/1563421262526349742",
     },
     {
+      title: "Acrylic Mix Lab",
+      subtitle: "Paint Mixer",
+      icon: "/assets/react.png",
+      thumbnail: "/assets/thumb_mixlab.png",
+      footer: "View Application - React",
+      link: "https://paint-mixer.vercel.app/",
+    },
+    {
       title: "Math Fun",
       subtitle: "Math Learning Games",
       icon: "/assets/react.png",
