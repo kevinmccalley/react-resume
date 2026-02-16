@@ -6,6 +6,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "postinstall": "chmod +x node_modules/.bin/vite"
   },
   "dependencies": {
@@ -24,7 +27,12 @@
     "vite": "^5.4.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@vitejs/plugin-react": "^4.0.0",
-    "vite": "^5.4.0"
+    "jsdom": "^28.1.0",
+    "vite": "^5.4.0",
+    "vitest": "^4.0.18"
   }
 }

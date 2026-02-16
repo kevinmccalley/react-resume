@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { MdArrowBack } from "react-icons/md";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useTheme } from "../ThemeContext";
-import "../ReactResume.css";
+import { useTheme } from "./ThemeContext";
+import "./ReactResume.css";
 
 const ThemeSelector = ({ onClose }) => {
   const { theme, setTheme } = useTheme();
