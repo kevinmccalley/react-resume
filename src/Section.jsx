@@ -128,7 +128,7 @@ function SectionLayout({
   );
 }
 
-export default function Section({ section, icons = getIcon }) {
+export default function Section({ section, icons = getIcon, FormComponent = ContactForm }) {
   if (!section) return null;
 
   if (section.id === "contact") {
@@ -142,7 +142,7 @@ export default function Section({ section, icons = getIcon }) {
         icons={icons}
       >
         <div style={{ marginTop: "1rem" }}>
-          <ContactForm />
+          <FormComponent />
           <div style={{ marginTop: "2rem" }} />
         </div>
       </SectionLayout>
