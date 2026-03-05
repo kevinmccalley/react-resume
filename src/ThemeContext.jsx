@@ -26,7 +26,10 @@ function useThemeEffect(theme, storageAdapter = defaultStorageAdapter) {
 }
 
 export function ThemeProvider({ children, storageAdapter = defaultStorageAdapter }) {
-  const [theme, setTheme] = useState(() => storageAdapter.getItem("theme") || "light");
+  const [theme, setTheme] = useState(() => {
+    const storedTheme = storageAdapter.getItem("theme");
+    return storedTheme || "light";
+  });
 
   useThemeEffect(theme, storageAdapter);
 
