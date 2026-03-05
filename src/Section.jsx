@@ -10,7 +10,6 @@ import {
   FaUniversalAccess,
   FaAddressCard,
 } from "react-icons/fa";
-import ContactForm from "./ContactForm";
 import "./section.css";
 
 const iconComponents = {
@@ -153,7 +152,7 @@ function ContactSection({ section, icons, FormComponent }) {
   );
 }
 
-export default function Section({ section, icons = getIcon, FormComponent = ContactForm }) {
+export default function Section({ section, icons = getIcon, FormComponent }) {
   if (!section) return null;
 
   if (section.id === "contact") {
