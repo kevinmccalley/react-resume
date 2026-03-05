@@ -1,5 +1,4 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import {
   FaFilter,
   FaGavel,
@@ -11,6 +10,7 @@ import {
   FaAddressCard,
 } from "react-icons/fa";
 import ContactForm from "./ContactForm";
+import RenderContent from "./RenderContent";
 import "./section.css";
 
 const iconMap = {
@@ -23,59 +23,6 @@ const iconMap = {
   FaUniversalAccess: <FaUniversalAccess className="text-xl" />,
   FaAddressCard: <FaAddressCard className="text-xl" />,
 };
-
-function RenderContent({ content }) {
-  if (!content) return null;
-
-  if (typeof content === "string") return <p>{content}</p>;
-
-  if (Array.isArray(content)) {
-    return content.map((item, idx) => {
-      switch (item.type) {
-        case "position":
-          return (
-            <div key={idx} className="job-position mb-4">
-              <p>
-                <strong>{item.title}</strong> <br />
-                <em>
-                  {item.role} – {item.location}
-                </em>
-                <br />
-                <small>{item.date}</small>
-              </p>
-              {item.bullets.map((b, bIdx) => (
-                <div key={bIdx} className="markdown-bullet">
-                  <ReactMarkdown>{b}</ReactMarkdown>
-                </div>
-              ))}
-            </div>
-          );
-
-        default:
-          return null;
-      }
-    });
-  }
-
-  if (typeof content === "object" && content !== null) {
-    return (
-      <div className="contact-content">
-        {content.email && (
-          <p>
-            <strong>Email:</strong> {content.email}
-          </p>
-        )}
-        {content.linkedin && (
-          <p>
-            <strong>LinkedIn:</strong> {content.linkedin}
-          </p>
-        )}
-      </div>
-    );
-  }
-
-  return null;
-}
 
 export default function Section({ section }) {
   if (!section) return null;
