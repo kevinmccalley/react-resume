@@ -13,16 +13,22 @@ import {
 import ContactForm from "./ContactForm";
 import "./section.css";
 
-const iconMap = {
-  FaFilter: <FaFilter className="text-xl" />,
-  FaGavel: <FaGavel className="text-xl" />,
-  FaBuilding: <FaBuilding className="text-xl" />,
-  FaHistory: <FaHistory className="text-xl" />,
-  FaSchool: <FaSchool className="text-xl" />,
-  FaBullseye: <FaBullseye className="text-xl" />,
-  FaUniversalAccess: <FaUniversalAccess className="text-xl" />,
-  FaAddressCard: <FaAddressCard className="text-xl" />,
+const iconComponents = {
+  FaFilter,
+  FaGavel,
+  FaBuilding,
+  FaHistory,
+  FaSchool,
+  FaBullseye,
+  FaUniversalAccess,
+  FaAddressCard,
 };
+
+function getIcon(iconName) {
+  const IconComponent = iconComponents[iconName];
+  if (!IconComponent) return null;
+  return <IconComponent className="text-xl" />;
+}
 
 function RenderContent({ content }) {
   if (!content) return null;
@@ -77,14 +83,14 @@ function RenderContent({ content }) {
   return null;
 }
 
-export default function Section({ section }) {
+export default function Section({ section, icons = getIcon }) {
   if (!section) return null;
 
   if (section.id === "contact") {
     return (
       <section id={section.id} className="scroll-mt-20">
         <h2 className="flex items-center gap-2">
-          {iconMap[section.icon] || null} {section.title}
+          {icons(section.icon) || null} {section.title}
         </h2>
         <div style={{ marginTop: "1rem" }}>
           <ContactForm />
@@ -99,7 +105,7 @@ export default function Section({ section }) {
   return (
     <section id={section.id} className="scroll-mt-20">
       <h2 className="flex items-center gap-2">
-        {iconMap[section.icon] || null} {section.title}
+        {icons(section.icon) || null} {section.title}
       </h2>
       {section.subtitle && (
         <h3 className="text-lg font-semibold mt-1 mb-3" style={{ opacity: 0.9 }}>
