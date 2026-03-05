@@ -101,38 +101,62 @@ function RenderContent({ content }) {
   return null;
 }
 
+function SectionLayout({
+  id,
+  icon,
+  title,
+  subtitle,
+  content,
+  icons = getIcon,
+  children,
+}) {
+  return (
+    <section id={id} className="scroll-mt-20">
+      <h2 className="flex items-center gap-2">
+        {icons(icon) || null} {title}
+      </h2>
+      {subtitle && (
+        <h3 className="text-lg font-semibold mt-1 mb-3" style={{ opacity: 0.9 }}>
+          {subtitle}
+        </h3>
+      )}
+      <div>
+        {children}
+        <RenderContent content={content} />
+      </div>
+    </section>
+  );
+}
+
 export default function Section({ section, icons = getIcon }) {
   if (!section) return null;
 
   if (section.id === "contact") {
     return (
-      <section id={section.id} className="scroll-mt-20">
-        <h2 className="flex items-center gap-2">
-          {icons(section.icon) || null} {section.title}
-        </h2>
+      <SectionLayout
+        id={section.id}
+        icon={section.icon}
+        title={section.title}
+        subtitle={section.subtitle}
+        content={section.content}
+        icons={icons}
+      >
         <div style={{ marginTop: "1rem" }}>
           <ContactForm />
-          <div style={{ marginTop: "2rem" }}>
-            <RenderContent content={section.content} />
-          </div>
+          <div style={{ marginTop: "2rem" }} />
         </div>
-      </section>
+      </SectionLayout>
     );
   }
 
   return (
-    <section id={section.id} className="scroll-mt-20">
-      <h2 className="flex items-center gap-2">
-        {icons(section.icon) || null} {section.title}
-      </h2>
-      {section.subtitle && (
-        <h3 className="text-lg font-semibold mt-1 mb-3" style={{ opacity: 0.9 }}>
-          {section.subtitle}
-        </h3>
-      )}
-      <div>
-        <RenderContent content={section.content} />
-      </div>
-    </section>
+    <SectionLayout
+      id={section.id}
+      icon={section.icon}
+      title={section.title}
+      subtitle={section.subtitle}
+      content={section.content}
+      icons={icons}
+    />
   );
 }
