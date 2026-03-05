@@ -10,7 +10,9 @@ import {
   FaAddressCard,
 } from "react-icons/fa";
 import ContactForm from "./ContactForm";
-import RenderContent from "./RenderContent";
+import RenderPositionContent from "./RenderPositionContent";
+import RenderEmailContent from "./RenderEmailContent";
+import RenderLinkedinContent from "./RenderLinkedinContent";
 import "./section.css";
 
 export const DEFAULT_ICON_MAP = {
@@ -23,6 +25,36 @@ export const DEFAULT_ICON_MAP = {
   FaUniversalAccess: <FaUniversalAccess className="text-xl" />,
   FaAddressCard: <FaAddressCard className="text-xl" />,
 };
+
+function RenderContent({ content }) {
+  if (!content) return null;
+
+  if (Array.isArray(content)) {
+    return content.map((item, index) => (
+      <RenderContentItem key={index} item={item} />
+    ));
+  }
+
+  return <RenderContentItem item={content} />;
+}
+
+function RenderContentItem({ item }) {
+  if (!item) return null;
+
+  if (item.position) {
+    return <RenderPositionContent item={item} />;
+  }
+
+  if (item.email) {
+    return <RenderEmailContent item={item} />;
+  }
+
+  if (item.linkedin) {
+    return <RenderLinkedinContent item={item} />;
+  }
+
+  return null;
+}
 
 function ContactSection({ section, iconMap }) {
   return (
