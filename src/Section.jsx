@@ -58,16 +58,19 @@ function RenderPositionItem({ item, idx }) {
   );
 }
 
-function RenderArrayContent({ content }) {
-  return content.map((item, idx) => {
-    switch (item.type) {
-      case "position":
-        return <RenderPositionItem key={idx} item={item} idx={idx} />;
+function RenderArrayItem({ item, idx }) {
+  switch (item.type) {
+    case "position":
+      return <RenderPositionItem item={item} idx={idx} />;
+    default:
+      return null;
+  }
+}
 
-      default:
-        return null;
-    }
-  });
+function RenderArrayContent({ content }) {
+  return content.map((item, idx) => (
+    <RenderArrayItem key={idx} item={item} idx={idx} />
+  ));
 }
 
 function RenderObjectContent({ content }) {
