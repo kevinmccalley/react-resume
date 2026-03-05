@@ -10,6 +10,30 @@ import { useTheme } from "./ThemeContext";
 import { themeConfig } from "./themeConfig";
 import { layoutConfig } from "./layoutConfig";
 
+const THEME_SELECTOR_LAYOUT = {
+  buttonPosition: {
+    position: "fixed",
+    top: 16,
+    right: 16,
+    zIndex: 1500,
+  },
+  buttonStyling: {
+    boxShadow: 3,
+    size: "large",
+  },
+  iconBox: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%",
+  },
+  menuItem: {
+    display: "flex",
+    alignItems: "center",
+  },
+};
+
 export default function ThemeSelector({ config = themeConfig, layout = layoutConfig }) {
   const { theme, setTheme } = useTheme();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -26,9 +50,9 @@ export default function ThemeSelector({ config = themeConfig, layout = layoutCon
   };
 
   const iconButtonSx = {
-    ...layout.buttonPosition,
+    ...THEME_SELECTOR_LAYOUT.buttonPosition,
     bgcolor: theme === "dark" ? layout.buttonStyling.darkThemeBgColor : "background.paper",
-    boxShadow: 3,
+    boxShadow: THEME_SELECTOR_LAYOUT.buttonStyling.boxShadow,
     "&:hover": {
       bgcolor: theme === "dark" ? layout.buttonStyling.darkThemeHoverColor : "background.default",
     },
@@ -36,19 +60,14 @@ export default function ThemeSelector({ config = themeConfig, layout = layoutCon
 
   const iconBoxSx = {
     color: theme === "dark" ? layout.buttonStyling.darkThemeIconColor : "inherit",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
-    height: "100%",
+    ...THEME_SELECTOR_LAYOUT.iconBox,
     "& svg": {
       color: theme === "dark" ? layout.buttonStyling.darkThemeIconColor : "inherit",
     },
   };
 
   const menuItemSx = {
-    display: "flex",
-    alignItems: "center",
+    ...THEME_SELECTOR_LAYOUT.menuItem,
     gap: layout.menuItemGap,
   };
 
@@ -62,7 +81,7 @@ export default function ThemeSelector({ config = themeConfig, layout = layoutCon
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           sx={iconButtonSx}
-          size="large"
+          size={THEME_SELECTOR_LAYOUT.buttonStyling.size}
         >
           <Box sx={iconBoxSx}>
             {config.themeIcons[theme] || <CircleIcon />}
