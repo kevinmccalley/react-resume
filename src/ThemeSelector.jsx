@@ -10,33 +10,37 @@ import Box from "@mui/material/Box";
 
 import { useTheme } from "./ThemeContext";
 
-const themeColors = {
-  dark: "#000000",
-  light: "#ffffff",
-  orange: "#FFA500",
-  cherry: "#fbb6ce",
-  lime: "#a6e22e",
+const THEME_CONFIG = {
+  colors: {
+    dark: "#000000",
+    light: "#ffffff",
+    orange: "#FFA500",
+    cherry: "#fbb6ce",
+    lime: "#a6e22e",
+  },
+  labels: {
+    dark: "Dark",
+    light: "Light",
+    orange: "Orange",
+    cherry: "Cherry",
+    lime: "Lime",
+  },
+  getIcons: function() {
+    return {
+      dark: <Brightness2Icon />,
+      light: <WbSunnyIcon />,
+      orange: <CircleIcon style={{ color: this.colors.orange }} fontSize="small" />,
+      cherry: <CircleIcon style={{ color: this.colors.cherry }} fontSize="small" />,
+      lime: <CircleIcon style={{ color: this.colors.lime }} fontSize="small" />,
+    };
+  }
 };
 
-const themeIcons = {
-  dark: <Brightness2Icon />,
-  light: <WbSunnyIcon />,
-  orange: <CircleIcon style={{ color: themeColors.orange }} fontSize="small" />,
-  cherry: <CircleIcon style={{ color: themeColors.cherry }} fontSize="small" />,
-  lime: <CircleIcon style={{ color: themeColors.lime }} fontSize="small" />,
-};
-
-const themeLabels = {
-  dark: "Dark",
-  light: "Light",
-  orange: "Orange",
-  cherry: "Cherry",
-  lime: "Lime",
-};
-
-export default function ThemeSelector() {
+export default function ThemeSelector({ themeConfig = THEME_CONFIG }) {
   const { theme, setTheme } = useTheme();
   const [anchorEl, setAnchorEl] = useState(null);
+  const themeIcons = themeConfig.getIcons();
+  const themeLabels = themeConfig.labels;
 
   const open = Boolean(anchorEl);
 
