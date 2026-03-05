@@ -2,9 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 export const ThemeContext = createContext();
 
-export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
-
+function useThemeEffect(theme) {
   useEffect(() => {
     // Remove all theme classes starting with 'theme-'
     document.body.className = document.body.className
@@ -17,6 +15,12 @@ export function ThemeProvider({ children }) {
 
     localStorage.setItem("theme", theme);
   }, [theme]);
+}
+
+export function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
+
+  useThemeEffect(theme);
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 }
