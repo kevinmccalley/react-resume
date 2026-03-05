@@ -24,25 +24,23 @@ export const DEFAULT_ICON_MAP = {
   FaAddressCard: <FaAddressCard className="text-xl" />,
 };
 
-export default function Section({ section, iconMap = DEFAULT_ICON_MAP }) {
-  if (!section) return null;
-
-  if (section.id === "contact") {
-    return (
-      <section id={section.id} className="scroll-mt-20">
-        <h2 className="flex items-center gap-2">
-          {iconMap[section.icon] || null} {section.title}
-        </h2>
-        <div style={{ marginTop: "1rem" }}>
-          <ContactForm />
-          <div style={{ marginTop: "2rem" }}>
-            <RenderContent content={section.content} />
-          </div>
+function ContactSection({ section, iconMap }) {
+  return (
+    <section id={section.id} className="scroll-mt-20">
+      <h2 className="flex items-center gap-2">
+        {iconMap[section.icon] || null} {section.title}
+      </h2>
+      <div style={{ marginTop: "1rem" }}>
+        <ContactForm />
+        <div style={{ marginTop: "2rem" }}>
+          <RenderContent content={section.content} />
         </div>
-      </section>
-    );
-  }
+      </div>
+    </section>
+  );
+}
 
+function DefaultSection({ section, iconMap }) {
   return (
     <section id={section.id} className="scroll-mt-20">
       <h2 className="flex items-center gap-2">
@@ -58,4 +56,14 @@ export default function Section({ section, iconMap = DEFAULT_ICON_MAP }) {
       </div>
     </section>
   );
+}
+
+export default function Section({ section, iconMap = DEFAULT_ICON_MAP }) {
+  if (!section) return null;
+
+  if (section.id === "contact") {
+    return <ContactSection section={section} iconMap={iconMap} />;
+  }
+
+  return <DefaultSection section={section} iconMap={iconMap} />;
 }
