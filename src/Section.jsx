@@ -13,7 +13,7 @@ import ContactForm from "./ContactForm";
 import RenderContent from "./RenderContent";
 import "./section.css";
 
-const iconMap = {
+export const DEFAULT_ICON_MAP = {
   FaFilter: <FaFilter className="text-xl" />,
   FaGavel: <FaGavel className="text-xl" />,
   FaBuilding: <FaBuilding className="text-xl" />,
@@ -24,7 +24,7 @@ const iconMap = {
   FaAddressCard: <FaAddressCard className="text-xl" />,
 };
 
-export default function Section({ section }) {
+export default function Section({ section, iconMap = DEFAULT_ICON_MAP }) {
   if (!section) return null;
 
   if (section.id === "contact") {
