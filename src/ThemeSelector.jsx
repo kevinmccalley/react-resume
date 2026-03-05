@@ -11,6 +11,29 @@ import Box from "@mui/material/Box";
 import { useTheme } from "./ThemeContext";
 import { themeConfig } from "./themeConfig";
 
+const LAYOUT_CONFIG = {
+  buttonPosition: {
+    position: "fixed",
+    top: 16,
+    right: 16,
+    zIndex: 1500,
+  },
+  buttonStyling: {
+    darkThemeBgColor: "#D9FEFF",
+    darkThemeHoverColor: "#8EFBFF",
+    darkThemeIconColor: "#000",
+  },
+  menuAnchorOrigin: {
+    vertical: "bottom",
+    horizontal: "right",
+  },
+  menuTransformOrigin: {
+    vertical: "top",
+    horizontal: "right",
+  },
+  menuItemGap: 1,
+};
+
 export default function ThemeSelector({ config = themeConfig }) {
   const { theme, setTheme } = useTheme();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -26,6 +49,33 @@ export default function ThemeSelector({ config = themeConfig }) {
     handleClose();
   };
 
+  const iconButtonSx = {
+    ...LAYOUT_CONFIG.buttonPosition,
+    bgcolor: theme === "dark" ? LAYOUT_CONFIG.buttonStyling.darkThemeBgColor : "background.paper",
+    boxShadow: 3,
+    "&:hover": {
+      bgcolor: theme === "dark" ? LAYOUT_CONFIG.buttonStyling.darkThemeHoverColor : "background.default",
+    },
+  };
+
+  const iconBoxSx = {
+    color: theme === "dark" ? LAYOUT_CONFIG.buttonStyling.darkThemeIconColor : "inherit",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%",
+    "& svg": {
+      color: theme === "dark" ? LAYOUT_CONFIG.buttonStyling.darkThemeIconColor : "inherit",
+    },
+  };
+
+  const menuItemSx = {
+    display: "flex",
+    alignItems: "center",
+    gap: LAYOUT_CONFIG.menuItemGap,
+  };
+
   return (
     <>
       <Tooltip title="Select Theme">
@@ -35,32 +85,10 @@ export default function ThemeSelector({ config = themeConfig }) {
           aria-controls={open ? "theme-menu" : undefined}
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
-          sx={{
-            position: "fixed",
-            top: 16,
-            right: 16,
-            zIndex: 1500,
-            bgcolor: theme === "dark" ? "#D9FEFF" : "background.paper",
-            boxShadow: 3,
-            "&:hover": {
-              bgcolor: theme === "dark" ? "#8EFBFF" : "background.default",
-            },
-          }}
+          sx={iconButtonSx}
           size="large"
         >
-          <Box
-            sx={{
-              color: theme === "dark" ? "#000" : "inherit",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "100%",
-              height: "100%",
-              "& svg": {
-                color: theme === "dark" ? "#000" : "inherit",
-              },
-            }}
-          >
+          <Box sx={iconBoxSx}>
             {config.themeIcons[theme] || <CircleIcon />}
           </Box>
         </IconButton>
@@ -72,25 +100,15 @@ export default function ThemeSelector({ config = themeConfig }) {
         open={open}
         onClose={handleClose}
         MenuListProps={{ "aria-labelledby": "theme-button" }}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
+        anchorOrigin={LAYOUT_CONFIG.menuAnchorOrigin}
+        transformOrigin={LAYOUT_CONFIG.menuTransformOrigin}
       >
         {Object.entries(config.themeLabels).map(([key, label]) => (
           <MenuItem
             key={key}
             selected={key === theme}
             onClick={() => handleSelectTheme(key)}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 1,
-            }}
+            sx={menuItemSx}
           >
             {config.themeIcons[key]}
             {label}
