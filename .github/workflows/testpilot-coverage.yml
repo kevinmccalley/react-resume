@@ -1,0 +1,24 @@
+name: TestPilot Coverage Check
+on:
+  push:
+    branches: ['testpilot/**']
+permissions:
+  contents: read
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm install
+      - run: npm install --no-save @vitest/coverage-v8
+      - run: npx vitest run --coverage --coverage.reporter=json-summary --coverage.reporter=json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: testpilot-coverage
+          path: coverage/
+          retention-days: 1
