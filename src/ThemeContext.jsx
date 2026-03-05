@@ -2,8 +2,13 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 export const ThemeContext = createContext();
 
-export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
+const defaultStorageAdapter = {
+  getItem: (key) => localStorage.getItem(key),
+  setItem: (key, value) => localStorage.setItem(key, value),
+};
+
+export function ThemeProvider({ children, storageAdapter = defaultStorageAdapter }) {
+  const [theme, setTheme] = useState(() => storageAdapter.getItem("theme") || "light");
 
   useEffect(() => {
     // Remove all theme classes starting with 'theme-'
@@ -15,8 +20,8 @@ export function ThemeProvider({ children }) {
     // Add current theme class
     document.body.classList.add(`theme-${theme}`);
 
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+    storageAdapter.setItem("theme", theme);
+  }, [theme, storageAdapter]);
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 }
