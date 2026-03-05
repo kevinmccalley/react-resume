@@ -135,25 +135,29 @@ function SectionLayout({
   );
 }
 
+function ContactSection({ section, icons, FormComponent }) {
+  return (
+    <SectionLayout
+      id={section.id}
+      icon={section.icon}
+      title={section.title}
+      subtitle={section.subtitle}
+      content={section.content}
+      icons={icons}
+    >
+      <div style={{ marginTop: "1rem" }}>
+        <FormComponent />
+        <div style={{ marginTop: "2rem" }} />
+      </div>
+    </SectionLayout>
+  );
+}
+
 export default function Section({ section, icons = getIcon, FormComponent = ContactForm }) {
   if (!section) return null;
 
   if (section.id === "contact") {
-    return (
-      <SectionLayout
-        id={section.id}
-        icon={section.icon}
-        title={section.title}
-        subtitle={section.subtitle}
-        content={section.content}
-        icons={icons}
-      >
-        <div style={{ marginTop: "1rem" }}>
-          <FormComponent />
-          <div style={{ marginTop: "2rem" }} />
-        </div>
-      </SectionLayout>
-    );
+    return <ContactSection section={section} icons={icons} FormComponent={FormComponent} />;
   }
 
   return (
