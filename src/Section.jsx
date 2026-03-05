@@ -30,54 +30,72 @@ function getIcon(iconName) {
   return <IconComponent className="text-xl" />;
 }
 
+function RenderStringContent({ content }) {
+  return <p>{content}</p>;
+}
+
+function RenderPositionItem({ item, idx }) {
+  return (
+    <div key={idx} className="job-position mb-4">
+      <p>
+        <strong>{item.title}</strong> <br />
+        <em>
+          {item.role} – {item.location}
+        </em>
+        <br />
+        <small>{item.date}</small>
+      </p>
+      {item.bullets.map((b, bIdx) => (
+        <div key={bIdx} className="markdown-bullet">
+          <ReactMarkdown>{b}</ReactMarkdown>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function RenderArrayContent({ content }) {
+  return content.map((item, idx) => {
+    switch (item.type) {
+      case "position":
+        return <RenderPositionItem key={idx} item={item} idx={idx} />;
+
+      default:
+        return null;
+    }
+  });
+}
+
+function RenderObjectContent({ content }) {
+  return (
+    <div className="contact-content">
+      {content.email && (
+        <p>
+          <strong>Email:</strong> {content.email}
+        </p>
+      )}
+      {content.linkedin && (
+        <p>
+          <strong>LinkedIn:</strong> {content.linkedin}
+        </p>
+      )}
+    </div>
+  );
+}
+
 function RenderContent({ content }) {
   if (!content) return null;
 
-  if (typeof content === "string") return <p>{content}</p>;
+  if (typeof content === "string") {
+    return <RenderStringContent content={content} />;
+  }
 
   if (Array.isArray(content)) {
-    return content.map((item, idx) => {
-      switch (item.type) {
-        case "position":
-          return (
-            <div key={idx} className="job-position mb-4">
-              <p>
-                <strong>{item.title}</strong> <br />
-                <em>
-                  {item.role} – {item.location}
-                </em>
-                <br />
-                <small>{item.date}</small>
-              </p>
-              {item.bullets.map((b, bIdx) => (
-                <div key={bIdx} className="markdown-bullet">
-                  <ReactMarkdown>{b}</ReactMarkdown>
-                </div>
-              ))}
-            </div>
-          );
-
-        default:
-          return null;
-      }
-    });
+    return <RenderArrayContent content={content} />;
   }
 
   if (typeof content === "object" && content !== null) {
-    return (
-      <div className="contact-content">
-        {content.email && (
-          <p>
-            <strong>Email:</strong> {content.email}
-          </p>
-        )}
-        {content.linkedin && (
-          <p>
-            <strong>LinkedIn:</strong> {content.linkedin}
-          </p>
-        )}
-      </div>
-    );
+    return <RenderObjectContent content={content} />;
   }
 
   return null;
