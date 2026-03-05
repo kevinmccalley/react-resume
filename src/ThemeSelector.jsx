@@ -3,38 +3,14 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
-import Brightness2Icon from "@mui/icons-material/Brightness2"; // moon icon
-import WbSunnyIcon from "@mui/icons-material/WbSunny"; // sun icon
-import CircleIcon from "@mui/icons-material/Circle"; // for colored circles
+import CircleIcon from "@mui/icons-material/Circle";
 import Box from "@mui/material/Box";
 
 import { useTheme } from "./ThemeContext";
 import { themeConfig } from "./themeConfig";
+import { layoutConfig } from "./layoutConfig";
 
-const LAYOUT_CONFIG = {
-  buttonPosition: {
-    position: "fixed",
-    top: 16,
-    right: 16,
-    zIndex: 1500,
-  },
-  buttonStyling: {
-    darkThemeBgColor: "#D9FEFF",
-    darkThemeHoverColor: "#8EFBFF",
-    darkThemeIconColor: "#000",
-  },
-  menuAnchorOrigin: {
-    vertical: "bottom",
-    horizontal: "right",
-  },
-  menuTransformOrigin: {
-    vertical: "top",
-    horizontal: "right",
-  },
-  menuItemGap: 1,
-};
-
-export default function ThemeSelector({ config = themeConfig }) {
+export default function ThemeSelector({ config = themeConfig, layout = layoutConfig }) {
   const { theme, setTheme } = useTheme();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -50,30 +26,30 @@ export default function ThemeSelector({ config = themeConfig }) {
   };
 
   const iconButtonSx = {
-    ...LAYOUT_CONFIG.buttonPosition,
-    bgcolor: theme === "dark" ? LAYOUT_CONFIG.buttonStyling.darkThemeBgColor : "background.paper",
+    ...layout.buttonPosition,
+    bgcolor: theme === "dark" ? layout.buttonStyling.darkThemeBgColor : "background.paper",
     boxShadow: 3,
     "&:hover": {
-      bgcolor: theme === "dark" ? LAYOUT_CONFIG.buttonStyling.darkThemeHoverColor : "background.default",
+      bgcolor: theme === "dark" ? layout.buttonStyling.darkThemeHoverColor : "background.default",
     },
   };
 
   const iconBoxSx = {
-    color: theme === "dark" ? LAYOUT_CONFIG.buttonStyling.darkThemeIconColor : "inherit",
+    color: theme === "dark" ? layout.buttonStyling.darkThemeIconColor : "inherit",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
     height: "100%",
     "& svg": {
-      color: theme === "dark" ? LAYOUT_CONFIG.buttonStyling.darkThemeIconColor : "inherit",
+      color: theme === "dark" ? layout.buttonStyling.darkThemeIconColor : "inherit",
     },
   };
 
   const menuItemSx = {
     display: "flex",
     alignItems: "center",
-    gap: LAYOUT_CONFIG.menuItemGap,
+    gap: layout.menuItemGap,
   };
 
   return (
@@ -100,8 +76,8 @@ export default function ThemeSelector({ config = themeConfig }) {
         open={open}
         onClose={handleClose}
         MenuListProps={{ "aria-labelledby": "theme-button" }}
-        anchorOrigin={LAYOUT_CONFIG.menuAnchorOrigin}
-        transformOrigin={LAYOUT_CONFIG.menuTransformOrigin}
+        anchorOrigin={layout.menuAnchorOrigin}
+        transformOrigin={layout.menuTransformOrigin}
       >
         {Object.entries(config.themeLabels).map(([key, label]) => (
           <MenuItem
