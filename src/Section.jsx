@@ -24,11 +24,15 @@ const iconComponents = {
   FaAddressCard,
 };
 
-function getIcon(iconName) {
-  const IconComponent = iconComponents[iconName];
-  if (!IconComponent) return null;
-  return <IconComponent className="text-xl" />;
+function createIconFactory(icons = iconComponents) {
+  return function getIcon(iconName) {
+    const IconComponent = icons[iconName];
+    if (!IconComponent) return null;
+    return <IconComponent className="text-xl" />;
+  };
 }
+
+const getIcon = createIconFactory();
 
 function RenderStringContent({ content }) {
   return <p>{content}</p>;
