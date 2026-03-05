@@ -10,6 +10,14 @@ import Box from "@mui/material/Box";
 
 import { useTheme } from "./ThemeContext";
 
+const createIconsFactory = (colors) => ({
+  dark: () => <Brightness2Icon />,
+  light: () => <WbSunnyIcon />,
+  orange: () => <CircleIcon style={{ color: colors.orange }} fontSize="small" />,
+  cherry: () => <CircleIcon style={{ color: colors.cherry }} fontSize="small" />,
+  lime: () => <CircleIcon style={{ color: colors.lime }} fontSize="small" />,
+});
+
 const THEME_CONFIG = {
   colors: {
     dark: "#000000",
@@ -25,21 +33,19 @@ const THEME_CONFIG = {
     cherry: "Cherry",
     lime: "Lime",
   },
-  getIcons: function() {
-    return {
-      dark: <Brightness2Icon />,
-      light: <WbSunnyIcon />,
-      orange: <CircleIcon style={{ color: this.colors.orange }} fontSize="small" />,
-      cherry: <CircleIcon style={{ color: this.colors.cherry }} fontSize="small" />,
-      lime: <CircleIcon style={{ color: this.colors.lime }} fontSize="small" />,
-    };
-  }
+  iconFactory: createIconsFactory({
+    dark: "#000000",
+    light: "#ffffff",
+    orange: "#FFA500",
+    cherry: "#fbb6ce",
+    lime: "#a6e22e",
+  }),
 };
 
 export default function ThemeSelector({ themeConfig = THEME_CONFIG }) {
   const { theme, setTheme } = useTheme();
   const [anchorEl, setAnchorEl] = useState(null);
-  const themeIcons = themeConfig.getIcons();
+  const themeIconFactory = themeConfig.iconFactory;
   const themeLabels = themeConfig.labels;
 
   const open = Boolean(anchorEl);
@@ -88,7 +94,7 @@ export default function ThemeSelector({ themeConfig = THEME_CONFIG }) {
               },
             }}
           >
-            {themeIcons[theme] || <CircleIcon />}
+            {themeIconFactory[theme] ? themeIconFactory[theme]() : <CircleIcon />}
           </Box>
         </IconButton>
       </Tooltip>
@@ -119,7 +125,7 @@ export default function ThemeSelector({ themeConfig = THEME_CONFIG }) {
               gap: 1,
             }}
           >
-            {themeIcons[key]}
+            {themeIconFactory[key] ? themeIconFactory[key]() : <CircleIcon />}
             {label}
           </MenuItem>
         ))}
