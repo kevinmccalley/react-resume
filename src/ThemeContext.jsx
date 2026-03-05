@@ -7,17 +7,20 @@ const defaultStorageAdapter = {
   setItem: (key, value) => localStorage.setItem(key, value),
 };
 
+function applyThemeToDOM(theme) {
+  // Remove all theme classes starting with 'theme-'
+  document.body.className = document.body.className
+    .split(" ")
+    .filter((c) => !c.startsWith("theme-"))
+    .join(" ");
+
+  // Add current theme class
+  document.body.classList.add(`theme-${theme}`);
+}
+
 function useThemeEffect(theme, storageAdapter = defaultStorageAdapter) {
   useEffect(() => {
-    // Remove all theme classes starting with 'theme-'
-    document.body.className = document.body.className
-      .split(" ")
-      .filter((c) => !c.startsWith("theme-"))
-      .join(" ");
-
-    // Add current theme class
-    document.body.classList.add(`theme-${theme}`);
-
+    applyThemeToDOM(theme);
     storageAdapter.setItem("theme", theme);
   }, [theme, storageAdapter]);
 }
