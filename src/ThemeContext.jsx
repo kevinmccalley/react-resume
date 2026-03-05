@@ -2,6 +2,8 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 export const ThemeContext = createContext();
 
+const USE_THEME_ERROR_MESSAGE = "useTheme must be used within a ThemeProvider";
+
 const defaultStorageAdapter = {
   getItem: (key) => localStorage.getItem(key),
   setItem: (key, value) => localStorage.setItem(key, value),
@@ -31,6 +33,10 @@ export function ThemeProvider({ children, storageAdapter = defaultStorageAdapter
 
 export function useTheme() {
   const context = useContext(ThemeContext);
-  if (!context) throw new Error("useTheme must be used within a ThemeProvider");
+  if (!context) throw new Error(USE_THEME_ERROR_MESSAGE);
   return context;
+}
+
+export function isThemeContextAvailable() {
+  return useContext(ThemeContext) !== null;
 }
