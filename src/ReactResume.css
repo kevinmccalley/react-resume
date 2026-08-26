@@ -446,13 +446,6 @@ main strong { font-weight: 650; color: var(--text); }
 .build-link:hover { text-decoration: underline; }
 .build-link.is-inactive { color: var(--text-muted); font-weight: 500; }
 
-/* ---------- Key Strengths (fills width as a chip-like grid) ---------- */
-main section#strengths > div {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 0.35rem 2rem;
-}
-
 /* ---------- Portfolio (prototypes & demos) ---------- */
 .portfolio-grid {
   display: grid;
