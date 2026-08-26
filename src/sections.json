@@ -2,47 +2,124 @@
   {
     "id": "overview",
     "title": "Overview",
-    "subtitle": "Kevin McCalley - Senior Front-End Engineer & UI/UX Designer",
-    "icon": "FaFilter",
+    "subtitle": "Kevin McCalley — Senior Front-End Engineer & UI/UX Designer",
+    "icon": "FaUser",
     "content": [
       {
         "type": "markdown",
-        "text": "I design and build **accessible, responsive web applications** using **React**, **TypeScript**, and **Figma**. With a background spanning both visual design and front-end development, I bridge the gap between creativity and code — crafting clean, performant, and visually compelling interfaces."
+        "text": "I design and build **accessible, responsive web applications** — from Figma prototype through to shipped, maintained product. My core is visual design and front-end engineering in **React** and **TypeScript**; over the last few years I've extended that into **full-stack delivery**: API design, relational data modeling, authentication, payments, and deployment."
       },
       {
         "type": "markdown",
-        "text": "I'm deeply experienced in **accessibility**, **usability testing**, and **component-driven design systems**, and I’m passionate about delivering intuitive user experiences that combine elegant design with reliable engineering."
+        "text": "I've shipped and now operate several production applications end to end, including **AccessBridge**, an automated WCAG / ADA auditing platform, and **Groundswell**, a global surf-forecasting service. **AI-assisted development** (Claude) is part of my daily workflow — I use it to move faster while keeping architecture, code review, and accountability firmly with me."
       }
     ]
   },
   {
     "id": "highlights",
     "title": "Qualifications",
-    "icon": "FaGavel",
+    "icon": "FaClipboardList",
     "content": [
       {
         "type": "markdown",
-        "text": "Experienced in **technical writing**, **design systems**, and **cross-functional collaboration**. Skilled communicator with a proven ability to translate complex ideas into actionable solutions and accessible interfaces."
+        "text": "Skilled communicator with a track record of translating complex requirements into accessible, maintainable interfaces — and, increasingly, the systems behind them. Comfortable owning a feature from design file to production."
       },
       {
         "type": "markdownListitem",
-        "text": "• **Languages & Frameworks:** React, TypeScript, JavaScript (ES6+), HTML5, CSS3, SCSS, PHP, ASP"
+        "text": "• **Languages & Frameworks:** React, TypeScript, JavaScript (ES6+), Node.js, HTML5, CSS3, SCSS; Next.js, Hono, Express"
       },
       {
         "type": "markdownListitem",
-        "text": "• **UI & Design Tools:** Figma, Adobe XD, Photoshop, Illustrator, Framer Motion, Material UI"
+        "text": "• **UI & Design:** Figma, Adobe XD, Photoshop, Illustrator, Framer Motion, Tailwind CSS, Material UI"
       },
       {
         "type": "markdownListitem",
-        "text": "• **Development Tools:** VS Code, Git, Node.js, NPM, Vite, Postman, Confluence, Jira"
+        "text": "• **Back End & Data:** PostgreSQL (Neon), Drizzle ORM, SQLite, REST API design, background jobs & scheduled tasks"
       },
       {
         "type": "markdownListitem",
-        "text": "• **Systems:** Windows, Linux"
+        "text": "• **Platform & Tooling:** Vercel, Railway, Git, Vite, npm / pnpm, Stripe, Clerk / OAuth, Playwright, axe-core, Postman, Jira, Confluence"
       },
       {
         "type": "markdownListitem",
-        "text": "• **Other:** Accessibility (WCAG 2.1), Responsive Design, Usability Testing, Agile, Technical Writing"
+        "text": "• **AI-Assisted Development:** Claude Code in daily use for scaffolding, refactoring, and review — I own the architecture and every line that ships"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Practices:** Accessibility (WCAG 2.1, Section 508, ADA), Responsive Design, Usability Testing, Agile, Technical Writing"
+      }
+    ]
+  },
+  {
+    "id": "builds",
+    "title": "Selected Product Builds",
+    "icon": "FaLaptopCode",
+    "content": [
+      {
+        "type": "markdown",
+        "text": "Recent end-to-end product work — design, front end, back end, and infrastructure. Each was built solo, shipped to production, and is maintained live."
+      },
+      {
+        "type": "buildGrid",
+        "items": [
+          {
+            "name": "AccessBridge",
+            "tagline": "Automated WCAG / ADA accessibility audits for small-business sites",
+            "description": "A real-browser scanner (axe-core + Playwright) that renders every page, catches the violations static checkers miss, and returns a prioritized, plain-language fix guide. Full SaaS: authentication, subscription billing, usage metering, and a background job queue.",
+            "stack": ["React 18", "Vite", "Hono", "Neon Postgres", "Drizzle", "Clerk", "Stripe", "Playwright", "Anthropic SDK", "Vercel"],
+            "scope": "Sole developer — design, front end, API, database, deployment",
+            "link": "https://accessbridge.app",
+            "linkLabel": "accessbridge.app",
+            "image": "/assets/shot_accessbridge.jpg"
+          },
+          {
+            "name": "Groundswell",
+            "tagline": "Honest global surf forecasting with a published accuracy record",
+            "description": "Surf and swell forecasts for 600+ spots worldwide, refreshed every few hours, backed by 4+ years of historical data and a public scorecard that grades its own past predictions. Installable PWA, five languages, tiered subscriptions.",
+            "stack": ["Next.js 16", "TypeScript", "Tailwind", "Clerk", "Stripe", "Vercel KV", "Leaflet", "Recharts", "i18n (5 locales)"],
+            "scope": "Sole developer — product, UI, data pipeline, i18n, billing",
+            "link": "https://groundswell.surf",
+            "linkLabel": "groundswell.surf",
+            "image": "/assets/shot_groundswell.jpg"
+          },
+          {
+            "name": "S&P Daily",
+            "tagline": "A deterministic, self-grading daily S&P 500 forecast",
+            "description": "Each trading morning a scheduled job collects ~9 groups of market data, scores them with pure math (no LLM), classifies a market regime, and stores a probabilistic next-day forecast. After the close a second job grades it — direction, error, Brier score — so the system is falsifiable rather than an \"AI horoscope.\"",
+            "stack": ["Hono", "Neon Postgres", "Drizzle", "React", "Vite", "Vercel Cron", "pnpm workspaces"],
+            "scope": "Sole developer — data collectors, factor engine, evaluator, dashboard",
+            "link": "https://sp-daily-five.vercel.app",
+            "linkLabel": "sp-daily-five.vercel.app"
+          },
+          {
+            "name": "Acrylic Mix Lab",
+            "tagline": "OKLab colour solver for mixing acrylic paint",
+            "description": "Enter a target colour and the app solves for the parts-by-weight recipe from your actual tube set, working in perceptually-uniform OKLab space. Saved recipes, tube calibration, and a custom-paint library.",
+            "stack": ["React", "Vite", "Tailwind", "Firebase", "OKLab colour math"],
+            "scope": "Sole developer",
+            "link": "https://paint-mixer.vercel.app",
+            "linkLabel": "paint-mixer.vercel.app",
+            "image": "/assets/shot_paintmixer.jpg"
+          },
+          {
+            "name": "TestPilot",
+            "tagline": "AI-assisted test generation for JavaScript / TypeScript projects",
+            "description": "Connects to a GitHub repository, analyses the codebase, and drafts reviewable test suites. Node / Express API, React SPA, GitHub OAuth, Stripe billing, SQLite (WAL), deployed on Railway.",
+            "stack": ["Node", "Express", "TypeScript", "React", "Anthropic SDK", "GitHub OAuth", "Stripe", "SQLite", "Railway"],
+            "scope": "Sole developer — private beta",
+            "link": null,
+            "linkLabel": "Private beta"
+          },
+          {
+            "name": "LunchLanguage",
+            "tagline": "A cooking-and-math learning game for elementary-age kids",
+            "description": "Players assemble meals and answer math questions about the ingredients. Fully client-side, animation-driven, built around a kid-first interaction model — with my own kids as product testers.",
+            "stack": ["Vite", "React", "TypeScript", "Zustand", "Framer Motion"],
+            "scope": "Sole developer — in development",
+            "link": null,
+            "linkLabel": "In development"
+          }
+        ]
       }
     ]
   },
@@ -51,6 +128,29 @@
     "title": "Professional Experience",
     "icon": "FaBuilding",
     "content": [
+      {
+        "type": "position",
+        "title": "Independent",
+        "date": "2025 – Present",
+        "location": "Remote",
+        "role": "Product Designer & Full-Stack Developer"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Design, build, and operate production web applications end to end** — interface, API, database, authentication, billing, and deployment."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Shipped AccessBridge and Groundswell** as live subscription products, alongside several smaller tools, each maintained in production."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Adopted AI-assisted development** (Claude Code) to compress delivery time while keeping architectural decisions and code review in-house."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• _Stack:_ React, TypeScript, Next.js, Hono, Node, PostgreSQL / Drizzle, Stripe, Clerk, Vercel, Railway"
+      },
       {
         "type": "position",
         "title": "365 Retail Markets / FullCount",
@@ -172,7 +272,7 @@
   {
     "id": "education",
     "title": "Education",
-    "icon": "FaSchool",
+    "icon": "FaGraduationCap",
     "content": [
       {
         "type": "markdown",
@@ -191,7 +291,11 @@
       },
       {
         "type": "markdownListitem",
-        "text": "• React Front-End Development"
+        "text": "• React & TypeScript Front-End Development"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• Full-Stack Delivery — API, Data, Auth, Payments"
       },
       {
         "type": "markdownListitem",
@@ -199,23 +303,19 @@
       },
       {
         "type": "markdownListitem",
-        "text": "• Usability Testing & Iterative Design"
+        "text": "• AI-Assisted Development Workflows"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• Design Systems & Component Architecture"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• Shipping & Operating Production SaaS"
       },
       {
         "type": "markdownListitem",
         "text": "• Technical Writing & Documentation"
-      },
-      {
-        "type": "markdownListitem",
-        "text": "• Component-Driven Design Systems"
-      },
-      {
-        "type": "markdownListitem",
-        "text": "• Responsive Layouts & CSS Architecture"
-      },
-      {
-        "type": "markdownListitem",
-        "text": "• Agile Collaboration & Sprint Planning"
       }
     ]
   },
@@ -233,7 +333,7 @@
   {
     "id": "contact",
     "title": "Contact",
-    "icon": "FaAddressCard",
+    "icon": "FaEnvelope",
     "content": {
       "email": "kevinmccalley@proton.me",
       "linkedin": "kevin-mccalley"

@@ -2,23 +2,41 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 export const ThemeContext = createContext();
 
+const STORAGE_KEY = "theme";
+
+function getInitialTheme() {
+  if (typeof window === "undefined") return "light";
+  try {
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    if (stored === "light" || stored === "dark") return stored;
+  } catch {
+    /* localStorage unavailable */
+  }
+  if (typeof window.matchMedia === "function" && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    return "dark";
+  }
+  return "light";
+}
+
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(getInitialTheme);
 
   useEffect(() => {
-    // Remove all theme classes starting with 'theme-'
-    document.body.className = document.body.className
-      .split(" ")
-      .filter((c) => !c.startsWith("theme-"))
-      .join(" ");
-
-    // Add current theme class
-    document.body.classList.add(`theme-${theme}`);
-
-    localStorage.setItem("theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, theme);
+    } catch {
+      /* ignore */
+    }
   }, [theme]);
 
-  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
+  const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 }
 
 export function useTheme() {

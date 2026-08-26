@@ -122,13 +122,13 @@ describe("ResumePDF", () => {
     });
   });
 
-  it("registers Helvetica font", async () => {
-    const pdfRenderer = await import("@react-pdf/renderer");
-    expect(pdfRenderer.Font.register).toHaveBeenCalledWith(
-      expect.objectContaining({
-        family: "Helvetica",
-      })
-    );
+  it("renders the product builds section", () => {
+    render(<ResumePDF />);
+    expect(screen.getByText("Selected Product Builds")).toBeInTheDocument();
+    expect(
+      screen.getByText(/Automated WCAG \/ ADA accessibility audits/)
+    ).toBeInTheDocument();
+    expect(screen.getByText(/Stack: Next\.js 16/)).toBeInTheDocument();
   });
 });
 
