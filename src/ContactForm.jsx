@@ -141,8 +141,10 @@ const ContactForm = () => {
     }
   };
 
-  const btnColors = buttonColors[theme] || buttonColors.light;
-  const isDark = theme === "dark";
+  // Themes that render on a dark ground (see ReactResume.css)
+  const isDark = ["dark", "sea", "jungle", "neon"].includes(theme);
+  const fallback = isDark ? "dark" : "light";
+  const btnColors = buttonColors[theme] || buttonColors[fallback];
 
   const disabledDark = {
     backgroundColor: "#555",
@@ -160,9 +162,7 @@ const ContactForm = () => {
 
   // Assign proper color for the toggle depending on theme
   const toggleColor =
-    theme === "dark"
-      ? "#D9FEFF"
-      : buttonColors[theme]?.bg || focusColors.light;
+    buttonColors[theme]?.bg || focusColors[theme] || focusColors[fallback];
 
   return (
     <Box
@@ -191,29 +191,29 @@ const ContactForm = () => {
             backgroundColor: isDark ? "#0e0e0e" : "transparent",
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                borderColor: defaultBorderColors[theme] || "#999",
+                borderColor: defaultBorderColors[theme] || defaultBorderColors[fallback],
               },
               "&:hover fieldset": {
-                borderColor: focusColors[theme] || "#1976d2",
+                borderColor: focusColors[theme] || focusColors[fallback],
               },
               "&.Mui-focused fieldset": {
-                borderColor: focusColors[theme] || "#1976d2",
+                borderColor: focusColors[theme] || focusColors[fallback],
                 boxShadow: `0 0 0 2px ${
-                  (focusColors[theme] || "#1976d2") + "33"
+                  (focusColors[theme] || focusColors[fallback]) + "33"
                 }`,
               },
             },
             "& .MuiInputBase-input, & textarea": {
-              color: inputTextColors[theme] || "#222",
+              color: inputTextColors[theme] || inputTextColors[fallback],
             },
             "& .MuiInputBase-input::placeholder, & textarea::placeholder": {
               color: isDark ? "#aaa" : "#888",
               opacity: 1,
             },
             "& label": {
-              color: labelColors[theme] || "#555",
+              color: labelColors[theme] || labelColors[fallback],
               "&.Mui-focused": {
-                color: focusColors[theme] || "#1976d2",
+                color: focusColors[theme] || focusColors[fallback],
               },
             },
           }}

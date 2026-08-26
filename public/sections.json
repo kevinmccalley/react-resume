@@ -89,7 +89,8 @@
             "stack": ["Hono", "Neon Postgres", "Drizzle", "React", "Vite", "Vercel Cron", "pnpm workspaces"],
             "scope": "Sole developer — data collectors, factor engine, evaluator, dashboard",
             "link": "https://sp-daily-five.vercel.app",
-            "linkLabel": "sp-daily-five.vercel.app"
+            "linkLabel": "sp-daily-five.vercel.app",
+            "image": "/assets/shot_spdaily.jpg"
           },
           {
             "name": "Acrylic Mix Lab",

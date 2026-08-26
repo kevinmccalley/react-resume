@@ -1,12 +1,13 @@
 /* ============================================================
    Kevin McCalley — résumé
-   Single refined theme with a light / dark toggle.
-   Light palette lives on :root; dark overrides are applied
-   both by an explicit [data-theme="dark"] and by the OS
-   preference when the user hasn't chosen a theme.
+   Themeable via [data-theme] on <html>. "light" is the bare
+   :root default; every other theme overrides the token set.
+   Before JS runs (no attribute yet) the OS preference picks
+   light vs. dark to avoid a flash.
    ============================================================ */
 
 :root {
+  /* ---- Light (default) ---- */
   --bg: #fbfbfa;
   --surface: #ffffff;
   --surface-2: #f3f3f1;
@@ -18,6 +19,8 @@
   --accent-contrast: #ffffff;
   --shadow-sm: 0 1px 2px rgba(20, 20, 18, 0.05);
   --shadow-lg: 0 1px 2px rgba(20, 20, 18, 0.05), 0 18px 40px -20px rgba(20, 20, 18, 0.22);
+
+  /* ---- Non-palette tokens ---- */
   --radius: 14px;
   --radius-sm: 9px;
   --sidebar-w: 268px;
@@ -26,6 +29,16 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-display: "Space Grotesk", var(--font-sans);
   color-scheme: light;
+}
+
+/* Shared shadow recipes for dark-ground themes */
+:root[data-theme="dark"],
+:root[data-theme="sea"],
+:root[data-theme="jungle"],
+:root[data-theme="neon"] {
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 1px 2px rgba(0, 0, 0, 0.4), 0 22px 48px -22px rgba(0, 0, 0, 0.7);
+  color-scheme: dark;
 }
 
 :root[data-theme="dark"] {
@@ -38,13 +51,75 @@
   --accent: #7d97ff;
   --accent-soft: #1c2436;
   --accent-contrast: #0f0f11;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 1px 2px rgba(0, 0, 0, 0.4), 0 22px 48px -22px rgba(0, 0, 0, 0.7);
-  color-scheme: dark;
 }
 
+:root[data-theme="sea"] {
+  --bg: #071a24;
+  --surface: #0d2733;
+  --surface-2: #123340;
+  --border: #1e4453;
+  --text: #e7f4f6;
+  --text-muted: #93b8c0;
+  --accent: #33c7d6;
+  --accent-soft: #0f3742;
+  --accent-contrast: #041219;
+}
+
+:root[data-theme="jungle"] {
+  --bg: #0b1710;
+  --surface: #12231a;
+  --surface-2: #1a3124;
+  --border: #244b33;
+  --text: #e8f3ea;
+  --text-muted: #9dbda7;
+  --accent: #46d17f;
+  --accent-soft: #113626;
+  --accent-contrast: #05130b;
+}
+
+:root[data-theme="neon"] {
+  --bg: #0a0a12;
+  --surface: #12121e;
+  --surface-2: #1a1a2b;
+  --border: #2c2c47;
+  --text: #eef0ff;
+  --text-muted: #9aa0c8;
+  --accent: #00e5ff;
+  --accent-soft: #10263a;
+  --accent-contrast: #05050c;
+}
+
+:root[data-theme="coral"] {
+  --bg: #fff6f3;
+  --surface: #ffffff;
+  --surface-2: #ffe9e2;
+  --border: #f5d7cc;
+  --text: #33221d;
+  --text-muted: #7c5e54;
+  --accent: #ef5f47;
+  --accent-soft: #ffe0d7;
+  --accent-contrast: #ffffff;
+  --shadow-sm: 0 1px 2px rgba(120, 60, 45, 0.06);
+  --shadow-lg: 0 1px 2px rgba(120, 60, 45, 0.06), 0 18px 40px -20px rgba(120, 60, 45, 0.25);
+}
+
+:root[data-theme="sand"] {
+  --bg: #f6efe0;
+  --surface: #fdf9f0;
+  --surface-2: #efe3cc;
+  --border: #e0d1b1;
+  --text: #322b1e;
+  --text-muted: #6f6350;
+  --accent: #b07d3b;
+  --accent-soft: #f1e2c6;
+  --accent-contrast: #ffffff;
+  --shadow-sm: 0 1px 2px rgba(90, 70, 40, 0.06);
+  --shadow-lg: 0 1px 2px rgba(90, 70, 40, 0.06), 0 18px 40px -20px rgba(90, 70, 40, 0.22);
+}
+
+/* Pre-JS flash guard: only when no theme has been chosen yet. */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root:not([data-theme]) {
     --bg: #0f0f11;
     --surface: #17171a;
     --surface-2: #202024;
@@ -104,18 +179,13 @@ a { color: var(--accent); }
 
 .identity { display: flex; flex-direction: column; gap: 0.5rem; }
 
-.identity .monogram {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
-  color: var(--accent-contrast);
-  background: var(--accent);
+.identity .avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
 }
 
 .identity .who { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; line-height: 1.2; }
@@ -156,29 +226,37 @@ a { color: var(--accent); }
   border-top: 1px solid var(--border);
   padding-top: 1rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 0.55rem;
 }
-.sidebar-footer .foot-label { font-size: 0.78rem; color: var(--text-muted); }
+.sidebar-footer .foot-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
 
-/* ---------- Theme toggle ---------- */
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
+/* ---------- Theme swatches ---------- */
+.theme-swatches {
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.4rem;
-  padding: 0.4rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface-2);
-  color: var(--text);
-  font: inherit;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: border-color 0.15s ease, background 0.15s ease;
 }
-.theme-toggle:hover { border-color: var(--accent); }
-.theme-toggle svg { width: 15px; height: 15px; }
+.swatch {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(128, 128, 128, 0.35);
+  background: var(--swatch, #888);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.swatch:hover { transform: scale(1.12); }
+.swatch[aria-pressed="true"] {
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--accent);
+}
 
 /* ---------- Mobile menu button + overlay ---------- */
 .mobile-menu-btn {
