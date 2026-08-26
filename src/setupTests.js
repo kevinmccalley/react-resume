@@ -33,8 +33,9 @@ window.matchMedia = window.matchMedia || function () {
   };
 };
 
-// Reset DOM body classes between tests
+// Reset DOM theme state between tests
 afterEach(() => {
   document.body.className = "";
+  document.documentElement.removeAttribute("data-theme");
   localStorage.clear();
 });
