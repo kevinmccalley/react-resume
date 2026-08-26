@@ -364,7 +364,7 @@ export default function ReactResume() {
 
         <nav className={`sidebar ${mobileMenuOpen ? "open" : ""}`} aria-label="Sections">
           <div className="identity">
-            <div className="monogram" aria-hidden="true">KM</div>
+            <img className="avatar" src="/assets/avatar.jpg" alt="Kevin McCalley" width="52" height="52" />
             <div className="who">Kevin McCalley</div>
             <div className="role">Senior Front-End Engineer &amp; UI/UX Designer</div>
             <div className="where">Remote · United States</div>

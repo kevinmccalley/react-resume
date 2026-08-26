@@ -138,11 +138,13 @@ describe("ReactResume", () => {
     expect(document.querySelector(".sidebar")).not.toHaveClass("open");
   });
 
-  it("renders the theme toggle in the sidebar", async () => {
+  it("renders the theme swatches in the sidebar", async () => {
     renderApp();
     await waitForLoad();
     const sidebar = document.querySelector(".sidebar");
-    expect(within(sidebar).getByRole("button", { name: /switch to (dark|light) theme/i })).toBeInTheDocument();
+    const group = within(sidebar).getByRole("group", { name: /colour theme/i });
+    expect(group.querySelectorAll("button.swatch").length).toBeGreaterThanOrEqual(7);
+    expect(within(sidebar).getByRole("button", { name: /sea theme/i })).toBeInTheDocument();
   });
 
   it("renders the PDF download link with the right filename", async () => {

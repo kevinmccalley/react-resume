@@ -1,15 +1,16 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, act } from "@testing-library/react";
-import { ThemeProvider, useTheme, ThemeContext } from "./ThemeContext";
+import { ThemeProvider, useTheme, ThemeContext, THEMES } from "./ThemeContext";
 
 function ThemeConsumer() {
-  const { theme, setTheme, toggleTheme } = useTheme();
+  const { theme, setTheme, themes } = useTheme();
   return (
     <div>
       <span data-testid="theme">{theme}</span>
+      <span data-testid="count">{themes.length}</span>
       <button onClick={() => setTheme("dark")}>Set Dark</button>
-      <button onClick={() => setTheme("light")}>Set Light</button>
-      <button onClick={toggleTheme}>Toggle</button>
+      <button onClick={() => setTheme("sea")}>Set Sea</button>
+      <button onClick={() => setTheme("not-a-theme")}>Set Bogus</button>
     </div>
   );
 }
@@ -29,23 +30,34 @@ describe("ThemeContext", () => {
   });
 
   it("reads a stored theme from localStorage on mount", () => {
-    localStorage.setItem("theme", "dark");
+    localStorage.setItem("theme", "jungle");
     renderConsumer();
-    expect(screen.getByTestId("theme")).toHaveTextContent("dark");
+    expect(screen.getByTestId("theme")).toHaveTextContent("jungle");
   });
 
-  it("updates the theme when setTheme is called", async () => {
-    renderConsumer();
-    await act(async () => screen.getByText("Set Dark").click());
-    expect(screen.getByTestId("theme")).toHaveTextContent("dark");
-  });
-
-  it("flips the theme when toggleTheme is called", async () => {
+  it("ignores an invalid stored value", () => {
+    localStorage.setItem("theme", "chartreuse");
     renderConsumer();
     expect(screen.getByTestId("theme")).toHaveTextContent("light");
-    await act(async () => screen.getByText("Toggle").click());
-    expect(screen.getByTestId("theme")).toHaveTextContent("dark");
-    await act(async () => screen.getByText("Toggle").click());
+  });
+
+  it("exposes the full theme list", () => {
+    renderConsumer();
+    expect(screen.getByTestId("count")).toHaveTextContent(String(THEMES.length));
+    expect(THEMES.map((t) => t.id)).toEqual(
+      expect.arrayContaining(["light", "dark", "sea", "coral", "sand", "jungle", "neon"])
+    );
+  });
+
+  it("updates the theme when setTheme is called with a valid id", async () => {
+    renderConsumer();
+    await act(async () => screen.getByText("Set Sea").click());
+    expect(screen.getByTestId("theme")).toHaveTextContent("sea");
+  });
+
+  it("rejects setTheme with an unknown id", async () => {
+    renderConsumer();
+    await act(async () => screen.getByText("Set Bogus").click());
     expect(screen.getByTestId("theme")).toHaveTextContent("light");
   });
 
@@ -58,8 +70,8 @@ describe("ThemeContext", () => {
   it("reflects the theme on the document element via data-theme", async () => {
     renderConsumer();
     expect(document.documentElement.getAttribute("data-theme")).toBe("light");
-    await act(async () => screen.getByText("Set Dark").click());
-    expect(document.documentElement.getAttribute("data-theme")).toBe("dark");
+    await act(async () => screen.getByText("Set Sea").click());
+    expect(document.documentElement.getAttribute("data-theme")).toBe("sea");
   });
 
   it("throws when useTheme is used outside a ThemeProvider", () => {
