@@ -21,7 +21,8 @@
   --radius: 14px;
   --radius-sm: 9px;
   --sidebar-w: 268px;
-  --content-max: 820px;
+  --frame-max: 1800px;  /* whole app is centred within this on wide screens */
+  --reading-max: 920px; /* comfortable measure for prose sections */
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-display: "Space Grotesk", var(--font-sans);
   color-scheme: light;
@@ -76,14 +77,18 @@ a { color: var(--accent); }
   display: flex;
   min-height: 100vh;
   width: 100%;
+  max-width: var(--frame-max);
+  margin-inline: auto;
   background: var(--bg);
   color: var(--text);
 }
 
 /* ---------- Sidebar ---------- */
 .sidebar {
-  position: fixed;
-  inset: 0 auto 0 0;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  flex-shrink: 0;
   width: var(--sidebar-w);
   height: 100vh;
   padding: 2rem 1.25rem 1.5rem;
@@ -201,19 +206,29 @@ a { color: var(--accent); }
 
 /* ---------- Main ---------- */
 main {
-  margin-left: var(--sidebar-w);
   flex: 1;
   min-width: 0;
-  padding: 3.75rem clamp(1.5rem, 6vw, 5rem) 6rem;
+  padding: 3.75rem clamp(1.5rem, 4vw, 4rem) 6rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center; /* content is centred -> symmetric gutters */
 }
 
+/* Prose sections keep a readable measure, centred in the available space. */
 main section {
   width: 100%;
-  max-width: var(--content-max);
+  max-width: var(--reading-max);
   animation: fadeInUp 0.35s ease both;
+}
+
+/* Grid-driven sections use the full width; only their intro text is capped. */
+main section#builds,
+main section#portfolio {
+  max-width: none;
+}
+main section#builds > div > p,
+main section#portfolio > div > p {
+  max-width: var(--reading-max);
 }
 
 @keyframes fadeInUp {
@@ -276,13 +291,18 @@ main strong { font-weight: 650; color: var(--text); }
 .contact-content strong { color: var(--text-muted); font-weight: 600; margin-right: 0.4rem; }
 
 /* ---------- Product builds ---------- */
-.build-grid { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.75rem; }
+.build-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
 
 .build-card {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 1.4rem;
-  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.15rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface);
@@ -351,10 +371,17 @@ main strong { font-weight: 650; color: var(--text); }
 .build-link:hover { text-decoration: underline; }
 .build-link.is-inactive { color: var(--text-muted); font-weight: 500; }
 
+/* ---------- Key Strengths (fills width as a chip-like grid) ---------- */
+main section#strengths > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.35rem 2rem;
+}
+
 /* ---------- Portfolio (prototypes & demos) ---------- */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 1.1rem;
   margin-top: 1.75rem;
 }
@@ -424,13 +451,16 @@ main strong { font-weight: 650; color: var(--text); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 880px) {
-  .sidebar { transform: translateX(-100%); box-shadow: var(--shadow-lg); }
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+  }
   .sidebar.open { transform: translateX(0); }
   .sidebar.open ~ .nav-overlay { display: block; }
   .mobile-menu-btn { display: inline-flex; }
-  main { margin-left: 0; padding: 4.5rem 1.25rem 6rem; }
-  .build-card { grid-template-columns: 1fr; }
-  .build-media { max-width: 420px; }
+  main { padding: 4.5rem 1.25rem 6rem; align-items: stretch; }
 }
 
 @media (prefers-reduced-motion: reduce) {
