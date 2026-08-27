@@ -190,6 +190,13 @@
             "body": "Live for 600+ spots in five languages, backed by four-plus years of historical data, running as an installable PWA. It has a real, if still small, group of people who check it before they paddle out — not a paying base yet, but genuine repeat use, which is the signal that counts at this stage. The open question now is turning honest utility into something people pay for without compromising the thing that makes it honest."
           }
         ]
+      },
+      {
+        "type": "caseFigure",
+        "src": "/assets/case_groundswell_cloudbreak.jpg",
+        "alt": "Groundswell's Cloudbreak surf report shown in French on the dark-green Kelp theme: a 4-foot swell headline with an 11-second period, cards for swell, wind, conditions and sky, and a 48-hour wave-outlook chart.",
+        "logo": true,
+        "caption": "The Cloudbreak, Fiji forecast — in French, on the Kelp theme. One report surface serves five languages and eight colour themes; the mark, magnified here, sits quietly in the corner at every size."
       }
     ]
   },

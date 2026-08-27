@@ -261,6 +261,21 @@ describe("ReactResume", () => {
     });
   });
 
+  it("renders the case study figure with the Cloudbreak screenshot and magnified logo", async () => {
+    const user = userEvent.setup();
+    renderApp();
+    await waitForLoad();
+    await navigateTo(user, "Case Study");
+    await waitFor(() => {
+      const img = document.querySelector(".case-figure img");
+      expect(img).toBeInTheDocument();
+      expect(img.getAttribute("src")).toMatch(/case_groundswell_cloudbreak\.jpg$/);
+      expect(img.getAttribute("alt")).toMatch(/Cloudbreak surf report/i);
+      expect(document.querySelector(".case-figure-logo svg")).toBeInTheDocument();
+      expect(screen.getByText(/in French, on the Kelp theme/i)).toBeInTheDocument();
+    });
+  });
+
   it("renders the experience section with positions", async () => {
     const user = userEvent.setup();
     renderApp();

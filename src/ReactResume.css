@@ -387,6 +387,60 @@ main p { margin: 0 0 0.9rem; }
 @media (max-width: 560px) {
   .case-step { padding-left: 2.25rem; }
 }
+
+/* ---------- Case study figure ---------- */
+.case-figure { margin: 2.5rem 0 0; }
+.case-figure-frame {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  box-shadow: var(--shadow-sm);
+  /* let the magnified logo spill past the edge */
+  overflow: visible;
+  line-height: 0;
+}
+.case-figure-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: inherit;
+}
+.case-figure figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  max-width: 62ch;
+}
+.case-figure-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-30%, -30%);
+  width: 92px;
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #08131c;
+  border: 2px solid #38bdf8;
+  box-shadow: 0 10px 26px -8px rgba(0, 0, 0, 0.55), 0 0 0 5px var(--bg);
+}
+.case-figure-logo svg {
+  width: 62%;
+  height: 62%;
+  display: block;
+}
+@media (max-width: 560px) {
+  .case-figure-logo {
+    width: 68px;
+    height: 68px;
+    transform: translate(-24%, -24%);
+  }
+}
+
 main strong { font-weight: 650; color: var(--text); }
 
 /* ---------- Keyboard shortcuts ---------- */

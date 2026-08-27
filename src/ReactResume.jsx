@@ -235,6 +235,17 @@ function RenderContent({ content }) {
         case "caseStudy":
           return <CaseStudy key={idx} steps={item.steps || []} />;
 
+        case "caseFigure":
+          return (
+            <CaseFigure
+              key={idx}
+              src={item.src}
+              alt={item.alt}
+              caption={item.caption}
+              logo={item.logo}
+            />
+          );
+
         default:
           return null;
       }
@@ -313,6 +324,46 @@ function CaseStudy({ steps }) {
         </li>
       ))}
     </ol>
+  );
+}
+
+// The Groundswell wave mark, redrawn from the app's own inline SVG
+function GroundswellMark() {
+  return (
+    <svg width="48" height="48" viewBox="0 0 28 28" fill="none" role="img" aria-label="Groundswell logo">
+      <circle cx="14" cy="14" r="14" fill="rgba(14, 165, 233, 0.16)" />
+      <path
+        d="M4 17 C7 13, 10 20, 14 16 C18 12, 21 19, 24 15"
+        stroke="#38bdf8"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <path
+        d="M4 20 C7 16, 10 23, 14 19 C18 15, 21 22, 24 18"
+        stroke="#0ea5e9"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        fill="none"
+        opacity="0.5"
+      />
+    </svg>
+  );
+}
+
+function CaseFigure({ src, alt, caption, logo }) {
+  return (
+    <figure className="case-figure">
+      <div className="case-figure-frame">
+        <img src={src} alt={alt || ""} loading="lazy" />
+        {logo && (
+          <span className="case-figure-logo" aria-hidden="true">
+            <GroundswellMark />
+          </span>
+        )}
+      </div>
+      {caption && <figcaption>{caption}</figcaption>}
+    </figure>
   );
 }
 
