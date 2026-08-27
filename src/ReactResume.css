@@ -368,9 +368,16 @@ main strong { font-weight: 650; color: var(--text); }
 /* ---------- Product builds ---------- */
 .build-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
+  grid-template-columns: 1fr;
   gap: 1.5rem;
   margin-top: 1.75rem;
+}
+/* 2-up from laptop widths on, 3-up on large desktop displays */
+@media (min-width: 60rem) {
+  .build-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 128rem) {
+  .build-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 .build-card {
