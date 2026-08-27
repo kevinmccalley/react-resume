@@ -288,4 +288,44 @@ describe("ReactResume", () => {
     });
     window.history.pushState({}, "", "/");
   });
+
+  it("moves between sections with j / k and g-then-key", async () => {
+    const user = userEvent.setup();
+    window.history.pushState({}, "", "/overview");
+    renderApp();
+    await waitForLoad();
+
+    await user.keyboard("j");
+    await waitFor(() => {
+      expect(document.querySelector(".side-nav a.active-menu-item")).toHaveTextContent(
+        "Qualifications"
+      );
+    });
+
+    await user.keyboard("gb");
+    await waitFor(() => {
+      expect(document.querySelector(".side-nav a.active-menu-item")).toHaveTextContent(
+        "Selected Product Builds"
+      );
+    });
+    window.history.pushState({}, "", "/");
+  });
+
+  it("toggles the keyboard shortcuts panel with ? and Escape", async () => {
+    const user = userEvent.setup();
+    renderApp();
+    await waitForLoad();
+
+    await user.keyboard("?");
+    await waitFor(() => {
+      expect(screen.getByRole("dialog", { name: /keyboard shortcuts/i })).toBeInTheDocument();
+    });
+
+    await user.keyboard("{Escape}");
+    await waitFor(() => {
+      expect(
+        screen.queryByRole("dialog", { name: /keyboard shortcuts/i })
+      ).not.toBeInTheDocument();
+    });
+  });
 });

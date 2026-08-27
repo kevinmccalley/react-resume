@@ -1,5 +1,5 @@
 // ReactResume.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   IconContext,
   User,
@@ -22,6 +22,8 @@ import {
   NavLink,
   Navigate,
   Link,
+  useNavigate,
+  useLocation,
 } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { PDFDownloadLink } from "@react-pdf/renderer";
@@ -322,9 +324,188 @@ function NotFound() {
   );
 }
 
+// ---------- Keyboard navigation ----------
+// "g" then one of these letters jumps to that section.
+const SECTION_KEYS = {
+  overview: "o",
+  highlights: "q",
+  builds: "b",
+  "case-accessbridge": "c",
+  experience: "e",
+  prototypes: "p",
+  history: "h",
+  education: "d",
+  strengths: "s",
+  accessibility: "a",
+  contact: "t",
+};
+
+function prefersReducedMotion() {
+  return (
+    typeof window !== "undefined" &&
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
+function KeyboardShortcuts({ sections, setHelpOpen }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const gArmed = useRef(false);
+  const gTimer = useRef(null);
+
+  useEffect(() => {
+    const ids = sections.map((s) => s.id);
+
+    function go(id) {
+      if (!id) return;
+      navigate("/" + id);
+      const main = document.getElementById("main-content");
+      if (main) main.focus({ preventScroll: true });
+      try {
+        window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
+      } catch (_) {
+        /* jsdom / unsupported */
+      }
+    }
+
+    function onKey(e) {
+      const t = e.target;
+      const typing =
+        t &&
+        (t.tagName === "INPUT" ||
+          t.tagName === "TEXTAREA" ||
+          t.tagName === "SELECT" ||
+          t.isContentEditable);
+      if (typing || e.metaKey || e.ctrlKey || e.altKey) return;
+
+      if (e.key === "?") {
+        e.preventDefault();
+        setHelpOpen((o) => !o);
+        return;
+      }
+      if (e.key === "Escape") {
+        setHelpOpen(false);
+        return;
+      }
+
+      const cur = ids.indexOf(location.pathname.replace(/^\//, ""));
+
+      if (e.key === "j") {
+        e.preventDefault();
+        go(ids[Math.min(ids.length - 1, (cur < 0 ? -1 : cur) + 1)]);
+        return;
+      }
+      if (e.key === "k") {
+        e.preventDefault();
+        go(ids[Math.max(0, (cur < 0 ? 1 : cur) - 1)]);
+        return;
+      }
+      if (e.key === "g") {
+        gArmed.current = true;
+        clearTimeout(gTimer.current);
+        gTimer.current = setTimeout(() => {
+          gArmed.current = false;
+        }, 1500);
+        return;
+      }
+      if (gArmed.current) {
+        gArmed.current = false;
+        clearTimeout(gTimer.current);
+        const id = Object.keys(SECTION_KEYS).find((k) => SECTION_KEYS[k] === e.key);
+        if (id && ids.includes(id)) {
+          e.preventDefault();
+          go(id);
+        }
+      }
+    }
+
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      clearTimeout(gTimer.current);
+    };
+  }, [sections, location.pathname, navigate, setHelpOpen]);
+
+  return null;
+}
+
+function ShortcutsHelp({ open, onClose, sections }) {
+  const closeRef = useRef(null);
+
+  useEffect(() => {
+    if (open && closeRef.current) closeRef.current.focus();
+  }, [open]);
+
+  if (!open) return null;
+
+  return (
+    <div className="kbd-help-backdrop" onClick={onClose}>
+      <div
+        className="kbd-help"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Keyboard shortcuts"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="kbd-help-head">
+          <h2>Keyboard shortcuts</h2>
+          <button
+            ref={closeRef}
+            type="button"
+            className="kbd-help-close"
+            onClick={onClose}
+            aria-label="Close"
+          >
+            {"×"}
+          </button>
+        </div>
+        <dl className="kbd-list">
+          <div>
+            <dt>
+              <kbd>j</kbd> <kbd>k</kbd>
+            </dt>
+            <dd>Next / previous section</dd>
+          </div>
+          <div>
+            <dt>
+              <kbd>g</kbd> then a letter
+            </dt>
+            <dd>Jump to a section</dd>
+          </div>
+          <div>
+            <dt>
+              <kbd>?</kbd>
+            </dt>
+            <dd>Toggle this panel</dd>
+          </div>
+          <div>
+            <dt>
+              <kbd>Esc</kbd>
+            </dt>
+            <dd>Close</dd>
+          </div>
+        </dl>
+        <p className="kbd-jump-title">Jump keys</p>
+        <ul className="kbd-jumps">
+          {sections
+            .filter((s) => SECTION_KEYS[s.id])
+            .map((s) => (
+              <li key={s.id}>
+                <kbd>g</kbd> <kbd>{SECTION_KEYS[s.id]}</kbd>
+                <span>{s.title}</span>
+              </li>
+            ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 // ---------- Main ----------
 export default function ReactResume() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [helpOpen, setHelpOpen] = useState(false);
 
   const { data: sections, isLoading, error } = useQuery({
     queryKey: ["sections"],
@@ -346,6 +527,8 @@ export default function ReactResume() {
     <IconContext.Provider value={{ weight: "duotone", size: "1em" }}>
     <Router>
       <SkipLink />
+      <KeyboardShortcuts sections={sections} setHelpOpen={setHelpOpen} />
+      <ShortcutsHelp open={helpOpen} onClose={() => setHelpOpen(false)} sections={sections} />
 
       <div className="app-container">
         <button
@@ -382,6 +565,9 @@ export default function ReactResume() {
           <div className="sidebar-footer">
             <span className="foot-label">Theme</span>
             <ThemeSelector />
+            <button type="button" className="kbd-hint" onClick={() => setHelpOpen(true)}>
+              <span aria-hidden="true">⌨</span> Keyboard shortcuts <kbd>?</kbd>
+            </button>
           </div>
         </nav>
 
