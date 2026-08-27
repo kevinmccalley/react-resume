@@ -13,10 +13,11 @@
   --surface-2: #f3f3f1;
   --border: #e6e5e1;
   --text: #1a1a18;
-  --text-muted: #5f5e58;
-  --accent: #2d54d6;
+  --text-muted: #4e4d47; /* ~7.5:1 on #fff, ~7.1:1 on --surface-2 — clears WCAG AAA */
+  --accent: #2a4bc7;
   --accent-soft: #eaefff;
   --accent-contrast: #ffffff;
+  --link: #2544c2; /* link text — verified >=7:1 on #fff for AAA; each theme sets its own */
   --shadow-sm: 0 1px 2px rgba(20, 20, 18, 0.05);
   --shadow-lg: 0 1px 2px rgba(20, 20, 18, 0.05), 0 18px 40px -20px rgba(20, 20, 18, 0.22);
 
@@ -45,10 +46,11 @@
   --surface-2: #202024;
   --border: #2c2c31;
   --text: #ededee;
-  --text-muted: #a2a2a8;
+  --text-muted: #adadb3; /* >=7:1 on dark --surface-2 */
   --accent: #7d97ff;
   --accent-soft: #1c2436;
   --accent-contrast: #0f0f11;
+  --link: #a9beff; /* lighter than --accent so link text clears AAA on dark grounds */
 }
 
 :root[data-theme="sea"] {
@@ -57,10 +59,11 @@
   --surface-2: #123340;
   --border: #1e4453;
   --text: #e7f4f6;
-  --text-muted: #93b8c0;
+  --text-muted: #9fc2c9; /* >=7:1 on sea --surface-2 */
   --accent: #33c7d6;
   --accent-soft: #0f3742;
   --accent-contrast: #041219;
+  --link: #5cd6e2;
 }
 
 :root[data-theme="jungle"] {
@@ -69,10 +72,11 @@
   --surface-2: #1a3124;
   --border: #244b33;
   --text: #e8f3ea;
-  --text-muted: #9dbda7;
+  --text-muted: #a9c6b2; /* >=7:1 on jungle --surface-2 */
   --accent: #46d17f;
   --accent-soft: #113626;
   --accent-contrast: #05130b;
+  --link: #63dc92;
 }
 
 :root[data-theme="coral"] {
@@ -81,10 +85,11 @@
   --surface-2: #ffe9e2;
   --border: #f5d7cc;
   --text: #33221d;
-  --text-muted: #7c5e54;
+  --text-muted: #62453c; /* ~7.6:1 on #fff, clears AAA on the coral surfaces too */
   --accent: #ef5f47;
   --accent-soft: #ffe0d7;
-  --accent-contrast: #ffffff;
+  --accent-contrast: #2e1a14; /* dark text: coral accent is too light to carry white at AA */
+  --link: #95260f; /* deep coral-rust — needs to be this dark to clear AAA 7:1 on white */
   --shadow-sm: 0 1px 2px rgba(120, 60, 45, 0.06);
   --shadow-lg: 0 1px 2px rgba(120, 60, 45, 0.06), 0 18px 40px -20px rgba(120, 60, 45, 0.25);
 }
@@ -97,10 +102,11 @@
     --surface-2: #202024;
     --border: #2c2c31;
     --text: #ededee;
-    --text-muted: #a2a2a8;
+    --text-muted: #adadb3;
     --accent: #7d97ff;
     --accent-soft: #1c2436;
     --accent-contrast: #0f0f11;
+    --link: #a9beff;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 1px 2px rgba(0, 0, 0, 0.4), 0 22px 48px -22px rgba(0, 0, 0, 0.7);
     color-scheme: dark;
@@ -118,7 +124,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: var(--accent); }
+a { color: var(--link); }
 
 /* ---------- Shell ---------- */
 .app-container {
@@ -187,8 +193,10 @@ a { color: var(--accent); }
 
 .side-nav a.active-menu-item {
   background: var(--accent-soft);
-  color: var(--accent);
+  /* --text, not --accent: accent-on-accent-soft fails contrast on light themes */
+  color: var(--text);
   font-weight: 600;
+  box-shadow: inset 2px 0 0 var(--accent);
 }
 
 .side-nav .menu-icon {
@@ -291,7 +299,7 @@ main section#prototypes > div > p {
   to { opacity: 1; transform: none; }
 }
 
-main h2 {
+main h1 {
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 1.95rem);
   font-weight: 600;
@@ -301,9 +309,9 @@ main h2 {
   align-items: center;
   gap: 0.6rem;
 }
-main h2 .sec-icon { color: var(--accent); display: inline-flex; font-size: 0.8em; }
+main h1 .sec-icon { color: var(--accent); display: inline-flex; font-size: 0.8em; }
 
-main h3 {
+main h2 {
   font-size: 1.02rem;
   font-weight: 500;
   color: var(--text-muted);
@@ -321,10 +329,10 @@ main p { margin: 0 0 0.9rem; }
   font-size: clamp(3rem, 10vw, 5rem);
   line-height: 1;
   letter-spacing: -0.03em;
-  color: var(--accent);
+  color: var(--link);
   margin: 0 0 0.75rem;
 }
-.notfound h2 { margin-bottom: 0.75rem; }
+.notfound h1 { margin-bottom: 0.75rem; }
 .notfound p:not(.notfound-code) { max-width: 52ch; color: var(--text); }
 .notfound-links {
   display: flex;
@@ -337,7 +345,7 @@ main p { margin: 0 0 0.9rem; }
 .notfound-links a {
   font-family: var(--font-display);
   font-weight: 500;
-  color: var(--accent);
+  color: var(--link);
   text-decoration: none;
 }
 .notfound-links a:hover { text-decoration: underline; }
@@ -365,7 +373,7 @@ main p { margin: 0 0 0.9rem; }
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.85rem;
-  color: var(--accent);
+  color: var(--link);
   font-variant-numeric: tabular-nums;
 }
 .case-label {
@@ -643,7 +651,8 @@ kbd {
   border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--surface-2);
-  color: var(--text-muted);
+  /* full --text, not --text-muted: 0.72rem is small enough that AAA wants max contrast */
+  color: var(--text);
   white-space: nowrap;
 }
 
@@ -664,7 +673,7 @@ kbd {
   align-items: center;
   gap: 0.35rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--link);
   text-decoration: none;
 }
 .build-link:hover { text-decoration: underline; }
@@ -716,12 +725,14 @@ kbd {
   font-weight: 600;
   font-size: 0.86rem;
   text-decoration: none;
-  color: var(--accent-contrast);
-  background: var(--accent);
+  /* inverse pill: --text on --bg clears AAA contrast on every theme
+     (the accent is too light on some themes to carry label text at 7:1) */
+  color: var(--bg);
+  background: var(--text);
   box-shadow: var(--shadow-lg);
   transition: filter 0.15s ease;
 }
-.pdf-download:hover { filter: brightness(1.08); }
+.pdf-download:hover { filter: brightness(1.12); }
 
 /* ---------- Skip link ---------- */
 .skip-link {
@@ -731,8 +742,8 @@ kbd {
   z-index: 60;
   padding: 0.55rem 1rem;
   border-radius: 0 0 8px 8px;
-  background: var(--accent);
-  color: var(--accent-contrast);
+  background: var(--text);
+  color: var(--bg);
   font-weight: 600;
   text-decoration: none;
   transition: top 0.2s ease;

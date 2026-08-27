@@ -411,7 +411,7 @@
       },
       {
         "type": "markdown",
-        "text": "This site is held to that standard. Every page is checked against **WCAG 2.1 AA** with axe-core — the same audit engine behind [AccessBridge](https://accessbridge.app), my accessibility-scanning tool — and the current build reports **zero automated violations** across all routes, the keyboard-shortcuts dialog included. Last checked August 2026."
+        "text": "This site is held to that standard. Every page is checked with axe-core — the same audit engine behind [AccessBridge](https://accessbridge.app), my accessibility-scanning tool — against **WCAG 2.1 A and AA in full**, plus the **AAA enhanced-contrast** criterion (1.4.6), across all five colour themes and the keyboard-shortcuts dialog. The current build reports **zero automated violations**. Last checked August 2026."
       }
     ]
   },

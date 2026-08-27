@@ -90,7 +90,7 @@ function BuildGrid({ items }) {
         <article key={b.name} className="build-card">
           <BuildMedia image={b.image} name={b.name} />
           <div className="build-body">
-            <h3 className="build-name">{b.name}</h3>
+            <h2 className="build-name">{b.name}</h2>
             <p className="build-tagline">{b.tagline}</p>
             <p className="build-desc">{b.description}</p>
             {b.stack && b.stack.length > 0 && (
@@ -292,11 +292,11 @@ function SectionContent({ section }) {
 
   return (
     <section id={section.id}>
-      <h2>
+      <h1>
         <span className="sec-icon">{iconMap[section.icon] || null}</span>
         {section.title}
-      </h2>
-      {section.subtitle && <h3>{section.subtitle}</h3>}
+      </h1>
+      {section.subtitle && <h2>{section.subtitle}</h2>}
       {section.id === "contact" ? (
         <div>
           <ContactForm />
@@ -372,7 +372,7 @@ function NotFound() {
   return (
     <section className="notfound">
       <p className="notfound-code" aria-hidden="true">404</p>
-      <h2>This page isn&rsquo;t on the r&eacute;sum&eacute;</h2>
+      <h1>This page isn&rsquo;t on the r&eacute;sum&eacute;</h1>
       <p>
         The link you followed points to a section that doesn&rsquo;t exist &mdash; a
         mistyped URL, or something I&rsquo;ve since renamed or removed.
@@ -658,15 +658,16 @@ export default function ReactResume() {
             ))}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </main>
 
-        <PDFDownloadLink
-          document={<ResumePDF />}
-          fileName="Kevin_McCalley_Resume.pdf"
-          className="pdf-download"
-        >
-          {({ loading }) => (loading ? "Preparing PDF..." : "Download PDF")}
-        </PDFDownloadLink>
+          {/* fixed-position, but kept inside <main> so it lives within a landmark */}
+          <PDFDownloadLink
+            document={<ResumePDF />}
+            fileName="Kevin_McCalley_Resume.pdf"
+            className="pdf-download"
+          >
+            {({ loading }) => (loading ? "Preparing PDF..." : "Download PDF")}
+          </PDFDownloadLink>
+        </main>
       </div>
     </Router>
     </IconContext.Provider>
