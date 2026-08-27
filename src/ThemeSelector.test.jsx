@@ -17,7 +17,7 @@ describe("ThemeSelector", () => {
 
   it("labels each swatch with its theme name", () => {
     renderWithTheme(<ThemeSelector />);
-    ["Light", "Dark", "Sea", "Coral", "Sand", "Jungle", "Neon"].forEach((name) => {
+    ["Light", "Dark", "Sea", "Coral", "Jungle"].forEach((name) => {
       expect(screen.getByRole("button", { name: `${name} theme` })).toBeInTheDocument();
     });
   });
@@ -38,14 +38,14 @@ describe("ThemeSelector", () => {
     const user = userEvent.setup();
     renderWithTheme(<ThemeSelector />);
 
-    await user.click(screen.getByRole("button", { name: "Neon theme" }));
+    await user.click(screen.getByRole("button", { name: "Jungle theme" }));
 
-    expect(document.documentElement.getAttribute("data-theme")).toBe("neon");
-    expect(screen.getByRole("button", { name: "Neon theme" })).toHaveAttribute(
+    expect(document.documentElement.getAttribute("data-theme")).toBe("jungle");
+    expect(screen.getByRole("button", { name: "Jungle theme" })).toHaveAttribute(
       "aria-pressed",
       "true"
     );
-    expect(localStorage.getItem("theme")).toBe("neon");
+    expect(localStorage.getItem("theme")).toBe("jungle");
   });
 
   it("can move between several themes", async () => {
@@ -55,7 +55,7 @@ describe("ThemeSelector", () => {
     await user.click(screen.getByRole("button", { name: "Coral theme" }));
     expect(document.documentElement.getAttribute("data-theme")).toBe("coral");
 
-    await user.click(screen.getByRole("button", { name: "Sand theme" }));
-    expect(document.documentElement.getAttribute("data-theme")).toBe("sand");
+    await user.click(screen.getByRole("button", { name: "Sea theme" }));
+    expect(document.documentElement.getAttribute("data-theme")).toBe("sea");
   });
 });

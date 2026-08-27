@@ -11,9 +11,7 @@ export const THEMES = [
   { id: "dark", label: "Dark", swatch: "#1c1c20" },
   { id: "sea", label: "Sea", swatch: "#1f9aa8" },
   { id: "coral", label: "Coral", swatch: "#ef5f47" },
-  { id: "sand", label: "Sand", swatch: "#c99a5b" },
   { id: "jungle", label: "Jungle", swatch: "#2fa866" },
-  { id: "neon", label: "Neon", swatch: "#12e0f0" },
 ];
 
 const THEME_IDS = THEMES.map((t) => t.id);

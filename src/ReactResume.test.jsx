@@ -143,7 +143,7 @@ describe("ReactResume", () => {
     await waitForLoad();
     const sidebar = document.querySelector(".sidebar");
     const group = within(sidebar).getByRole("group", { name: /colour theme/i });
-    expect(group.querySelectorAll("button.swatch").length).toBeGreaterThanOrEqual(7);
+    expect(group.querySelectorAll("button.swatch").length).toBeGreaterThanOrEqual(5);
     expect(within(sidebar).getByRole("button", { name: /sea theme/i })).toBeInTheDocument();
   });
 

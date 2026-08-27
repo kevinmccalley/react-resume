@@ -142,7 +142,7 @@ const ContactForm = () => {
   };
 
   // Themes that render on a dark ground (see ReactResume.css)
-  const isDark = ["dark", "sea", "jungle", "neon"].includes(theme);
+  const isDark = ["dark", "sea", "jungle"].includes(theme);
   const fallback = isDark ? "dark" : "light";
   const btnColors = buttonColors[theme] || buttonColors[fallback];
 

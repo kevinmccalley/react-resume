@@ -45,7 +45,7 @@ describe("ThemeContext", () => {
     renderConsumer();
     expect(screen.getByTestId("count")).toHaveTextContent(String(THEMES.length));
     expect(THEMES.map((t) => t.id)).toEqual(
-      expect.arrayContaining(["light", "dark", "sea", "coral", "sand", "jungle", "neon"])
+      expect.arrayContaining(["light", "dark", "sea", "coral", "jungle"])
     );
   });
 
