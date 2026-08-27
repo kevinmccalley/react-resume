@@ -4,6 +4,7 @@ import {
   IconContext,
   User,
   ClipboardText,
+  Compass,
   Code,
   Buildings,
   Briefcase,
@@ -39,6 +40,7 @@ import "./ReactResume.css";
 const iconMap = {
   FaUser: <User />,
   FaClipboardList: <ClipboardText />,
+  FaCompass: <Compass />,
   FaLaptopCode: <Code />,
   FaBuilding: <Buildings />,
   FaBriefcase: <Briefcase />,
@@ -256,6 +258,12 @@ function RenderContent({ content }) {
             </a>
           </div>
         )}
+        <div>
+          <strong>Résumé</strong>
+          <a href="/kevin-mccalley-resume.md" download>
+            Plain-text / Markdown version
+          </a>
+        </div>
       </div>
     );
   }
@@ -329,6 +337,7 @@ function NotFound() {
 const SECTION_KEYS = {
   overview: "o",
   highlights: "q",
+  "how-i-work": "w",
   builds: "b",
   "case-accessbridge": "c",
   experience: "e",

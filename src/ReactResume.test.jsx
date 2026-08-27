@@ -264,6 +264,20 @@ describe("ReactResume", () => {
       expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
       expect(screen.getByText("kevinmccalley@proton.me")).toBeInTheDocument();
       expect(screen.getByText("kevin-mccalley")).toBeInTheDocument();
+      const md = screen.getByText(/plain-text \/ markdown version/i);
+      expect(md).toHaveAttribute("href", "/kevin-mccalley-resume.md");
+      expect(md).toHaveAttribute("download");
+    });
+  });
+
+  it("renders the How I Work section", async () => {
+    const user = userEvent.setup();
+    renderApp();
+    await waitForLoad();
+    await navigateTo(user, "How I Work");
+    await waitFor(() => {
+      expect(screen.getByText(/Taste is the constraint, not the tool/i)).toBeInTheDocument();
+      expect(screen.getByText(/I own what ships/i)).toBeInTheDocument();
     });
   });
 

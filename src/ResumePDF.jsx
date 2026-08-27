@@ -6,25 +6,54 @@ import {
   Text,
   View,
   StyleSheet,
+  Font,
 } from "@react-pdf/renderer";
 import sectionsData from "./sections.json";
 
-// @react-pdf/renderer ships Helvetica as a built-in standard font — no
-// registration (and no network request) required.
+// Bundled locally (Vite emits these as same-origin asset URLs) so PDF
+// generation never depends on a third-party font host — matches the site:
+// Fraunces for headings, Inter for body.
+import interRegular from "./fonts/Inter-400.ttf";
+import interItalic from "./fonts/Inter-400-italic.ttf";
+import interSemiBold from "./fonts/Inter-600.ttf";
+import interBold from "./fonts/Inter-700.ttf";
+import frauncesRegular from "./fonts/Fraunces-400.ttf";
+import frauncesSemiBold from "./fonts/Fraunces-600.ttf";
+import frauncesBold from "./fonts/Fraunces-700.ttf";
+
+Font.register({
+  family: "Inter",
+  fonts: [
+    { src: interRegular, fontWeight: 400 },
+    { src: interItalic, fontWeight: 400, fontStyle: "italic" },
+    { src: interSemiBold, fontWeight: 600 },
+    { src: interBold, fontWeight: 700 },
+  ],
+});
+
+Font.register({
+  family: "Fraunces",
+  fonts: [
+    { src: frauncesRegular, fontWeight: 400 },
+    { src: frauncesSemiBold, fontWeight: 600 },
+    { src: frauncesBold, fontWeight: 700 },
+  ],
+});
 
 const styles = StyleSheet.create({
   page: {
-    fontFamily: "Helvetica",
+    fontFamily: "Inter",
     fontSize: 10.5,
     padding: 40,
     lineHeight: 1.45,
     color: "#1a1a18",
   },
-  header: { fontSize: 22, fontWeight: "bold", marginBottom: 4 },
+  header: { fontFamily: "Fraunces", fontSize: 22, fontWeight: 600, marginBottom: 4 },
   subheader: { fontSize: 11.5, color: "#444", marginBottom: 12 },
   sectionTitle: {
+    fontFamily: "Fraunces",
     fontSize: 13,
-    fontWeight: "bold",
+    fontWeight: 600,
     marginTop: 14,
     marginBottom: 6,
     borderBottomWidth: 0.75,

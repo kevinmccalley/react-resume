@@ -51,6 +51,30 @@
     ]
   },
   {
+    "id": "how-i-work",
+    "title": "How I Work",
+    "subtitle": "Design judgment, held steady through a much faster process.",
+    "icon": "FaCompass",
+    "content": [
+      {
+        "type": "markdown",
+        "text": "My process has changed more in the last two years than in the ten before them. Most of a build now happens in structured dialogue with an AI collaborator: I describe what an interface needs to do and how it should feel, we work through it in passes, and the work is tracked on a living checklist we close out item by item. It is faster than the Figma-to-handoff cycle it replaced, and — to my own surprise — more fluid. What has not moved is where the judgment sits."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Taste is the constraint, not the tool.** Layout, hierarchy, typography, motion, what to leave out — those calls are still mine. AI widens how much I can try and how quickly; it does not decide what is good."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **The work is specified, not just prompted.** Every build runs against an explicit artifact — a scoped checklist of what finished means for each piece — so progress stays legible and honest about what is actually done."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **I own what ships.** Architecture, review, and accountability stay with me. The speed comes from cutting time on the mechanical parts, not from skipping the parts that matter."
+      }
+    ]
+  },
+  {
     "id": "builds",
     "title": "Selected Product Builds",
     "icon": "FaLaptopCode",

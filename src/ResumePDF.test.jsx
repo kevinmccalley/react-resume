@@ -129,6 +129,11 @@ describe("ResumePDF", () => {
     expect(screen.queryByText("Case Study — AccessBridge")).not.toBeInTheDocument();
   });
 
+  it("includes the How I Work section in the PDF", () => {
+    render(<ResumePDF />);
+    expect(screen.getByText("How I Work")).toBeInTheDocument();
+  });
+
   it("renders the product builds section", () => {
     render(<ResumePDF />);
     expect(screen.getByText("Selected Product Builds")).toBeInTheDocument();
