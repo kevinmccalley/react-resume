@@ -559,7 +559,9 @@ kbd {
   aspect-ratio: 16 / 10;
   background: var(--surface-2);
 }
-.build-media img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+/* contain (not cover) so each screenshot sits fully inside the frame,
+   edges intact; the letterbox matches .build-media's own background */
+.build-media img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
 
 .build-media.is-placeholder {
   display: grid;
