@@ -352,6 +352,7 @@ const SECTION_KEYS = {
   accessibility: "a",
   uses: "u",
   contact: "t",
+  colophon: "l",
 };
 
 function prefersReducedMotion() {
@@ -565,17 +566,19 @@ export default function ReactResume() {
           </div>
 
           <div className="side-nav">
-            {sections.map(({ id, title, icon }) => (
-              <NavLink
-                key={id}
-                to={`/${id}`}
-                onClick={closeMenu}
-                className={({ isActive }) => (isActive ? "active-menu-item" : undefined)}
-              >
-                <span className="menu-icon">{iconMap[icon]}</span>
-                <span className="menu-text">{title}</span>
-              </NavLink>
-            ))}
+            {sections
+              .filter((s) => !s.navHidden)
+              .map(({ id, title, icon }) => (
+                <NavLink
+                  key={id}
+                  to={`/${id}`}
+                  onClick={closeMenu}
+                  className={({ isActive }) => (isActive ? "active-menu-item" : undefined)}
+                >
+                  <span className="menu-icon">{iconMap[icon]}</span>
+                  <span className="menu-text">{title}</span>
+                </NavLink>
+              ))}
           </div>
 
           <div className="sidebar-footer">
@@ -584,6 +587,9 @@ export default function ReactResume() {
             <button type="button" className="kbd-hint" onClick={() => setHelpOpen(true)}>
               <span aria-hidden="true">⌨</span> Keyboard shortcuts <kbd>?</kbd>
             </button>
+            <Link to="/colophon" className="foot-link" onClick={closeMenu}>
+              Colophon
+            </Link>
           </div>
         </nav>
 

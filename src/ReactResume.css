@@ -419,6 +419,15 @@ kbd {
 .kbd-hint:hover { color: var(--text); }
 .kbd-hint kbd { font-size: 0.7rem; }
 
+.sidebar-footer .foot-link {
+  margin-top: 0.55rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.sidebar-footer .foot-link:hover,
+.sidebar-footer .foot-link:focus-visible { color: var(--text); }
+
 .kbd-help-backdrop {
   position: fixed;
   inset: 0;

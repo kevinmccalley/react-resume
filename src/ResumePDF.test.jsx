@@ -116,7 +116,7 @@ describe("ResumePDF", () => {
 
   it("renders every section that isn't PDF-omitted", () => {
     render(<ResumePDF />);
-    const omit = ["prototypes", "case-groundswell", "uses"];
+    const omit = ["prototypes", "case-groundswell", "uses", "colophon"];
     sectionsData
       .filter((s) => !omit.includes(s.id))
       .forEach((section) => {

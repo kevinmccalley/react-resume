@@ -456,5 +456,50 @@
       "email": "kevinmccalley@proton.me",
       "linkedin": "kevin-mccalley"
     }
+  },
+  {
+    "id": "colophon",
+    "title": "Colophon",
+    "subtitle": "How this site is built.",
+    "icon": "FaWrench",
+    "navHidden": true,
+    "content": [
+      {
+        "type": "markdown",
+        "text": "In the tradition of a printer's colophon — the note at the back of a book that records how it was made."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Framework:** React with Vite, client-rendered, no SSR; routing with React Router."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Type:** Fraunces for headings, Inter for text — both from Google Fonts, Fraunces on its optical-size axis."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Icons:** Phosphor, duotone weight."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Styling:** hand-written CSS with custom properties; five themes, switchable in the sidebar."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **PDF:** built in the browser with @react-pdf/renderer, fonts embedded."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Hosting:** Vercel, deployed from `main` on every push."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Built:** in dialogue with Claude Code against a checklist — the process the *How I Work* section describes."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Source:** [github.com/kevinmccalley/react-resume](https://github.com/kevinmccalley/react-resume)"
+      }
+    ]
   }
 ]

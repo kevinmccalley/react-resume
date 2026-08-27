@@ -182,7 +182,7 @@ const RenderContent = ({ content }) => {
 };
 
 const ResumePDF = () => {
-  const PDF_OMIT = ["prototypes", "case-groundswell", "uses"];
+  const PDF_OMIT = ["prototypes", "case-groundswell", "uses", "colophon"];
   const sections = sectionsData.filter((s) => !PDF_OMIT.includes(s.id));
   const overview = sections.find((s) => s.id === "overview");
   const rest = sections.filter((s) => s.id !== "overview");

@@ -82,12 +82,13 @@ describe("ReactResume", () => {
     await waitFor(() => expect(global.fetch).toHaveBeenCalledWith("/sections.json"));
   });
 
-  it("renders a sidebar nav link for every section", async () => {
+  it("renders a sidebar nav link for every visible section", async () => {
     renderApp();
     await waitForLoad();
     const nav = document.querySelector(".side-nav");
-    expect(nav.querySelectorAll("a").length).toBe(sectionsData.length);
-    sectionsData.forEach((s) => {
+    const visible = sectionsData.filter((s) => !s.navHidden);
+    expect(nav.querySelectorAll("a").length).toBe(visible.length);
+    visible.forEach((s) => {
       expect(within(nav).getByText(s.title)).toBeInTheDocument();
     });
   });
@@ -95,7 +96,20 @@ describe("ReactResume", () => {
   it("renders an icon for every sidebar item", async () => {
     renderApp();
     await waitForLoad();
-    expect(document.querySelectorAll(".side-nav .menu-icon").length).toBe(sectionsData.length);
+    const visible = sectionsData.filter((s) => !s.navHidden);
+    expect(document.querySelectorAll(".side-nav .menu-icon").length).toBe(visible.length);
+  });
+
+  it("reaches the hidden colophon via the footer link", async () => {
+    const user = userEvent.setup();
+    renderApp();
+    await waitForLoad();
+    expect(document.querySelector(".side-nav")).not.toHaveTextContent("Colophon");
+    await user.click(screen.getByRole("link", { name: "Colophon" }));
+    await waitFor(() => {
+      expect(screen.getByText("How this site is built.")).toBeInTheDocument();
+      expect(screen.getByText(/in the tradition of a printer/i)).toBeInTheDocument();
+    });
   });
 
   it("renders the identity wordmark linking home", async () => {
