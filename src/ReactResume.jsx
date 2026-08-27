@@ -13,6 +13,7 @@ import {
   GraduationCap,
   Target,
   PersonArmsSpread,
+  Wrench,
   Envelope,
   List,
   ArrowRight,
@@ -50,6 +51,7 @@ const iconMap = {
   FaGraduationCap: <GraduationCap />,
   FaBullseye: <Target />,
   FaUniversalAccess: <PersonArmsSpread />,
+  FaWrench: <Wrench />,
   FaEnvelope: <Envelope />,
 };
 
@@ -348,6 +350,7 @@ const SECTION_KEYS = {
   education: "d",
   strengths: "s",
   accessibility: "a",
+  uses: "u",
   contact: "t",
 };
 
@@ -553,8 +556,10 @@ export default function ReactResume() {
 
         <nav className={`sidebar ${mobileMenuOpen ? "open" : ""}`} aria-label="Sections">
           <div className="identity">
-            <img className="avatar" src="/assets/avatar.jpg" alt="Kevin McCalley" width="52" height="52" />
-            <div className="who">Kevin McCalley</div>
+            <Link to="/overview" className="wordmark" aria-label="Kevin McCalley — home">
+              <span>Kevin</span>
+              <span>McCalley</span>
+            </Link>
             <div className="role">Senior Front-End Engineer &amp; UI/UX Designer</div>
             <div className="where">Remote · United States</div>
           </div>

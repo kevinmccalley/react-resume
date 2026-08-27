@@ -405,6 +405,50 @@
     ]
   },
   {
+    "id": "uses",
+    "title": "Uses",
+    "subtitle": "The tools behind the work — kept deliberately small.",
+    "icon": "FaWrench",
+    "content": [
+      {
+        "type": "markdown",
+        "text": "If something isn't on this list, I probably don't use it."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Editor & terminal:** most of a build now runs through **Claude Code** in the terminal; **VS Code** for everything else. Windows 10, with **PowerShell** and **Git Bash** side by side and **Node** managed by nvm."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Frameworks:** **React** + **Vite** for apps, **Next.js** when a project needs SSR or routing weight, **Hono** for APIs. **TypeScript** on everything."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Styling:** plain CSS with custom properties for smaller sites (this one), **Tailwind** for larger ones. **Fraunces** + **Inter** here; **Phosphor** for icons."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Data & platform:** **Postgres** on Neon with **Drizzle**, SQLite for local, **Vercel KV** for edge state. **Clerk** for auth, **Stripe** for billing."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Hosting:** **Vercel** for anything front-end or serverless, **Railway** for long-running Node backends. **GitHub** for everything."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Testing:** **Vitest** + Testing Library, **Playwright** + **axe-core** for browser and accessibility checks."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Design:** **Figma** for interface work; increasingly, a written spec and a checklist worked through in dialogue with Claude."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Machine:** a Windows desktop. The exact hardware is unremarkable — I'll fill it in here when it changes."
+      }
+    ]
+  },
+  {
     "id": "contact",
     "title": "Contact",
     "icon": "FaEnvelope",

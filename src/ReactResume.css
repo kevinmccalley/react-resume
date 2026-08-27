@@ -150,17 +150,22 @@ a { color: var(--accent); }
 
 .identity { display: flex; flex-direction: column; gap: 0.5rem; }
 
-.identity .avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid var(--border);
-  background: var(--surface-2);
+.identity .wordmark {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-decoration: none;
 }
+.identity .wordmark span { display: block; }
+.identity .wordmark span:last-child { color: var(--text-muted); }
+.identity .wordmark:hover span:last-child,
+.identity .wordmark:focus-visible span:last-child { color: var(--accent); }
 
-.identity .who { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; line-height: 1.2; }
-.identity .role { font-size: 0.82rem; color: var(--text-muted); line-height: 1.35; }
+.identity .role { font-size: 0.82rem; color: var(--text-muted); line-height: 1.35; margin-top: 0.15rem; }
 .identity .where { font-size: 0.76rem; color: var(--text-muted); }
 
 .side-nav { display: flex; flex-direction: column; gap: 2px; flex: 1; }

@@ -98,11 +98,15 @@ describe("ReactResume", () => {
     expect(document.querySelectorAll(".side-nav .menu-icon").length).toBe(sectionsData.length);
   });
 
-  it("renders the identity block", async () => {
+  it("renders the identity wordmark linking home", async () => {
     renderApp();
     await waitForLoad();
     const sidebar = document.querySelector(".sidebar");
-    expect(within(sidebar).getByText("Kevin McCalley")).toBeInTheDocument();
+    const mark = within(sidebar).getByRole("link", { name: /kevin mccalley/i });
+    expect(mark).toHaveClass("wordmark");
+    expect(mark).toHaveAttribute("href", "/overview");
+    expect(mark).toHaveTextContent(/Kevin/);
+    expect(mark).toHaveTextContent(/McCalley/);
   });
 
   it("renders the mobile menu button", async () => {
@@ -278,6 +282,17 @@ describe("ReactResume", () => {
     await waitFor(() => {
       expect(screen.getByText(/Taste is the constraint, not the tool/i)).toBeInTheDocument();
       expect(screen.getByText(/I own what ships/i)).toBeInTheDocument();
+    });
+  });
+
+  it("renders the Uses section", async () => {
+    const user = userEvent.setup();
+    renderApp();
+    await waitForLoad();
+    await navigateTo(user, "Uses");
+    await waitFor(() => {
+      expect(screen.getByText(/Editor & terminal/i)).toBeInTheDocument();
+      expect(screen.getByText(/kept deliberately small/i)).toBeInTheDocument();
     });
   });
 
