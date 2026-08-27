@@ -562,7 +562,7 @@ export default function ReactResume() {
               <span>McCalley</span>
             </Link>
             <div className="role">Product Designer &amp; Full-Stack Developer</div>
-            <div className="where">Remote · United States</div>
+            <div className="where">Portugal · remote, US business hours</div>
           </div>
 
           <div className="side-nav">

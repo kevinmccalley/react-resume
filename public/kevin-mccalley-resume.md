@@ -2,7 +2,8 @@
 
 Product Designer & Full-Stack Developer
 
-- Location: Remote (United States)
+- Location: Portugal — remote, US business hours
+- Availability: Remote roles with US companies that hire internationally
 - Email: kevinmccalley@proton.me
 - LinkedIn: linkedin.com/in/kevin-mccalley
 - GitHub: github.com/kevinmccalley
@@ -12,7 +13,7 @@ Product Designer & Full-Stack Developer
 
 ## Summary
 
-Front-end engineer and UI/UX designer who takes web applications from Figma prototype to shipped, maintained product. Core strength is visual design and front-end engineering in React and TypeScript, extended over the last several years into full-stack delivery: API design, relational data modeling, authentication, payments, and deployment. Currently designs, builds, and operates several production applications end to end. Uses AI-assisted development (Claude Code) daily while keeping architecture, code review, and accountability in-house.
+Product designer and full-stack developer who takes web applications from Figma prototype to shipped, maintained product. Core strength is visual design and front-end engineering in React and TypeScript, extended over the last several years into full-stack delivery: API design, relational data modeling, authentication, payments, and deployment. Currently designs, builds, and operates several production applications end to end. Uses AI-assisted development (Claude Code) daily while keeping architecture, code review, and accountability in-house.
 
 ---
 
