@@ -449,6 +449,38 @@ main p { margin: 0 0 0.9rem; }
   }
 }
 
+/* gold corner ribbon (e.g. a "100%" award badge over a figure) */
+.case-figure-ribbon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 128px;
+  height: 128px;
+  overflow: hidden;
+  border-top-left-radius: var(--radius-sm);
+  pointer-events: none;
+}
+.case-figure-ribbon > span {
+  position: absolute;
+  left: -52px;
+  top: 30px;
+  width: 190px;
+  padding: 7px 0;
+  transform: rotate(-45deg);
+  background: linear-gradient(135deg, #ffe7a3 0%, #eebf54 45%, #c9962e 100%);
+  color: #3a2a06;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.35);
+}
+@media (max-width: 560px) {
+  .case-figure-ribbon { width: 104px; height: 104px; }
+  .case-figure-ribbon > span { left: -50px; top: 22px; width: 170px; font-size: 0.85rem; }
+}
+
 main strong { font-weight: 650; color: var(--text); }
 
 /* ---------- Keyboard shortcuts ---------- */

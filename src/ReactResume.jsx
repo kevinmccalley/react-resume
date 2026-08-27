@@ -243,6 +243,7 @@ function RenderContent({ content }) {
               alt={item.alt}
               caption={item.caption}
               logo={item.logo}
+              ribbon={item.ribbon}
             />
           );
 
@@ -351,7 +352,7 @@ function GroundswellMark() {
   );
 }
 
-function CaseFigure({ src, alt, caption, logo }) {
+function CaseFigure({ src, alt, caption, logo, ribbon }) {
   return (
     <figure className="case-figure">
       <div className="case-figure-frame">
@@ -359,6 +360,11 @@ function CaseFigure({ src, alt, caption, logo }) {
         {logo && (
           <span className="case-figure-logo" aria-hidden="true">
             <GroundswellMark />
+          </span>
+        )}
+        {ribbon && (
+          <span className="case-figure-ribbon" aria-hidden="true">
+            <span>{ribbon}</span>
           </span>
         )}
       </div>

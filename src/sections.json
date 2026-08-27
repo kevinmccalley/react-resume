@@ -411,7 +411,14 @@
       },
       {
         "type": "markdown",
-        "text": "This site is held to that standard. Every page is checked with axe-core — the same audit engine behind [AccessBridge](https://accessbridge.app), my accessibility-scanning tool — against **WCAG 2.1 A and AA in full**, plus the **AAA enhanced-contrast** criterion (1.4.6), across all five colour themes and the keyboard-shortcuts dialog. The current build reports **zero automated violations**. Last checked August 2026."
+        "text": "This site is held to that standard. Every page is checked with axe-core — the same audit engine behind [AccessBridge](https://accessbridge.app), my accessibility-scanning tool — against **WCAG 2.1 A and AA in full**, plus the **AAA enhanced-contrast** criterion (1.4.6), across all five colour themes and the keyboard-shortcuts dialog. Then I run the whole résumé through AccessBridge itself: the latest full-site scan came back **100 / 100 — zero violations**."
+      },
+      {
+        "type": "caseFigure",
+        "src": "/assets/accessbridge_100.jpg",
+        "alt": "AccessBridge full-scan report for kevinmccalley.vercel.app: a score of 100, with zero critical, serious, moderate and minor violations, above a green banner reading 'No violations found — great work!'",
+        "ribbon": "100%",
+        "caption": "AccessBridge full-site scan, August 2026 — every crawled page, zero automated violations at WCAG A, AA, and AAA contrast."
       }
     ]
   },
