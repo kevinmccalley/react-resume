@@ -298,11 +298,11 @@ main section {
 
 /* Grid-driven sections use the full width; only their intro text is capped. */
 main section#builds,
-main section#portfolio {
+main section#prototypes {
   max-width: none;
 }
 main section#builds > div > p,
-main section#portfolio > div > p {
+main section#prototypes > div > p {
   max-width: var(--reading-max);
 }
 

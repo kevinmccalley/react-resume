@@ -221,10 +221,14 @@
     ]
   },
   {
-    "id": "portfolio",
-    "title": "Portfolio",
+    "id": "prototypes",
+    "title": "Design Prototypes",
     "icon": "FaBriefcase",
     "content": [
+      {
+        "type": "markdown",
+        "text": "Interactive Figma and Adobe XD prototypes — interaction patterns and enterprise console flows from client design work."
+      },
       {
         "type": "portfolioGrid"
       }

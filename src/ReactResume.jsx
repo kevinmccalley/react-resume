@@ -1,19 +1,20 @@
 // ReactResume.jsx
 import React, { useState } from "react";
 import {
-  FaUser,
-  FaClipboardList,
-  FaLaptopCode,
-  FaBuilding,
-  FaBriefcase,
-  FaHistory,
-  FaGraduationCap,
-  FaBullseye,
-  FaUniversalAccess,
-  FaEnvelope,
-  FaBars,
-  FaArrowRight,
-} from "react-icons/fa";
+  IconContext,
+  User,
+  ClipboardText,
+  Code,
+  Buildings,
+  Briefcase,
+  ClockCounterClockwise,
+  GraduationCap,
+  Target,
+  PersonArmsSpread,
+  Envelope,
+  List,
+  ArrowRight,
+} from "@phosphor-icons/react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -30,18 +31,19 @@ import ResumePDF from "./ResumePDF";
 import SkipLink from "./SkipLink";
 import "./ReactResume.css";
 
-// Map icon names from sections.json to components
+// Map icon names from sections.json to components.
+// Names are kept Fa-prefixed for back-compat with sections.json; the glyphs are Phosphor.
 const iconMap = {
-  FaUser: <FaUser />,
-  FaClipboardList: <FaClipboardList />,
-  FaLaptopCode: <FaLaptopCode />,
-  FaBuilding: <FaBuilding />,
-  FaBriefcase: <FaBriefcase />,
-  FaHistory: <FaHistory />,
-  FaGraduationCap: <FaGraduationCap />,
-  FaBullseye: <FaBullseye />,
-  FaUniversalAccess: <FaUniversalAccess />,
-  FaEnvelope: <FaEnvelope />,
+  FaUser: <User />,
+  FaClipboardList: <ClipboardText />,
+  FaLaptopCode: <Code />,
+  FaBuilding: <Buildings />,
+  FaBriefcase: <Briefcase />,
+  FaHistory: <ClockCounterClockwise />,
+  FaGraduationCap: <GraduationCap />,
+  FaBullseye: <Target />,
+  FaUniversalAccess: <PersonArmsSpread />,
+  FaEnvelope: <Envelope />,
 };
 
 function initialsOf(name) {
@@ -93,7 +95,7 @@ function BuildGrid({ items }) {
               {b.scope && <span className="build-scope">{b.scope}</span>}
               {b.link ? (
                 <a className="build-link" href={b.link} target="_blank" rel="noopener noreferrer">
-                  {b.linkLabel || "Visit"} <FaArrowRight aria-hidden="true" />
+                  {b.linkLabel || "Visit"} <ArrowRight aria-hidden="true" />
                 </a>
               ) : (
                 <span className="build-link is-inactive">{b.linkLabel}</span>
@@ -106,7 +108,7 @@ function BuildGrid({ items }) {
   );
 }
 
-// ---------- Portfolio (prototypes & demos) ----------
+// ---------- Design Prototypes ----------
 const portfolioProjects = [
   {
     title: "Keyboard User Interface",
@@ -115,30 +117,6 @@ const portfolioProjects = [
     thumbnail: "/assets/thumb_keyboard.png",
     footer: "View Prototype - Figma",
     link: "https://www.figma.com/community/file/1563421262526349742",
-  },
-  {
-    title: "Acrylic Mix Lab",
-    subtitle: "Paint Mixer",
-    icon: "/assets/react.png",
-    thumbnail: "/assets/thumb_mixlab.png",
-    footer: "View Application - React",
-    link: "https://paint-mixer.vercel.app/",
-  },
-  {
-    title: "Math Fun",
-    subtitle: "Math Learning Games",
-    icon: "/assets/react.png",
-    thumbnail: "/assets/thumb_math.png",
-    footer: "View Application - React",
-    link: "https://times-table-kvv9kc70x-kevin-mccalleys-projects.vercel.app/",
-  },
-  {
-    title: "Translation",
-    subtitle: "Translation Application",
-    icon: "/assets/react.png",
-    thumbnail: "/assets/thumb_translator.png",
-    footer: "View Application - React",
-    link: "https://translate-app-bice-three.vercel.app/",
   },
   {
     title: "Enhanced Search",
@@ -179,30 +157,6 @@ const portfolioProjects = [
     thumbnail: "/assets/thumb_match.png",
     footer: "View Prototype - Adobe XD",
     link: "https://xd.adobe.com/view/a17f0a80-3516-46de-95a8-558002c7753a-f42c/",
-  },
-  {
-    title: "XD Prototype",
-    subtitle: "4Spheres Design Process",
-    icon: "/assets/xd.png",
-    thumbnail: "/assets/thumb_spheres.png",
-    footer: "View Prototype - Adobe XD",
-    link: "https://xd.adobe.com/view/8319b7e6-69b2-4c9f-908e-6d5d81bef4ff-d64a/",
-  },
-  {
-    title: "Figma Prototype",
-    subtitle: "4Spheres Design Process",
-    icon: "/assets/figma.svg",
-    thumbnail: "/assets/thumb_spheres.png",
-    footer: "View Prototype - Figma",
-    link: "https://www.figma.com/design/M6wK582bEJt8AKhf1qCzr5/4Spheres?node-id=3-2&p=f",
-  },
-  {
-    title: "Single Page Application",
-    subtitle: "4Spheres Design Process",
-    icon: "/assets/react.png",
-    thumbnail: "/assets/thumb_spheres.png",
-    footer: "View Application - React",
-    link: "https://kevinmccalley.github.io/4spheres/",
   },
 ];
 
@@ -349,6 +303,7 @@ export default function ReactResume() {
   const closeMenu = () => setMobileMenuOpen(false);
 
   return (
+    <IconContext.Provider value={{ weight: "duotone", size: "1em" }}>
     <Router>
       <SkipLink />
 
@@ -359,7 +314,7 @@ export default function ReactResume() {
           aria-label="Toggle menu"
           aria-expanded={mobileMenuOpen}
         >
-          <FaBars size={20} />
+          <List size={20} />
         </button>
 
         <nav className={`sidebar ${mobileMenuOpen ? "open" : ""}`} aria-label="Sections">
@@ -415,5 +370,6 @@ export default function ReactResume() {
         </PDFDownloadLink>
       </div>
     </Router>
+    </IconContext.Provider>
   );
 }

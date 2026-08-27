@@ -41,14 +41,14 @@ describe("ResumePDF", () => {
     }
   });
 
-  it("excludes the portfolio section from PDF", () => {
+  it("excludes the design prototypes section from PDF", () => {
     render(<ResumePDF />);
-    // Portfolio section title should not appear as a section heading
+    // Design Prototypes section title should not appear as a section heading
     const allText = screen.getByTestId("pdf-document").textContent;
-    // Check that there's no "Portfolio" section heading rendered
+    // Check that there's no "Design Prototypes" section heading rendered
     // (It may appear in content text, but not as a section)
-    const portfolioSection = sectionsData.find((s) => s.id === "portfolio");
-    // The portfolio section should be filtered out
+    const portfolioSection = sectionsData.find((s) => s.id === "prototypes");
+    // The prototypes section should be filtered out
     const sectionViews = screen.getAllByTestId("pdf-view");
     expect(sectionViews.length).toBeGreaterThan(0);
   });
@@ -114,9 +114,9 @@ describe("ResumePDF", () => {
     expect(screen.getByText("Earlier Career History")).toBeInTheDocument();
   });
 
-  it("renders all non-portfolio sections", () => {
+  it("renders all non-prototype sections", () => {
     render(<ResumePDF />);
-    const nonPortfolioSections = sectionsData.filter((s) => s.id !== "portfolio");
+    const nonPortfolioSections = sectionsData.filter((s) => s.id !== "prototypes");
     nonPortfolioSections.forEach((section) => {
       expect(screen.getByText(section.title)).toBeInTheDocument();
     });

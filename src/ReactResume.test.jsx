@@ -202,24 +202,24 @@ describe("ReactResume", () => {
     });
   });
 
-  it("renders the portfolio section with project cards", async () => {
+  it("renders the design prototypes section with project cards", async () => {
     const user = userEvent.setup();
     renderApp();
     await waitForLoad();
-    await navigateTo(user, "Portfolio");
+    await navigateTo(user, "Design Prototypes");
     await waitFor(() => {
-      expect(screen.getByText("Math Fun")).toBeInTheDocument();
-      expect(screen.getByText("Translation")).toBeInTheDocument();
-      expect(document.querySelectorAll(".portfolio-item").length).toBe(12);
-      expect(document.querySelectorAll(".portfolio-thumbnail").length).toBe(12);
+      expect(screen.getByText("Keyboard User Interface")).toBeInTheDocument();
+      expect(screen.getByText("Enhanced Search")).toBeInTheDocument();
+      expect(document.querySelectorAll(".portfolio-item").length).toBe(6);
+      expect(document.querySelectorAll(".portfolio-thumbnail").length).toBe(6);
     });
   });
 
-  it("opens portfolio links in a new tab", async () => {
+  it("opens prototype links in a new tab", async () => {
     const user = userEvent.setup();
     renderApp();
     await waitForLoad();
-    await navigateTo(user, "Portfolio");
+    await navigateTo(user, "Design Prototypes");
     await waitFor(() => {
       const items = document.querySelectorAll(".portfolio-item");
       expect(items.length).toBeGreaterThan(0);

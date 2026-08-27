@@ -153,7 +153,7 @@ const RenderContent = ({ content }) => {
 };
 
 const ResumePDF = () => {
-  const sections = sectionsData.filter((s) => s.id !== "portfolio");
+  const sections = sectionsData.filter((s) => s.id !== "prototypes");
   const overview = sections.find((s) => s.id === "overview");
   const rest = sections.filter((s) => s.id !== "overview");
 
