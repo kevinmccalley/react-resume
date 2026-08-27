@@ -261,4 +261,18 @@ describe("ReactResume", () => {
     expect(skip).toHaveAttribute("href", "#main-content");
     expect(document.getElementById("main-content")).toBeInTheDocument();
   });
+
+  it("renders a 404 section for an unknown route", async () => {
+    window.history.pushState({}, "", "/no-such-page");
+    renderApp();
+    await waitForLoad();
+    await waitFor(() => {
+      expect(screen.getByText("404")).toBeInTheDocument();
+      expect(screen.getByText(/isn.t on the r.sum/i)).toBeInTheDocument();
+      expect(
+        within(document.querySelector(".notfound-links")).getByText("Overview")
+      ).toBeInTheDocument();
+    });
+    window.history.pushState({}, "", "/");
+  });
 });

@@ -306,6 +306,34 @@ main h3 {
 main section > div { font-size: 1rem; line-height: 1.7; }
 
 main p { margin: 0 0 0.9rem; }
+
+/* ---------- 404 ---------- */
+.notfound-code {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3rem, 10vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  margin: 0 0 0.75rem;
+}
+.notfound h2 { margin-bottom: 0.75rem; }
+.notfound p { max-width: 52ch; color: var(--text); }
+.notfound-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+.notfound-links a {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+}
+.notfound-links a:hover { text-decoration: underline; }
 main strong { font-weight: 650; color: var(--text); }
 
 /* markdown list items (rendered as individual blocks by the app) */

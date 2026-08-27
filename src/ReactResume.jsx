@@ -21,6 +21,7 @@ import {
   Route,
   NavLink,
   Navigate,
+  Link,
 } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { PDFDownloadLink } from "@react-pdf/renderer";
@@ -282,6 +283,26 @@ function SectionContent({ section }) {
   );
 }
 
+// ---------- 404 ----------
+function NotFound() {
+  return (
+    <section className="notfound">
+      <p className="notfound-code" aria-hidden="true">404</p>
+      <h2>This page isn&rsquo;t on the r&eacute;sum&eacute;</h2>
+      <p>
+        The link you followed points to a section that doesn&rsquo;t exist &mdash; a
+        mistyped URL, or something I&rsquo;ve since renamed or removed.
+      </p>
+      <nav className="notfound-links" aria-label="Suggested pages">
+        <Link to="/overview">Overview</Link>
+        <Link to="/builds">Selected Product Builds</Link>
+        <Link to="/prototypes">Design Prototypes</Link>
+        <Link to="/contact">Contact</Link>
+      </nav>
+    </section>
+  );
+}
+
 // ---------- Main ----------
 export default function ReactResume() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -357,7 +378,7 @@ export default function ReactResume() {
             {sections.map((s) => (
               <Route key={s.id} path={`/${s.id}`} element={<SectionContent section={s} />} />
             ))}
-            <Route path="*" element={<div>Page not found.</div>} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
 
