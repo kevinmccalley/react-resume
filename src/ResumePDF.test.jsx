@@ -114,12 +114,19 @@ describe("ResumePDF", () => {
     expect(screen.getByText("Earlier Career History")).toBeInTheDocument();
   });
 
-  it("renders all non-prototype sections", () => {
+  it("renders every section that isn't PDF-omitted", () => {
     render(<ResumePDF />);
-    const nonPortfolioSections = sectionsData.filter((s) => s.id !== "prototypes");
-    nonPortfolioSections.forEach((section) => {
-      expect(screen.getByText(section.title)).toBeInTheDocument();
-    });
+    const omit = ["prototypes", "case-accessbridge"];
+    sectionsData
+      .filter((s) => !omit.includes(s.id))
+      .forEach((section) => {
+        expect(screen.getByText(section.title)).toBeInTheDocument();
+      });
+  });
+
+  it("omits the AccessBridge case study from the PDF", () => {
+    render(<ResumePDF />);
+    expect(screen.queryByText("Case Study — AccessBridge")).not.toBeInTheDocument();
   });
 
   it("renders the product builds section", () => {

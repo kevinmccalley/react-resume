@@ -153,7 +153,8 @@ const RenderContent = ({ content }) => {
 };
 
 const ResumePDF = () => {
-  const sections = sectionsData.filter((s) => s.id !== "prototypes");
+  const PDF_OMIT = ["prototypes", "case-accessbridge"];
+  const sections = sectionsData.filter((s) => !PDF_OMIT.includes(s.id));
   const overview = sections.find((s) => s.id === "overview");
   const rest = sections.filter((s) => s.id !== "overview");
 

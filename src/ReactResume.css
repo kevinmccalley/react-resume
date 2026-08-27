@@ -318,7 +318,7 @@ main p { margin: 0 0 0.9rem; }
   margin: 0 0 0.75rem;
 }
 .notfound h2 { margin-bottom: 0.75rem; }
-.notfound p { max-width: 52ch; color: var(--text); }
+.notfound p:not(.notfound-code) { max-width: 52ch; color: var(--text); }
 .notfound-links {
   display: flex;
   flex-wrap: wrap;
@@ -334,6 +334,52 @@ main p { margin: 0 0 0.9rem; }
   text-decoration: none;
 }
 .notfound-links a:hover { text-decoration: underline; }
+
+/* ---------- Case study ---------- */
+.case-study {
+  list-style: none;
+  counter-reset: case;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.case-step {
+  counter-increment: case;
+  position: relative;
+  padding-left: 2.75rem;
+}
+.case-step::before {
+  content: counter(case, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.case-label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.case-body p { margin: 0; max-width: 62ch; }
+.case-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+  background: var(--surface-2);
+  padding: 0.05em 0.35em;
+  border-radius: 3px;
+}
+@media (max-width: 560px) {
+  .case-step { padding-left: 2.25rem; }
+}
 main strong { font-weight: 650; color: var(--text); }
 
 /* markdown list items (rendered as individual blocks by the app) */

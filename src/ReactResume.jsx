@@ -224,6 +224,9 @@ function RenderContent({ content }) {
         case "portfolioGrid":
           return <PortfolioGrid key={idx} />;
 
+        case "caseStudy":
+          return <CaseStudy key={idx} steps={item.steps || []} />;
+
         default:
           return null;
       }
@@ -280,6 +283,22 @@ function SectionContent({ section }) {
         </div>
       )}
     </section>
+  );
+}
+
+// ---------- Case study ----------
+function CaseStudy({ steps }) {
+  return (
+    <ol className="case-study">
+      {steps.map((s, i) => (
+        <li key={i} className="case-step">
+          <span className="case-label">{s.label}</span>
+          <div className="case-body">
+            <ReactMarkdown>{s.body}</ReactMarkdown>
+          </div>
+        </li>
+      ))}
+    </ol>
   );
 }
 

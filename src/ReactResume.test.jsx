@@ -230,6 +230,19 @@ describe("ReactResume", () => {
     });
   });
 
+  it("renders the AccessBridge case study as ordered steps", async () => {
+    const user = userEvent.setup();
+    renderApp();
+    await waitForLoad();
+    await navigateTo(user, "Case Study — AccessBridge");
+    await waitFor(() => {
+      const steps = document.querySelectorAll(".case-study .case-step");
+      expect(steps.length).toBe(4);
+      expect(screen.getByText("The open trade-off")).toBeInTheDocument();
+      expect(screen.getByText(/nobody has found it yet/i)).toBeInTheDocument();
+    });
+  });
+
   it("renders the experience section with positions", async () => {
     const user = userEvent.setup();
     renderApp();
