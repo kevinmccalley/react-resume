@@ -561,7 +561,7 @@ export default function ReactResume() {
               <span>Kevin</span>
               <span>McCalley</span>
             </Link>
-            <div className="role">Senior Front-End Engineer &amp; UI/UX Designer</div>
+            <div className="role">Product Designer &amp; Full-Stack Developer</div>
             <div className="where">Remote · United States</div>
           </div>
 

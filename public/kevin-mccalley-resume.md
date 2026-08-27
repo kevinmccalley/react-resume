@@ -1,6 +1,6 @@
 # Kevin McCalley
 
-Senior Front-End Engineer & UI/UX Designer
+Product Designer & Full-Stack Developer
 
 - Location: Remote (United States)
 - Email: kevinmccalley@proton.me
