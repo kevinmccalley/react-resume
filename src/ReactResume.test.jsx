@@ -230,16 +230,16 @@ describe("ReactResume", () => {
     });
   });
 
-  it("renders the AccessBridge case study as ordered steps", async () => {
+  it("renders the Groundswell case study as ordered steps", async () => {
     const user = userEvent.setup();
     renderApp();
     await waitForLoad();
-    await navigateTo(user, "Case Study — AccessBridge");
+    await navigateTo(user, "Case Study");
     await waitFor(() => {
       const steps = document.querySelectorAll(".case-study .case-step");
       expect(steps.length).toBe(4);
-      expect(screen.getByText("The open trade-off")).toBeInTheDocument();
-      expect(screen.getByText(/nobody has found it yet/i)).toBeInTheDocument();
+      expect(screen.getByText("The hard part")).toBeInTheDocument();
+      expect(screen.getByText(/genuine repeat use/i)).toBeInTheDocument();
     });
   });
 

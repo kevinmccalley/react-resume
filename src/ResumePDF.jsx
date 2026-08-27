@@ -73,11 +73,11 @@ const styles = StyleSheet.create({
   contact: { marginBottom: 12 },
 });
 
-// Markdown parser: **bold**, *italic*, _italic_
+// Markdown parser: **bold**, *italic*, _italic_; [text](url) is flattened to "text (url)"
 const parseMarkdown = (text) => {
   if (!text) return null;
   const elements = [];
-  let remaining = text;
+  let remaining = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1 ($2)");
   let key = 0;
   const regex = /(\*\*([^*]+)\*\*)|(\*([^*]+)\*)|(_([^_]+?)_)/;
 
@@ -182,7 +182,7 @@ const RenderContent = ({ content }) => {
 };
 
 const ResumePDF = () => {
-  const PDF_OMIT = ["prototypes", "case-accessbridge"];
+  const PDF_OMIT = ["prototypes", "case-groundswell"];
   const sections = sectionsData.filter((s) => !PDF_OMIT.includes(s.id));
   const overview = sections.find((s) => s.id === "overview");
   const rest = sections.filter((s) => s.id !== "overview");

@@ -161,29 +161,29 @@
     ]
   },
   {
-    "id": "case-accessbridge",
-    "title": "Case Study — AccessBridge",
-    "subtitle": "Automated WCAG / ADA auditing — built solo, shipped end to end, and still unproven.",
-    "icon": "FaUniversalAccess",
+    "id": "case-groundswell",
+    "title": "Case Study",
+    "subtitle": "Groundswell — honest surf forecasting with a public accuracy record.",
+    "icon": "FaFileLines",
     "content": [
       {
         "type": "caseStudy",
         "steps": [
           {
             "label": "The problem",
-            "body": "ADA web-accessibility lawsuits against small businesses rose roughly 745% in 2025, and by most surveys 96% of live sites carry detectable WCAG violations. Owners are exposed, usually don't know it, and the market's decade-long answer — overlay widgets — demonstrably fails to fix the underlying markup and increasingly draws lawsuits of its own."
+            "body": "Every surf-forecast site shows you a swell chart; none show you how often the chart was right. Surfers plan dawn patrols and whole trips around numbers they have no way to audit, from services that never grade themselves."
           },
           {
-            "label": "The decision",
-            "body": "I chose not to build another overlay. A widget lets a vendor claim coverage without changing the site. AccessBridge does the opposite: it renders every page in a real browser (axe-core + Playwright), catches the violations static checkers miss, and returns a prioritized, plain-language remediation plan the owner or their developer can act on — an honest diagnosis, then a real path to a fix."
+            "label": "The bet",
+            "body": "Build the forecast **and** the scorecard. Every prediction Groundswell makes is stored, then graded against what actually happened — direction, size, timing — and the running track record is public. When the model is wrong, the site says so. That one constraint shaped the data pipeline, how forecasts are versioned, and what the interface is even allowed to claim."
           },
           {
-            "label": "The open trade-off",
-            "body": "The product can go two ways and I haven't settled which is right. One is a **$27 self-serve fix guide** — the scan plus a structured `skill.md` an AI coding agent can run against the codebase. The other is **done-for-you scanning and remediation** as a service. The cheap artifact scales and needs nothing from me; the service is where the real value, and the real proof, probably sit. Neither is validated, so both are still on the table."
+            "label": "The hard part",
+            "body": "Publishing your own error rate is a trust asset and a marketing liability at the same time. A competitor who never grades itself will always _look_ more confident. The wager is that a certain kind of surfer would rather have an honest tool than a slick one — and that betting the product on that is worth the people it turns away."
           },
           {
-            "label": "The outcome, honestly",
-            "body": "The platform runs end to end — authentication, Stripe billing, usage metering, a background job queue, the full scan pipeline. What it has no evidence of is demand: nobody has found it yet. Building it was the tractable part; distribution is the unsolved problem, and more engineering doesn't touch it. Run it back and I'd get a paying pilot committed _before_ building the billing system — that's the lesson I'm taking into the next one."
+            "label": "Where it stands",
+            "body": "Live for 600+ spots in five languages, backed by four-plus years of historical data, running as an installable PWA. It has a real, if still small, group of people who check it before they paddle out — not a paying base yet, but genuine repeat use, which is the signal that counts at this stage. The open question now is turning honest utility into something people pay for without compromising the thing that makes it honest."
           }
         ]
       }
@@ -397,6 +397,10 @@
       {
         "type": "markdown",
         "text": "I am committed to building applications that meet **WAI WCAG 2.1**, **Section 508**, and **ADA** standards for accessibility. My goal is to ensure that every product I design or develop can be used effectively by all people — regardless of ability or device."
+      },
+      {
+        "type": "markdown",
+        "text": "This site is held to that standard. Every page is checked against **WCAG 2.1 AA** with axe-core — the same audit engine behind [AccessBridge](https://accessbridge.app), my accessibility-scanning tool — and the current build reports **zero automated violations** across all routes, the keyboard-shortcuts dialog included. Last checked August 2026."
       }
     ]
   },

@@ -116,7 +116,7 @@ describe("ResumePDF", () => {
 
   it("renders every section that isn't PDF-omitted", () => {
     render(<ResumePDF />);
-    const omit = ["prototypes", "case-accessbridge"];
+    const omit = ["prototypes", "case-groundswell"];
     sectionsData
       .filter((s) => !omit.includes(s.id))
       .forEach((section) => {
@@ -124,9 +124,10 @@ describe("ResumePDF", () => {
       });
   });
 
-  it("omits the AccessBridge case study from the PDF", () => {
+  it("omits the case study from the PDF", () => {
     render(<ResumePDF />);
-    expect(screen.queryByText("Case Study — AccessBridge")).not.toBeInTheDocument();
+    expect(screen.queryByText("Case Study")).not.toBeInTheDocument();
+    expect(screen.queryByText(/honest surf forecasting/i)).not.toBeInTheDocument();
   });
 
   it("includes the How I Work section in the PDF", () => {

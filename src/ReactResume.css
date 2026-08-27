@@ -192,6 +192,7 @@ a { color: var(--accent); }
   justify-content: center;
   flex-shrink: 0;
 }
+.side-nav .menu-text { min-width: 0; text-wrap: balance; }
 
 .sidebar-footer {
   border-top: 1px solid var(--border);
