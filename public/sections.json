@@ -11,7 +11,7 @@
       },
       {
         "type": "markdown",
-        "text": "I've shipped and now operate several production applications end to end, including **AccessBridge**, an automated WCAG / ADA auditing platform, and **Groundswell**, a global surf-forecasting service. **AI-assisted development** (Claude) is part of my daily workflow — I use it to move faster while keeping architecture, code review, and accountability firmly with me."
+        "text": "I've shipped and now operate several production applications end to end, including **AccessBridge**, an automated WCAG / ADA auditing platform, and **Groundswell**, a global surf-forecasting service. That same end-to-end approach also drives **GoodStockPress**, a line of 18 personalized print-on-demand card decks — each its own browser-based personalization wizard — sold on Etsy. **AI-assisted development** (Claude) is part of my daily workflow — I use it to move faster while keeping architecture, code review, and accountability firmly with me."
       }
     ]
   },
@@ -93,6 +93,16 @@
             "image": "/assets/shot_spdaily.jpg"
           },
           {
+            "name": "GoodStockPress",
+            "tagline": "An 18-product line of personalized, print-at-home card decks — each its own browser-based personalization wizard",
+            "description": "Digital-download card decks and stationery sold on Etsy — affirmation decks, tribute decks, kids' trading cards, wedding suites — each personalized in a short web wizard that scores quiz answers against a hand-written content bank (or takes real names and photos), then renders a print-ready, multi-page PDF entirely in the browser with jsPDF, along with Cricut / Silhouette cut files. A shared hub site adds a searchable catalogue, a blog, and a serverless print-shop finder. Built deliberately dependency-light — no framework, no build step.",
+            "stack": ["Vanilla JS", "jsPDF", "Vercel", "Serverless Functions", "Cron", "JSON-LD / SEO", "Etsy"],
+            "scope": "Sole developer — product design, content banks, in-browser PDF engine, hub site, SEO",
+            "link": "https://goodstockpress.vercel.app/shop",
+            "linkLabel": "goodstockpress.vercel.app",
+            "image": "/assets/shot_goodstockpress.jpg"
+          },
+          {
             "name": "Acrylic Mix Lab",
             "tagline": "OKLab colour solver for mixing acrylic paint",
             "description": "Enter a target colour and the app solves for the parts-by-weight recipe from your actual tube set, working in perceptually-uniform OKLab space. Saved recipes, tube calibration, and a custom-paint library.",
@@ -103,22 +113,24 @@
             "image": "/assets/shot_paintmixer.jpg"
           },
           {
-            "name": "TestPilot",
-            "tagline": "AI-assisted test generation for JavaScript / TypeScript projects",
-            "description": "Connects to a GitHub repository, analyses the codebase, and drafts reviewable test suites. Node / Express API, React SPA, GitHub OAuth, Stripe billing, SQLite (WAL), deployed on Railway.",
-            "stack": ["Node", "Express", "TypeScript", "React", "Anthropic SDK", "GitHub OAuth", "Stripe", "SQLite", "Railway"],
-            "scope": "Sole developer — private beta",
-            "link": null,
-            "linkLabel": "Private beta"
+            "name": "LunchLanguage",
+            "tagline": "A language-learning game for kids — cook a meal, then solve math puzzles about it",
+            "description": "Kids pick a meal, drag ingredients to build it, then answer math questions about what they made. The whole game — Chef Zesty's dialogue, menus, and quiz — is localized into nine languages with an in-game language picker, so a child can play through it in a language they're learning. Fully client-side and animation-driven, with my own kids as product testers.",
+            "stack": ["React 19", "TypeScript", "Vite", "Zustand", "Framer Motion", "dnd-kit", "i18n (9 locales)"],
+            "scope": "Sole developer",
+            "link": "https://lunch-language.vercel.app",
+            "linkLabel": "lunch-language.vercel.app",
+            "image": "/assets/shot_lunchlanguage.jpg"
           },
           {
-            "name": "LunchLanguage",
-            "tagline": "A cooking-and-math learning game for elementary-age kids",
-            "description": "Players assemble meals and answer math questions about the ingredients. Fully client-side, animation-driven, built around a kid-first interaction model — with my own kids as product testers.",
-            "stack": ["Vite", "React", "TypeScript", "Zustand", "Framer Motion"],
-            "scope": "Sole developer — in development",
-            "link": null,
-            "linkLabel": "In development"
+            "name": "Translate App",
+            "tagline": "A personal translation workspace — phrasebooks, flashcards, and PDF export",
+            "description": "Translates text between six languages with text-to-speech playback, a built-in common-phrases book, and user-defined phrase lists that can be drilled as themed flashcards or exported to PDF. A post-processing pass rewrites Brazilian Portuguese output into European Portuguese from a hand-built substitution dictionary. Client-only React app with a Material UI interface and a switchable theme system.",
+            "stack": ["React", "Vite", "Material UI", "React Router", "Emotion", "jsPDF", "Web Speech API"],
+            "scope": "Sole developer — personal project",
+            "link": "https://translate-app-bice-three.vercel.app",
+            "linkLabel": "translate-app-bice-three.vercel.app",
+            "image": "/assets/shot_translateapp.jpg"
           }
         ]
       }

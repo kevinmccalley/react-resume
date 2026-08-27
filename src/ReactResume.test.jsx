@@ -182,8 +182,9 @@ describe("ReactResume", () => {
       expect(screen.getByText("AccessBridge")).toBeInTheDocument();
       expect(screen.getByText("Groundswell")).toBeInTheDocument();
       expect(screen.getByText("S&P Daily")).toBeInTheDocument();
+      expect(screen.getByText("GoodStockPress")).toBeInTheDocument();
     });
-    expect(document.querySelectorAll(".build-card").length).toBe(6);
+    expect(document.querySelectorAll(".build-card").length).toBe(7);
   });
 
   it("gives every external build link a safe new-tab target", async () => {
@@ -193,7 +194,7 @@ describe("ReactResume", () => {
     await navigateTo(user, "Selected Product Builds");
     await waitFor(() => {
       const links = document.querySelectorAll(".build-card a.build-link");
-      expect(links.length).toBe(4);
+      expect(links.length).toBe(7);
       links.forEach((a) => {
         expect(a).toHaveAttribute("target", "_blank");
         expect(a).toHaveAttribute("rel", "noopener noreferrer");
