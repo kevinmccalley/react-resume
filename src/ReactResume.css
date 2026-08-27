@@ -556,7 +556,9 @@ kbd {
   border-radius: var(--radius-sm);
   overflow: hidden;
   border: 1px solid var(--border);
-  aspect-ratio: 16 / 10;
+  /* matches the build screenshots' native ratio so `contain` fills the
+     frame edge-to-edge with no letterbox bars */
+  aspect-ratio: 1529 / 784;
   background: var(--surface-2);
 }
 /* contain (not cover) so each screenshot sits fully inside the frame,
