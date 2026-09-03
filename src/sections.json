@@ -123,11 +123,11 @@
           {
             "name": "GoodStockPress",
             "tagline": "An 18-product line of personalized, print-at-home card decks — each its own browser-based personalization wizard",
-            "description": "Digital-download card decks and stationery sold on Etsy — affirmation decks, tribute decks, kids' trading cards, wedding suites — each personalized in a short web wizard that scores quiz answers against a hand-written content bank (or takes real names and photos), then renders a print-ready, multi-page PDF entirely in the browser with jsPDF, along with Cricut / Silhouette cut files. A shared hub site adds a searchable catalogue, a blog, and a serverless print-shop finder. Built deliberately dependency-light — no framework, no build step.",
+            "description": "Digital-download card decks and stationery sold on Etsy — affirmation decks, tribute decks, kids' trading cards, wedding suites — each personalized in a short web wizard that scores quiz answers against a hand-written content bank (or takes real names and photos), then renders a print-ready, multi-page PDF entirely in the browser with jsPDF, along with Cricut / Silhouette cut files. A shared hub at goodstockpress.com ties it together with a full-bleed editorial home page — a live product carousel and a reader-tunable colour theme that re-derives every accent, border, and ink tone from the chosen background hue — plus a searchable catalogue, a blog, and a serverless print-shop finder, all carrying hand-built Product / ItemList / FAQ structured data. Built deliberately dependency-light — no framework, no build step.",
             "stack": ["Vanilla JS", "jsPDF", "Vercel", "Serverless Functions", "Cron", "JSON-LD / SEO", "Etsy"],
             "scope": "Sole developer — product design, content banks, in-browser PDF engine, hub site, SEO",
-            "link": "https://goodstockpress.vercel.app/shop",
-            "linkLabel": "goodstockpress.vercel.app",
+            "link": "https://goodstockpress.com",
+            "linkLabel": "goodstockpress.com",
             "image": "/assets/shot_goodstockpress.jpg"
           },
           {
