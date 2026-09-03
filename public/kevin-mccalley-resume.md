@@ -102,9 +102,9 @@ Stack: Next.js, TypeScript, Tailwind, Clerk, Stripe, Vercel KV, Leaflet, Rechart
 Deterministic, self-grading daily S&P 500 forecast. A scheduled job scores market data with pure math, classifies a regime, and stores a probabilistic next-day forecast; a second job grades it after the close. Sole developer.
 Stack: Hono, Neon PostgreSQL, Drizzle, React, Vite, Vercel Cron.
 
-### GoodStockPress - goodstockpress.vercel.app
+### GoodStockPress - goodstockpress.com
 
-An 18-product line of personalized, print-at-home card decks, each its own browser-based personalization wizard that renders a print-ready multi-page PDF client-side. Built deliberately dependency-light (no framework, no build step). Sole developer.
+An 18-product line of personalized, print-at-home digital download card decks, each its own browser-based personalization wizard that renders a print-ready multi-page PDF client-side. A full-bleed editorial hub site adds a live product carousel and a reader-tunable colour theme. Built deliberately dependency-light (no framework, no build step). Sole developer.
 Stack: Vanilla JS, jsPDF, Vercel Serverless Functions, Cron.
 
 Additional shipped projects: LunchLanguage (kids' language-learning game; React 19, nine locales) and Translate App (personal translation workspace).
