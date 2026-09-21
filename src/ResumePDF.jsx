@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     lineHeight: 1.45,
     color: "#1a1a18",
   },
-  header: { fontFamily: "Fraunces", fontSize: 22, fontWeight: 600, marginBottom: 4 },
+  header: { fontFamily: "Fraunces", fontSize: 22, fontWeight: 600, marginBottom: 8 },
   subheader: { fontSize: 11.5, color: "#444", marginBottom: 12 },
   sectionTitle: {
     fontFamily: "Fraunces",
