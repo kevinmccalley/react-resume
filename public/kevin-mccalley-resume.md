@@ -50,7 +50,7 @@ AI-native product development using Claude Code and MCP-connected tooling. I use
 Remote | 2025 - Present
 
 - Design, build, and operate production web applications end to end: interface, API, database, authentication, billing, and deployment.
-- Built and operate AccessBridge, a production accessibility-auditing SaaS: real-browser scanning (Playwright + axe-core), a Hono API on Neon Postgres / Drizzle, Clerk authentication, Stripe subscription billing with plan-based usage limits, a background job queue (Upstash QStash), and AI-written explanations and code fixes (Anthropic API).
+- Built and operate AccessBridge, a production accessibility-auditing SaaS: real-browser scanning (Playwright + axe-core), a Hono API on Neon Postgres / Drizzle, Clerk authentication, Stripe subscription billing with plan-based usage limits, a background job queue (Upstash QStash), transactional email and alerts (Resend), and AI-written explanations and code fixes (Anthropic API).
 - Shipped Groundswell, a global surf-forecasting service, as a live subscription product, alongside several smaller tools, each maintained in production.
 - Adopted AI-assisted development (Claude Code) to compress delivery time while keeping architectural decisions and code review in-house.
 - Stack: React, TypeScript, Next.js, Hono, Node.js, PostgreSQL / Drizzle, Stripe, Clerk, Vercel, Railway.

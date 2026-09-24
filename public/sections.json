@@ -135,7 +135,7 @@
             "name": "AccessBridge",
             "tagline": "Automated WCAG / ADA accessibility audits for small-business sites",
             "description": "A real-browser scanner (axe-core + Playwright) that renders every page, catches the violations static checkers miss, and returns a prioritized, plain-language fix guide. Full SaaS: authentication, subscription billing, usage metering, and a background job queue.",
-            "stack": ["React 18", "Vite", "Hono", "Neon Postgres", "Drizzle", "Clerk", "Stripe", "Playwright", "Anthropic SDK", "Vercel"],
+            "stack": ["React 18", "Vite", "Hono", "Neon Postgres", "Drizzle", "Clerk", "Stripe", "Resend", "Playwright", "Anthropic SDK", "Vercel"],
             "scope": "Sole developer — design, front end, API, database, deployment",
             "link": "https://accessbridge.app",
             "linkLabel": "accessbridge.app",
@@ -259,7 +259,7 @@
       },
       {
         "type": "markdownListitem",
-        "text": "• **Built and operate AccessBridge**, a production accessibility-auditing SaaS: real-browser scanning (**Playwright + axe-core**), a **Hono** API on **Neon Postgres** / Drizzle, **Clerk** authentication, **Stripe** subscription billing with plan-based usage limits, a background job queue (**Upstash QStash**), and AI-written explanations and code fixes (**Anthropic API**)."
+        "text": "• **Built and operate AccessBridge**, a production accessibility-auditing SaaS: real-browser scanning (**Playwright + axe-core**), a **Hono** API on **Neon Postgres** / Drizzle, **Clerk** authentication, **Stripe** subscription billing with plan-based usage limits, a background job queue (**Upstash QStash**), transactional email and alerts (**Resend**), and AI-written explanations and code fixes (**Anthropic API**)."
       },
       {
         "type": "markdownListitem",
