@@ -15,6 +15,7 @@ import {
   PersonArmsSpread,
   Wrench,
   Envelope,
+  Sparkle,
   List,
   ArrowRight,
 } from "@phosphor-icons/react";
@@ -53,6 +54,7 @@ const iconMap = {
   FaUniversalAccess: <PersonArmsSpread />,
   FaWrench: <Wrench />,
   FaEnvelope: <Envelope />,
+  FaSparkle: <Sparkle />,
 };
 
 function initialsOf(name) {
@@ -298,6 +300,7 @@ function SectionContent({ section }) {
         {section.title}
       </h1>
       {section.subtitle && <h2>{section.subtitle}</h2>}
+      {section.tagline && <p className="tagline">{section.tagline}</p>}
       {section.id === "contact" ? (
         <div>
           <ContactForm />
@@ -397,6 +400,7 @@ function NotFound() {
 // "g" then one of these letters jumps to that section.
 const SECTION_KEYS = {
   overview: "o",
+  "ai-engineering": "i",
   highlights: "q",
   "how-i-work": "w",
   builds: "b",
@@ -618,7 +622,7 @@ export default function ReactResume() {
               <span>Kevin</span>
               <span>McCalley</span>
             </Link>
-            <div className="role">Product Developer and<br />Full Stack Developer</div>
+            <div className="role">Senior Full-Stack /<br />Product Engineer</div>
             <div className="where">Portugal · remote, US business hours</div>
           </div>
 

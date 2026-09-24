@@ -2,20 +2,53 @@
   {
     "id": "overview",
     "title": "Overview",
-    "subtitle": "Kevin McCalley — Product Designer & Full-Stack Developer",
+    "subtitle": "Kevin McCalley — Senior Full-Stack / Product Engineer",
+    "tagline": "React · TypeScript · AI Applications · Node.js · PostgreSQL",
     "icon": "FaUser",
     "content": [
       {
         "type": "markdown",
-        "text": "I design and build **accessible, responsive web applications** — from Figma prototype through to shipped, maintained product. My core is visual design and front-end engineering in **React** and **TypeScript**; over the last few years I've extended that into **full-stack delivery**: API design, relational data modeling, authentication, payments, and deployment."
+        "text": "I'm a senior full-stack engineer who ships and operates **production web products** end to end — **React** and **TypeScript** interfaces, **Node.js** APIs, **PostgreSQL** data models, authentication, payments, background jobs, and deployment, including **AI applications** built on the Anthropic API."
       },
       {
         "type": "markdown",
-        "text": "I've shipped and now operate several production applications end to end, including **AccessBridge**, an automated WCAG / ADA auditing platform, and **Groundswell**, a global surf-forecasting service. That same end-to-end approach also drives **GoodStockPress**, a line of 18 personalized print-at-home digital download card decks — each its own browser-based personalization wizard — sold on Etsy. **AI-assisted development** (Claude) is part of my daily workflow — I use it to move faster while keeping architecture, code review, and accountability firmly with me."
+        "text": "I currently run several live products, including **Groundswell**, a global surf-forecasting service, and **GoodStockPress**, a line of 18 personalized print-at-home digital download card decks — each its own browser-based personalization wizard — sold on Etsy."
+      },
+      {
+        "type": "markdown",
+        "text": "**Accessibility engineering** is my specialized second track. I built and operate **AccessBridge**, an automated WCAG / ADA auditing platform that renders every page in a real browser (axe-core + Playwright) and returns a prioritized fix guide, and I hold my own products to WCAG 2.1 AA — AAA where it counts."
+      },
+      {
+        "type": "markdown",
+        "text": "My background is in product and interface design, and it still shapes how I build. I prototype in **Figma** and, now, in self-hosted **Penpot** connected to Claude, so design and code iterate together instead of being handed off."
       },
       {
         "type": "markdown",
         "text": "I'm based in **Portugal** and keep hours that overlap the US working day. I'm most interested in remote roles with US companies that are comfortable hiring internationally."
+      }
+    ]
+  },
+  {
+    "id": "ai-engineering",
+    "title": "AI Engineering",
+    "subtitle": "Evidence, not enthusiasm.",
+    "icon": "FaSparkle",
+    "content": [
+      {
+        "type": "markdown",
+        "text": "AI-native product development using **Claude Code** and **MCP-connected tooling**. I build production software with agentic coding workflows while keeping architectural ownership, code review, testing, and production accountability with me."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **AI in the product, not just the workflow:** AccessBridge uses the **Anthropic API** in production to explain each accessibility violation in plain English and write a copy-paste code fix."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Agentic coding with gates:** every build runs in Claude Code against a scoped checklist, and test suites (**Vitest**, **Playwright + axe-core**) decide what ships — not the model."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **AI-in-the-loop design:** self-hosted **Penpot** (Docker) connected to Claude via **MCP**, producing token-based design systems and clickable prototypes that stay synchronized with production code."
       }
     ]
   },
@@ -26,7 +59,7 @@
     "content": [
       {
         "type": "markdown",
-        "text": "Skilled communicator with a track record of translating complex requirements into accessible, maintainable interfaces — and, increasingly, the systems behind them. Comfortable owning a feature from design file to production."
+        "text": "Owning a product from spec to production — and keeping it running. Skilled communicator with a track record of translating complex requirements into maintainable systems and accessible interfaces."
       },
       {
         "type": "markdownListitem",
@@ -34,23 +67,27 @@
       },
       {
         "type": "markdownListitem",
-        "text": "• **UI & Design:** Figma, Adobe XD, Photoshop, Illustrator, Framer Motion, Tailwind CSS, Material UI"
-      },
-      {
-        "type": "markdownListitem",
         "text": "• **Back End & Data:** PostgreSQL (Neon), Drizzle ORM, SQLite, REST API design, background jobs & scheduled tasks"
       },
       {
         "type": "markdownListitem",
-        "text": "• **Platform & Tooling:** Vercel, Railway, Git, Vite, npm / pnpm, Stripe, Clerk / OAuth, Playwright, axe-core, Postman, Jira, Confluence"
+        "text": "• **AI Applications & Tooling:** Anthropic API (Claude) in production features; Claude Code in daily use for scaffolding, refactoring, and review, plus AI-driven design iteration in Penpot via MCP — I own the architecture and every line that ships"
       },
       {
         "type": "markdownListitem",
-        "text": "• **AI-Assisted Development:** Claude Code in daily use for scaffolding, refactoring, and review — I own the architecture and every line that ships"
+        "text": "• **Platform & Tooling:** Vercel, Railway, Docker, Git, Vite, npm / pnpm, Stripe, Clerk / OAuth, Postman, Jira, Confluence"
       },
       {
         "type": "markdownListitem",
-        "text": "• **Practices:** Accessibility (WCAG 2.1, Section 508, ADA), Responsive Design, Usability Testing, Agile, Technical Writing"
+        "text": "• **Accessibility Engineering:** WCAG 2.1 AA / AAA, Section 508, ADA; automated auditing with axe-core + Playwright"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **UI & Design:** Figma, Penpot, Adobe XD, Photoshop, Illustrator, Framer Motion, Tailwind CSS, Material UI"
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Practices:** Responsive Design, Usability Testing, Agile, Technical Writing"
       }
     ]
   },
@@ -75,6 +112,10 @@
       {
         "type": "markdownListitem",
         "text": "• **I own what ships.** Architecture, review, and accountability stay with me. The speed comes from cutting time on the mechanical parts, not from skipping the parts that matter."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **The design file is back in the loop.** I run **Penpot** self-hosted in **Docker** and connect it to Claude via MCP, so design work happens in a real canvas again, not only in code. Claude builds the tokens, components, and clickable prototype directly in the file; I mark it up the way I always have — a guide here, a spacing fix there — and the change is measured and carried into the shipped code. It is the part of the job I started in, now with a collaborator who can draw."
       }
     ]
   },
@@ -210,7 +251,7 @@
         "title": "Independent",
         "date": "2025 – Present",
         "location": "Remote",
-        "role": "Product Designer & Full-Stack Developer"
+        "role": "Senior Full-Stack / Product Engineer"
       },
       {
         "type": "markdownListitem",
@@ -218,7 +259,11 @@
       },
       {
         "type": "markdownListitem",
-        "text": "• **Shipped AccessBridge and Groundswell** as live subscription products, alongside several smaller tools, each maintained in production."
+        "text": "• **Built and operate AccessBridge**, a production accessibility-auditing SaaS: real-browser scanning (**Playwright + axe-core**), a **Hono** API on **Neon Postgres** / Drizzle, **Clerk** authentication, **Stripe** subscription billing with plan-based usage limits, a background job queue (**Upstash QStash**), and AI-written explanations and code fixes (**Anthropic API**)."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Shipped Groundswell**, a global surf-forecasting service, as a live subscription product, alongside several smaller tools, each maintained in production."
       },
       {
         "type": "markdownListitem",
@@ -458,7 +503,7 @@
       },
       {
         "type": "markdownListitem",
-        "text": "• **Design:** **Figma** for interface work; increasingly, a written spec and a checklist worked through in dialogue with Claude."
+        "text": "• **Design:** **Penpot**, self-hosted in **Docker** and wired to Claude through MCP, for design systems and clickable prototypes; **Figma** for client files. Specs and checklists still frame the work."
       },
       {
         "type": "markdownListitem",

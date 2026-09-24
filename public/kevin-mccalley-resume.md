@@ -1,6 +1,8 @@
 # Kevin McCalley
 
-Product Designer & Full-Stack Developer
+Senior Full-Stack / Product Engineer
+
+React · TypeScript · AI Applications · Node.js · PostgreSQL
 
 - Location: Portugal — remote, US business hours
 - Availability: Remote roles with US companies that hire internationally
@@ -13,29 +15,43 @@ Product Designer & Full-Stack Developer
 
 ## Summary
 
-Product designer and full-stack developer who takes web applications from Figma prototype to shipped, maintained product. Core strength is visual design and front-end engineering in React and TypeScript, extended over the last several years into full-stack delivery: API design, relational data modeling, authentication, payments, and deployment. Currently designs, builds, and operates several production applications end to end. Uses AI-assisted development (Claude Code) daily while keeping architecture, code review, and accountability in-house.
+Senior full-stack engineer who ships and operates production web products end to end: React and TypeScript interfaces, Node.js APIs, PostgreSQL data models, authentication, payments, background jobs, and deployment. Builds AI applications on the Anthropic API. Currently runs several live products, including Groundswell (global surf forecasting) and GoodStockPress (18 browser-based personalization apps sold on Etsy).
+
+Specialized second track in accessibility engineering: built and operates AccessBridge, an automated WCAG / ADA auditing platform using real-browser axe-core + Playwright scans. Background in product and interface design; prototypes in Figma and in self-hosted Penpot connected to Claude, so design and code iterate together.
+
+---
+
+## AI Engineering
+
+AI-native product development using Claude Code and MCP-connected tooling. I build production software with agentic coding workflows while keeping architectural ownership, code review, testing, and production accountability with me.
+
+- AI in the product, not just the workflow: AccessBridge uses the Anthropic API in production to explain each accessibility violation in plain English and write a copy-paste code fix.
+- Agentic coding with gates: every build runs in Claude Code against a scoped checklist, and test suites (Vitest, Playwright + axe-core) decide what ships — not the model.
+- AI-in-the-loop design: self-hosted Penpot (Docker) connected to Claude via MCP, producing token-based design systems and clickable prototypes that stay synchronized with production code.
 
 ---
 
 ## Skills
 
 - Languages & Frameworks: React, TypeScript, JavaScript (ES6+), Node.js, HTML5, CSS3, SCSS, Next.js, Hono, Express
-- UI & Design: Figma, Adobe XD, Photoshop, Illustrator, Tailwind CSS, Material UI, Framer Motion, design systems, responsive design, usability testing
 - Back End & Data: PostgreSQL (Neon), Drizzle ORM, SQLite, REST API design, background jobs and scheduled tasks
-- Platform & Tooling: Vercel, Railway, Git, Vite, npm / pnpm, Stripe, Clerk / OAuth, Playwright, axe-core, Postman, Jira, Confluence
-- Accessibility: WCAG 2.1, Section 508, ADA
-- Ways of working: Agile, technical writing, AI-assisted development (Claude Code)
+- AI Applications & Tooling: Anthropic API (Claude) in production features, Claude Code, AI-driven design iteration (Penpot via MCP)
+- Platform & Tooling: Vercel, Railway, Docker, Git, Vite, npm / pnpm, Stripe, Clerk / OAuth, Postman, Jira, Confluence
+- Accessibility Engineering: WCAG 2.1 AA / AAA, Section 508, ADA, automated auditing with axe-core + Playwright
+- UI & Design: Figma, Penpot, Adobe XD, Photoshop, Illustrator, Tailwind CSS, Material UI, Framer Motion, design systems, responsive design, usability testing
+- Ways of working: Agile, technical writing
 
 ---
 
 ## Experience
 
-### Independent - Product Designer & Full-Stack Developer
+### Independent - Senior Full-Stack / Product Engineer
 
 Remote | 2025 - Present
 
 - Design, build, and operate production web applications end to end: interface, API, database, authentication, billing, and deployment.
-- Shipped AccessBridge and Groundswell as live subscription products, alongside several smaller tools, each maintained in production.
+- Built and operate AccessBridge, a production accessibility-auditing SaaS: real-browser scanning (Playwright + axe-core), a Hono API on Neon Postgres / Drizzle, Clerk authentication, Stripe subscription billing with plan-based usage limits, a background job queue (Upstash QStash), and AI-written explanations and code fixes (Anthropic API).
+- Shipped Groundswell, a global surf-forecasting service, as a live subscription product, alongside several smaller tools, each maintained in production.
 - Adopted AI-assisted development (Claude Code) to compress delivery time while keeping architectural decisions and code review in-house.
 - Stack: React, TypeScript, Next.js, Hono, Node.js, PostgreSQL / Drizzle, Stripe, Clerk, Vercel, Railway.
 

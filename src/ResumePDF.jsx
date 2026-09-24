@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   },
   header: { fontFamily: "Fraunces", fontSize: 22, fontWeight: 600, marginBottom: 8 },
   subheader: { fontSize: 11.5, color: "#444", marginBottom: 12 },
+  tagline: { fontSize: 10, color: "#666", marginTop: -8, marginBottom: 12 },
   sectionTitle: {
     fontFamily: "Fraunces",
     fontSize: 13,
@@ -194,6 +195,7 @@ const ResumePDF = () => {
           <View style={{ marginBottom: 10 }}>
             <Text style={styles.header}>{overview.title}</Text>
             {overview.subtitle && <Text style={styles.subheader}>{overview.subtitle}</Text>}
+            {overview.tagline && <Text style={styles.tagline}>{overview.tagline}</Text>}
             <RenderContent content={overview.content} />
           </View>
         )}

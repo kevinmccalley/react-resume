@@ -356,7 +356,21 @@ describe("ReactResume", () => {
     await user.keyboard("j");
     await waitFor(() => {
       expect(document.querySelector(".side-nav a.active-menu-item")).toHaveTextContent(
+        "AI Engineering"
+      );
+    });
+
+    await user.keyboard("j");
+    await waitFor(() => {
+      expect(document.querySelector(".side-nav a.active-menu-item")).toHaveTextContent(
         "Qualifications"
+      );
+    });
+
+    await user.keyboard("gi");
+    await waitFor(() => {
+      expect(document.querySelector(".side-nav a.active-menu-item")).toHaveTextContent(
+        "AI Engineering"
       );
     });
 

@@ -306,6 +306,8 @@ main h2 {
   color: var(--text-muted);
   margin: -0.4rem 0 1.5rem;
 }
+main h2:has(+ .tagline) { margin-bottom: 0.35rem; }
+main .tagline { font-size: 0.9rem; letter-spacing: 0.01em; color: var(--text-muted); margin: 0 0 1.5rem; }
 
 main section > div { font-size: 1rem; line-height: 1.7; }
 
