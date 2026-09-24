@@ -23,7 +23,7 @@ Specialized second track in accessibility engineering: built and operates Access
 
 ## AI Engineering
 
-AI-native product development using Claude Code and MCP-connected tooling. I build production software with agentic coding workflows while keeping architectural ownership, code review, testing, and production accountability with me.
+AI-native product development using Claude Code and MCP-connected tooling. I use AI-assisted development extensively while retaining architectural ownership, code review, testing, and production accountability.
 
 - AI in the product, not just the workflow: AccessBridge uses the Anthropic API in production to explain each accessibility violation in plain English and write a copy-paste code fix.
 - Agentic coding with gates: every build runs in Claude Code against a scoped checklist, and test suites (Vitest, Playwright + axe-core) decide what ships — not the model.
