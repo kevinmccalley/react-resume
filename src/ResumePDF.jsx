@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
   header: { fontFamily: "Fraunces", fontSize: 22, fontWeight: 600, marginBottom: 8 },
   subheader: { fontSize: 11.5, color: "#444", marginBottom: 12 },
   tagline: { fontSize: 10, color: "#666", marginTop: -8, marginBottom: 12 },
+  headerLinks: { fontSize: 8.5, color: "#444", marginTop: -8, marginBottom: 12 },
   sectionTitle: {
     fontFamily: "Fraunces",
     fontSize: 13,
@@ -192,13 +193,28 @@ const RenderContent = ({ content }) => {
   return <Text>{content}</Text>;
 };
 
-// `sections` lets a résumé variant (see variant.js) supply its own framing;
-// the default is the main résumé.
-const ResumePDF = ({ sections: source = sectionsData }) => {
-  const PDF_OMIT = ["prototypes", "case-groundswell", "uses", "colophon"];
+const SITE = "kevinmccalley.vercel.app";
+
+// `sections`, `site` and `breakBefore` let a résumé variant (see variant.js)
+// supply its own framing, address and page breaks; the defaults are the main résumé.
+const ResumePDF = ({ sections: source = sectionsData, site = SITE, breakBefore = [] }) => {
+  // "contact" is omitted because its details are in the header line.
+  const PDF_OMIT = ["prototypes", "case-groundswell", "uses", "colophon", "contact"];
   const sections = source.filter((s) => !PDF_OMIT.includes(s.id));
   const overview = sections.find((s) => s.id === "overview");
   const rest = sections.filter((s) => s.id !== "overview");
+
+  // A PDF travels without the site, so the header says where to find the rest.
+  const contact = source.find((s) => s.id === "contact")?.content || {};
+  const headerLinks = [
+    contact.email && { label: contact.email, href: `mailto:${contact.email}` },
+    { label: site, href: `https://${site}` },
+    contact.github && { label: `github.com/${contact.github}`, href: `https://github.com/${contact.github}` },
+    contact.linkedin && {
+      label: `linkedin.com/in/${contact.linkedin}`,
+      href: `https://www.linkedin.com/in/${contact.linkedin}`,
+    },
+  ].filter(Boolean);
 
   return (
     <Document>
@@ -208,13 +224,22 @@ const ResumePDF = ({ sections: source = sectionsData }) => {
             <Text style={styles.header}>{overview.title}</Text>
             {overview.subtitle && <Text style={styles.subheader}>{overview.subtitle}</Text>}
             {overview.tagline && <Text style={styles.tagline}>{overview.tagline}</Text>}
+            <Text style={styles.headerLinks}>
+              {headerLinks.map(({ label, href }, i) => (
+                <React.Fragment key={label}>
+                  {i > 0 && "  ·  "}
+                  <Link src={href} style={styles.link}>{label}</Link>
+                </React.Fragment>
+              ))}
+            </Text>
             <RenderContent content={overview.content} />
           </View>
         )}
 
         {rest.map((section) => (
-          <View key={section.id} style={{ marginBottom: 8 }}>
-            <Text style={styles.sectionTitle}>{section.title}</Text>
+          <View key={section.id} style={{ marginBottom: 8 }} break={breakBefore.includes(section.id)}>
+            {/* minPresenceAhead keeps a heading from being stranded at the foot of a page */}
+            <Text style={styles.sectionTitle} minPresenceAhead={60}>{section.title}</Text>
             <RenderContent content={section.content} />
           </View>
         ))}

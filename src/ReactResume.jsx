@@ -695,7 +695,17 @@ export default function ReactResume() {
 
           {/* fixed-position, but kept inside <main> so it lives within a landmark */}
           <PDFDownloadLink
-            document={<ResumePDF sections={variant ? sections : undefined} />}
+            document={
+              variant ? (
+                <ResumePDF
+                  sections={sections}
+                  site={`kevinmccalley.vercel.app${variant.path}`}
+                  breakBefore={variant.pdfBreakBefore}
+                />
+              ) : (
+                <ResumePDF />
+              )
+            }
             fileName={variant?.pdfFileName || "Kevin_McCalley_Resume.pdf"}
             className="pdf-download"
           >

@@ -5,7 +5,9 @@ vi.mock("@react-pdf/renderer", () => ({
   Document: ({ children }) => <div data-testid="pdf-document">{children}</div>,
   Page: ({ children, size }) => <div data-testid="pdf-page" data-size={size}>{children}</div>,
   Text: ({ children, style }) => <span data-testid="pdf-text" data-style={JSON.stringify(style)}>{children}</span>,
-  View: ({ children, wrap }) => <div data-testid="pdf-view" data-wrap={wrap}>{children}</div>,
+  View: ({ children, wrap, break: pageBreak }) => (
+    <div data-testid="pdf-view" data-wrap={wrap} data-break={pageBreak ? "true" : undefined}>{children}</div>
+  ),
   StyleSheet: { create: (styles) => styles },
   Font: { register: vi.fn() },
   Link: ({ children, src }) => <a href={src}>{children}</a>,
@@ -117,7 +119,7 @@ describe("ResumePDF", () => {
 
   it("renders every section that isn't PDF-omitted", () => {
     render(<ResumePDF />);
-    const omit = ["prototypes", "case-groundswell", "uses", "colophon"];
+    const omit = ["prototypes", "case-groundswell", "uses", "colophon", "contact"];
     sectionsData
       .filter((s) => !omit.includes(s.id))
       .forEach((section) => {
@@ -205,5 +207,47 @@ describe("ResumePDF parseMarkdown", () => {
     expect(screen.getByTestId("pdf-document").textContent).toContain(
       "AccessBridge (https://accessbridge.app)"
     );
+  });
+
+  it("lists the site, GitHub and LinkedIn under the name", () => {
+    render(<ResumePDF />);
+    expect(screen.getByText("kevinmccalley.vercel.app")).toHaveAttribute(
+      "href",
+      "https://kevinmccalley.vercel.app"
+    );
+    expect(screen.getByText("github.com/kevinmccalley")).toHaveAttribute(
+      "href",
+      "https://github.com/kevinmccalley"
+    );
+    expect(screen.getByText("linkedin.com/in/kevin-mccalley")).toHaveAttribute(
+      "href",
+      "https://www.linkedin.com/in/kevin-mccalley"
+    );
+    expect(screen.getByText("kevinmccalley@proton.me")).toHaveAttribute(
+      "href",
+      "mailto:kevinmccalley@proton.me"
+    );
+    // The header replaces a separate Contact section.
+    expect(screen.queryByText("Contact")).not.toBeInTheDocument();
+  });
+
+  it("has no forced page breaks on the main résumé", () => {
+    render(<ResumePDF />);
+    expect(document.querySelectorAll('[data-break="true"]').length).toBe(0);
+  });
+
+  it("gives a variant its own address and starts the listed sections on a new page", () => {
+    const sections = applyVariant(sectionsData, VARIANTS.frontend);
+    render(
+      <ResumePDF
+        sections={sections}
+        site="kevinmccalley.vercel.app/frontend"
+        breakBefore={VARIANTS.frontend.pdfBreakBefore}
+      />
+    );
+    expect(screen.getByText("kevinmccalley.vercel.app/frontend")).toBeInTheDocument();
+    const broken = [...document.querySelectorAll('[data-break="true"]')];
+    expect(broken).toHaveLength(1);
+    expect(broken[0].textContent).toContain("Selected Product Builds");
   });
 });
