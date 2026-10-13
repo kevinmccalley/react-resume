@@ -27,8 +27,8 @@ Accessibility engineering is the specialty. Built WCAG-compliant interfaces at 3
 Remote | 2025 - Present
 
 - Design, build, and operate production web applications end to end: interface design, React / TypeScript front end, API, database, and deployment.
-- Built AccessBridge, an accessibility-auditing platform: real-browser scanning (Playwright + axe-core), plain-language results with AI-written code fixes, and an interface held to WCAG 2.1 AA.
-- Shipped Groundswell, a global surf-forecasting service: an installable PWA with one report surface serving five languages and eight colour themes, with charts and maps over live forecast data.
+- Built AccessBridge (accessbridge.app), an accessibility-auditing platform: real-browser scanning (Playwright + axe-core), plain-language results with AI-written code fixes, and an interface held to WCAG 2.1 AA.
+- Shipped Groundswell (groundswell.surf), a global surf-forecasting service: an installable PWA with one report surface serving five languages and eight colour themes, with charts and maps over live forecast data.
 - Built token-based design systems and clickable prototypes in self-hosted Penpot, kept synchronized with production code.
 - Test-gated delivery: AI-assisted development (Claude Code) with Vitest and Playwright + axe-core suites deciding what ships.
 - Stack: React, TypeScript, Next.js, Tailwind CSS, Hono, Node.js, PostgreSQL / Drizzle, Vercel.

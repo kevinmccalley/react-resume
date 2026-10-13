@@ -7,6 +7,7 @@ import {
   View,
   StyleSheet,
   Font,
+  Link,
 } from "@react-pdf/renderer";
 import sectionsData from "./sections.json";
 
@@ -72,15 +73,22 @@ const styles = StyleSheet.create({
   buildTagline: { fontStyle: "italic", fontSize: 10 },
   buildDetail: { fontSize: 9.5, color: "#333" },
   contact: { marginBottom: 12 },
+  link: { color: "#1a1a18", textDecoration: "none" },
 });
 
+// A link whose text is already its address ("accessbridge.app") prints as-is and stays clickable.
+const isBareUrl = (label, url) => url.replace(/^https?:\/\//, "").replace(/\/$/, "") === label;
+
 // Markdown parser: **bold**, *italic*, _italic_; [text](url) is flattened to "text (url)"
+// so the address survives on paper, unless the text is the address itself.
 const parseMarkdown = (text) => {
   if (!text) return null;
   const elements = [];
-  let remaining = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1 ($2)");
+  let remaining = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, label, url) =>
+    isBareUrl(label, url) ? m : `${label} (${url})`
+  );
   let key = 0;
-  const regex = /(\*\*([^*]+)\*\*)|(\*([^*]+)\*)|(_([^_]+?)_)/;
+  const regex = /(\*\*([^*]+)\*\*)|(\*([^*]+)\*)|(_([^_]+?)_)|(\[([^\]]+)\]\(([^)]+)\))/;
 
   while (remaining.length > 0) {
     const match = remaining.match(regex);
@@ -96,6 +104,8 @@ const parseMarkdown = (text) => {
       elements.push(<Text key={key++} style={{ fontStyle: "italic" }}>{match[4]}</Text>);
     } else if (match[5]) {
       elements.push(<Text key={key++} style={{ fontStyle: "italic" }}>{match[6]}</Text>);
+    } else if (match[7]) {
+      elements.push(<Link key={key++} src={match[9]} style={styles.link}>{match[8]}</Link>);
     }
     remaining = remaining.slice(index + match[0].length);
   }

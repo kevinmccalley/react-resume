@@ -259,11 +259,11 @@
       },
       {
         "type": "markdownListitem",
-        "text": "• **Built and operate AccessBridge**, a production accessibility-auditing SaaS: real-browser scanning (**Playwright + axe-core**), a **Hono** API on **Neon Postgres** / Drizzle, **Clerk** authentication, **Stripe** subscription billing with plan-based usage limits, a background job queue (**Upstash QStash**), transactional email and alerts (**Resend**), and AI-written explanations and code fixes (**Anthropic API**)."
+        "text": "• **Built and operate AccessBridge** ([accessbridge.app](https://accessbridge.app)), a production accessibility-auditing SaaS: real-browser scanning (**Playwright + axe-core**), a **Hono** API on **Neon Postgres** / Drizzle, **Clerk** authentication, **Stripe** subscription billing with plan-based usage limits, a background job queue (**Upstash QStash**), transactional email and alerts (**Resend**), and AI-written explanations and code fixes (**Anthropic API**)."
       },
       {
         "type": "markdownListitem",
-        "text": "• **Shipped Groundswell**, a global surf-forecasting service, as a live subscription product, alongside several smaller tools, each maintained in production."
+        "text": "• **Shipped Groundswell** ([groundswell.surf](https://groundswell.surf)), a global surf-forecasting service, as a live subscription product, alongside several smaller tools, each maintained in production."
       },
       {
         "type": "markdownListitem",

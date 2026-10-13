@@ -189,4 +189,21 @@ describe("ResumePDF parseMarkdown", () => {
       doc.textContent.indexOf("Qualifications")
     );
   });
+
+  it("prints project addresses in the experience bullets as clickable links", () => {
+    render(<ResumePDF />);
+    const link = screen.getByText("accessbridge.app", { selector: "a" });
+    expect(link).toHaveAttribute("href", "https://accessbridge.app");
+    expect(screen.getByText("groundswell.surf", { selector: "a" })).toHaveAttribute(
+      "href",
+      "https://groundswell.surf"
+    );
+  });
+
+  it("still spells out the address of a link whose text is not the address", () => {
+    render(<ResumePDF />);
+    expect(screen.getByTestId("pdf-document").textContent).toContain(
+      "AccessBridge (https://accessbridge.app)"
+    );
+  });
 });

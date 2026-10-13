@@ -69,11 +69,11 @@
         },
         {
           "type": "markdownListitem",
-          "text": "• **Built AccessBridge**, an accessibility-auditing platform: real-browser scanning (**Playwright + axe-core**), plain-language results with AI-written code fixes, and an interface held to WCAG 2.1 AA."
+          "text": "• **Built AccessBridge** ([accessbridge.app](https://accessbridge.app)), an accessibility-auditing platform: real-browser scanning (**Playwright + axe-core**), plain-language results with AI-written code fixes, and an interface held to WCAG 2.1 AA."
         },
         {
           "type": "markdownListitem",
-          "text": "• **Shipped Groundswell**, a global surf-forecasting service: an installable PWA with one report surface serving five languages and eight colour themes, with charts and maps over live forecast data."
+          "text": "• **Shipped Groundswell** ([groundswell.surf](https://groundswell.surf)), a global surf-forecasting service: an installable PWA with one report surface serving five languages and eight colour themes, with charts and maps over live forecast data."
         },
         {
           "type": "markdownListitem",
