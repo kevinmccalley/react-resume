@@ -16,7 +16,7 @@ React · TypeScript · Design Systems · Accessibility (WCAG / Section 508)
 
 Senior front-end engineer with a design background. Designs interfaces and builds them: React and TypeScript components, design systems, and accessible, responsive layouts. Has done both halves of that job on product teams since 2020, and for clients for twelve years before that.
 
-Accessibility engineering is the specialism. Built WCAG-compliant interfaces at 365 Retail Markets and Gaine Solutions, led UI reviews, and was recognized for leadership in accessibility and design standardization. Has since built AccessBridge, an automated WCAG / ADA auditing platform using real-browser axe-core + Playwright scans. Prototypes in Figma and Penpot and takes the result to production. Writes documentation, onboarding guides, and front-end style guidelines.
+Accessibility engineering is the specialty. Built WCAG-compliant interfaces at 365 Retail Markets and Gaine Solutions, led UI reviews, and was recognized for leadership in accessibility and design standardization. Has since built AccessBridge, an automated WCAG / ADA auditing platform using real-browser axe-core + Playwright scans. Prototypes in Figma and Penpot and takes the result to production. Writes documentation, onboarding guides, and front-end style guidelines.
 
 ---
 

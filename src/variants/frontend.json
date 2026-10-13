@@ -38,7 +38,7 @@
         },
         {
           "type": "markdown",
-          "text": "**Accessibility engineering** is my specialism. At 365 Retail Markets and Gaine Solutions I built WCAG-compliant interfaces, led UI reviews, and was recognized for leadership in accessibility and design standardization. I have since built **AccessBridge**, an automated WCAG / ADA auditing platform that renders every page in a real browser (axe-core + Playwright), and I hold my own products to WCAG 2.1 AA — AAA where it counts."
+          "text": "**Accessibility engineering** is my specialty. At 365 Retail Markets and Gaine Solutions I built WCAG-compliant interfaces, led UI reviews, and was recognized for leadership in accessibility and design standardization. I have since built **AccessBridge**, an automated WCAG / ADA auditing platform that renders every page in a real browser (axe-core + Playwright), and I hold my own products to WCAG 2.1 AA — AAA where it counts."
         },
         {
           "type": "markdown",
