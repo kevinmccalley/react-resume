@@ -43,7 +43,7 @@
         },
         {
           "type": "markdown",
-          "text": "I prototype in **Figma** and **Penpot** and take the result to production myself, so the design intent survives the build. I also write: documentation, onboarding guides, and front-end style guidelines have been part of every role I've held."
+          "text": "I design and prototype in **Figma** and **Penpot**, with either one connected to my AI tooling through MCP, and take the result to production myself, so the design intent survives the build. I also write: documentation, onboarding guides, and front-end style guidelines have been part of every role I've held."
         },
         {
           "type": "markdown",
@@ -78,7 +78,7 @@
         },
         {
           "type": "markdownListitem",
-          "text": "• **Built token-based design systems and clickable prototypes** in self-hosted Penpot, kept synchronized with production code."
+          "text": "• **Built token-based design systems and clickable prototypes** in Penpot, kept synchronized with production code; equally at home in Figma."
         },
         {
           "type": "markdownListitem",

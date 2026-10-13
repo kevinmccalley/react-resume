@@ -16,7 +16,7 @@ React · TypeScript · Design Systems · Accessibility (WCAG / Section 508)
 
 Senior front-end engineer with a design background. Designs interfaces and builds them: React and TypeScript components, design systems, and accessible, responsive layouts. Has done both halves of that job on product teams since 2020, and for clients for twelve years before that.
 
-Accessibility engineering is the specialty. Built WCAG-compliant interfaces at 365 Retail Markets and Gaine Solutions, led UI reviews, and was recognized for leadership in accessibility and design standardization. Has since built AccessBridge, an automated WCAG / ADA auditing platform using real-browser axe-core + Playwright scans. Prototypes in Figma and Penpot and takes the result to production. Writes documentation, onboarding guides, and front-end style guidelines.
+Accessibility engineering is the specialty. Built WCAG-compliant interfaces at 365 Retail Markets and Gaine Solutions, led UI reviews, and was recognized for leadership in accessibility and design standardization. Has since built AccessBridge, an automated WCAG / ADA auditing platform using real-browser axe-core + Playwright scans. Designs and prototypes in Figma and Penpot, with either one connected to AI tooling through MCP, and takes the result to production. Writes documentation, onboarding guides, and front-end style guidelines.
 
 ---
 
@@ -29,7 +29,7 @@ Remote | 2025 - Present
 - Design, build, and operate production web applications end to end: interface design, React / TypeScript front end, API, database, and deployment.
 - Built AccessBridge (accessbridge.app), an accessibility-auditing platform: real-browser scanning (Playwright + axe-core), plain-language results with AI-written code fixes, and an interface held to WCAG 2.1 AA.
 - Shipped Groundswell (groundswell.surf), a global surf-forecasting service: an installable PWA with one report surface serving five languages and eight colour themes, with charts and maps over live forecast data.
-- Built token-based design systems and clickable prototypes in self-hosted Penpot, kept synchronized with production code.
+- Built token-based design systems and clickable prototypes in Penpot, kept synchronized with production code; equally at home in Figma.
 - Test-gated delivery: AI-assisted development (Claude Code) with Vitest and Playwright + axe-core suites deciding what ships.
 - Stack: React, TypeScript, Next.js, Tailwind CSS, Hono, Node.js, PostgreSQL / Drizzle, Vercel.
 
@@ -63,7 +63,7 @@ Remote | 2020 - 2022
 - Testing: Vitest, Testing Library, Playwright
 - Back End & Data: PostgreSQL (Neon), Drizzle ORM, SQLite, REST API design, background jobs and scheduled tasks
 - Platform & Tooling: Vercel, Railway, Docker, Git, Vite, npm / pnpm, Stripe, Clerk / OAuth, Postman, Jira, Confluence
-- AI Tooling: Claude Code, Anthropic API (Claude) in production features, AI-driven design iteration (Penpot via MCP)
+- AI Tooling: Claude Code, Anthropic API (Claude) in production features, AI-driven design iteration (Figma or Penpot via MCP)
 - Ways of working: Agile, technical writing
 
 ---

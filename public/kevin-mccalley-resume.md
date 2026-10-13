@@ -17,7 +17,7 @@ React · TypeScript · AI Applications · Node.js · PostgreSQL
 
 Senior full-stack engineer who ships and operates production web products end to end: React and TypeScript interfaces, Node.js APIs, PostgreSQL data models, authentication, payments, background jobs, and deployment. Builds AI applications on the Anthropic API. Currently runs several live products, including Groundswell (global surf forecasting) and GoodStockPress (18 browser-based personalization apps sold on Etsy).
 
-Specialized second track in accessibility engineering: built and operates AccessBridge, an automated WCAG / ADA auditing platform using real-browser axe-core + Playwright scans. Background in product and interface design; prototypes in Figma and in self-hosted Penpot connected to Claude, so design and code iterate together.
+Specialized second track in accessibility engineering: built and operates AccessBridge, an automated WCAG / ADA auditing platform using real-browser axe-core + Playwright scans. Background in product and interface design; designs and prototypes in Figma and in self-hosted Penpot, with either one connected to Claude through MCP, so design and code iterate together.
 
 ---
 
@@ -27,7 +27,7 @@ AI-native product development using Claude Code and MCP-connected tooling. I use
 
 - AI in the product, not just the workflow: AccessBridge uses the Anthropic API in production to explain each accessibility violation in plain English and write a copy-paste code fix.
 - Agentic coding with gates: every build runs in Claude Code against a scoped checklist, and test suites (Vitest, Playwright + axe-core) decide what ships — not the model.
-- AI-in-the-loop design: self-hosted Penpot (Docker) connected to Claude via MCP, producing token-based design systems and clickable prototypes that stay synchronized with production code.
+- AI-in-the-loop design: a design tool connected to Claude via MCP, producing token-based design systems and clickable prototypes that stay synchronized with production code. Runs in self-hosted Penpot (Docker) on own products; the same workflow applies through Figma's MCP server.
 
 ---
 
@@ -35,7 +35,7 @@ AI-native product development using Claude Code and MCP-connected tooling. I use
 
 - Languages & Frameworks: React, TypeScript, JavaScript (ES6+), Node.js, HTML5, CSS3, SCSS, Next.js, Hono, Express
 - Back End & Data: PostgreSQL (Neon), Drizzle ORM, SQLite, REST API design, background jobs and scheduled tasks
-- AI Applications & Tooling: Anthropic API (Claude) in production features, Claude Code, AI-driven design iteration (Penpot via MCP)
+- AI Applications & Tooling: Anthropic API (Claude) in production features, Claude Code, AI-driven design iteration (Figma or Penpot via MCP)
 - Platform & Tooling: Vercel, Railway, Docker, Git, Vite, npm / pnpm, Stripe, Clerk / OAuth, Postman, Jira, Confluence
 - Accessibility Engineering: WCAG 2.1 AA / AAA, Section 508, ADA, automated auditing with axe-core + Playwright
 - UI & Design: Figma, Penpot, Adobe XD, Photoshop, Illustrator, Tailwind CSS, Material UI, Framer Motion, design systems, responsive design, usability testing

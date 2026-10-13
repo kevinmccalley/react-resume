@@ -130,7 +130,8 @@ const BuildRow = ({ b }) => (
   </View>
 );
 
-const RenderContent = ({ content }) => {
+// `flush` drops the space under the final item, for the last section of the document.
+const RenderContent = ({ content, flush = false }) => {
   if (!content) return null;
 
   if (Array.isArray(content)) {
@@ -149,7 +150,10 @@ const RenderContent = ({ content }) => {
           const isLast =
             idx === arr.length - 1 || arr[idx + 1].type !== "markdownListitem";
           return (
-            <Text key={idx} style={isLast ? styles.listItemLast : styles.listItem}>
+            <Text
+              key={idx}
+              style={isLast && !(flush && idx === arr.length - 1) ? styles.listItemLast : styles.listItem}
+            >
               • {parseMarkdown(text)}
             </Text>
           );
@@ -236,11 +240,16 @@ const ResumePDF = ({ sections: source = sectionsData, site = SITE, breakBefore =
           </View>
         )}
 
-        {rest.map((section) => (
-          <View key={section.id} style={{ marginBottom: 8 }} break={breakBefore.includes(section.id)}>
+        {rest.map((section, i) => (
+          // No margin under the final section: trailing space must not spill onto a blank page.
+          <View
+            key={section.id}
+            style={{ marginBottom: i === rest.length - 1 ? 0 : 8 }}
+            break={breakBefore.includes(section.id)}
+          >
             {/* minPresenceAhead keeps a heading from being stranded at the foot of a page */}
             <Text style={styles.sectionTitle} minPresenceAhead={60}>{section.title}</Text>
-            <RenderContent content={section.content} />
+            <RenderContent content={section.content} flush={i === rest.length - 1} />
           </View>
         ))}
       </Page>
