@@ -1,5 +1,17 @@
 {
   "rewrites": [
+    { "source": "/frontend", "destination": "/frontend/index.html" },
+    { "source": "/frontend/(.*)", "destination": "/frontend/index.html" },
     { "source": "/(.*)", "destination": "/" }
+  ],
+  "headers": [
+    {
+      "source": "/frontend(.*)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+    },
+    {
+      "source": "/kevin-mccalley-resume-frontend.md",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+    }
   ]
 }

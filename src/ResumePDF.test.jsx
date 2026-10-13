@@ -14,6 +14,7 @@ vi.mock("@react-pdf/renderer", () => ({
 import { render, screen } from "@testing-library/react";
 import ResumePDF from "./ResumePDF";
 import sectionsData from "./sections.json";
+import { VARIANTS, applyVariant } from "./variant";
 
 describe("ResumePDF", () => {
   it("renders without crashing", () => {
@@ -175,5 +176,17 @@ describe("ResumePDF parseMarkdown", () => {
     const doc = screen.getByTestId("pdf-document");
     // Bullet points should be rendered
     expect(doc.textContent).toContain("•");
+  });
+
+  it("renders the sections it is given in place of the main résumé", () => {
+    const sections = applyVariant(sectionsData, VARIANTS.frontend);
+    render(<ResumePDF sections={sections} />);
+    const doc = screen.getByTestId("pdf-document");
+    expect(doc.textContent).toContain("Senior Front-End & Design Engineer");
+    expect(doc.textContent).not.toContain("Senior Full-Stack / Product Engineer");
+    // Experience comes before Qualifications in this variant.
+    expect(doc.textContent.indexOf("Professional Experience")).toBeLessThan(
+      doc.textContent.indexOf("Qualifications")
+    );
   });
 });

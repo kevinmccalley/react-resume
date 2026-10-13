@@ -1,5 +1,5 @@
 // ReactResume.jsx
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo, useContext, createContext } from "react";
 import {
   IconContext,
   User,
@@ -36,6 +36,7 @@ import ThemeSelector from "./ThemeSelector";
 import ContactForm from "./ContactForm";
 import ResumePDF from "./ResumePDF";
 import SkipLink from "./SkipLink";
+import { getVariant, applyVariant } from "./variant";
 import "./ReactResume.css";
 
 // Map icon names from sections.json to components.
@@ -197,8 +198,12 @@ function PortfolioGrid() {
   );
 }
 
+// The active résumé variant (see variant.js), or null on the main résumé.
+const VariantContext = createContext(null);
+
 // ---------- Content renderer ----------
 function RenderContent({ content }) {
+  const variant = useContext(VariantContext);
   if (typeof content === "string") return <p>{content}</p>;
 
   if (Array.isArray(content)) {
@@ -278,7 +283,7 @@ function RenderContent({ content }) {
         )}
         <div>
           <strong>Résumé</strong>
-          <a href="/kevin-mccalley-resume.md" download>
+          <a href={variant?.markdownResume || "/kevin-mccalley-resume.md"} download>
             Plain-text / Markdown version
           </a>
         </div>
@@ -583,7 +588,9 @@ export default function ReactResume() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
 
-  const { data: sections, isLoading, error } = useQuery({
+  const variant = getVariant(window.location.pathname);
+
+  const { data: baseSections, isLoading, error } = useQuery({
     queryKey: ["sections"],
     queryFn: () =>
       fetch("/sections.json").then((res) => {
@@ -591,6 +598,20 @@ export default function ReactResume() {
         return res.json();
       }),
   });
+  const sections = useMemo(() => applyVariant(baseSections, variant), [baseSections, variant]);
+
+  // A variant is an alternate framing for specific applications: give it its own
+  // tab title and keep it out of search results (the build also emits a static
+  // noindex page for it — see vite.config.js).
+  useEffect(() => {
+    if (!variant) return;
+    document.title = `${variant.meta.title} — Résumé`;
+    const robots = document.createElement("meta");
+    robots.name = "robots";
+    robots.content = "noindex";
+    document.head.appendChild(robots);
+    return () => robots.remove();
+  }, [variant]);
 
   if (isLoading) return <div>Loading resume data...</div>;
   if (error) return <div>Error loading data: {error.message}</div>;
@@ -601,7 +622,8 @@ export default function ReactResume() {
 
   return (
     <IconContext.Provider value={{ weight: "duotone", size: "1em" }}>
-    <Router>
+    <VariantContext.Provider value={variant}>
+    <Router basename={variant?.path}>
       <SkipLink />
       <KeyboardShortcuts sections={sections} setHelpOpen={setHelpOpen} />
       <ShortcutsHelp open={helpOpen} onClose={() => setHelpOpen(false)} sections={sections} />
@@ -622,8 +644,10 @@ export default function ReactResume() {
               <span>Kevin</span>
               <span>McCalley</span>
             </Link>
-            <div className="role">Senior Full-Stack /<br />Product Engineer</div>
-            <div className="where">Portugal · remote, US business hours</div>
+            <div className="role">
+              {variant ? <>{variant.role[0]}<br />{variant.role[1]}</> : <>Senior Full-Stack /<br />Product Engineer</>}
+            </div>
+            <div className="where">{variant?.where || "Portugal · remote, US business hours"}</div>
           </div>
 
           <div className="side-nav">
@@ -671,8 +695,8 @@ export default function ReactResume() {
 
           {/* fixed-position, but kept inside <main> so it lives within a landmark */}
           <PDFDownloadLink
-            document={<ResumePDF />}
-            fileName="Kevin_McCalley_Resume.pdf"
+            document={<ResumePDF sections={variant ? sections : undefined} />}
+            fileName={variant?.pdfFileName || "Kevin_McCalley_Resume.pdf"}
             className="pdf-download"
           >
             {({ loading }) => (loading ? "Preparing PDF..." : "Download PDF")}
@@ -680,6 +704,7 @@ export default function ReactResume() {
         </main>
       </div>
     </Router>
+    </VariantContext.Provider>
     </IconContext.Provider>
   );
 }

@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -399,5 +399,70 @@ describe("ReactResume", () => {
         screen.queryByRole("dialog", { name: /keyboard shortcuts/i })
       ).not.toBeInTheDocument();
     });
+  });
+});
+
+describe("ReactResume — /frontend variant", () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve(sectionsData),
+    });
+    window.history.pushState({}, "", "/frontend");
+  });
+
+  afterEach(() => {
+    window.history.pushState({}, "", "/");
+  });
+
+  it("shows the variant's role and overview", async () => {
+    renderApp();
+    await waitForLoad();
+    expect(document.querySelector(".identity .role")).toHaveTextContent(
+      "Senior Front-End &Design Engineer"
+    );
+    await waitFor(() =>
+      expect(
+        screen.getByText("Kevin McCalley — Senior Front-End & Design Engineer")
+      ).toBeInTheDocument()
+    );
+    expect(screen.queryByText(/Senior Full-Stack \/ Product Engineer/)).not.toBeInTheDocument();
+  });
+
+  it("keeps navigation under the /frontend prefix", async () => {
+    const user = userEvent.setup();
+    renderApp();
+    await waitForLoad();
+    const links = [...document.querySelectorAll(".side-nav a")];
+    links.forEach((a) => expect(a.getAttribute("href")).toMatch(/^\/frontend\//));
+    expect(links[1]).toHaveTextContent("Professional Experience");
+
+    await navigateTo(user, "Professional Experience");
+    await waitFor(() => expect(window.location.pathname).toBe("/frontend/experience"));
+  });
+
+  it("offers the variant's PDF and Markdown résumé", async () => {
+    const user = userEvent.setup();
+    renderApp();
+    await waitForLoad();
+    expect(screen.getByTestId("pdf-download")).toHaveAttribute(
+      "data-filename",
+      "Kevin_McCalley_Resume_Front-End.pdf"
+    );
+    await navigateTo(user, "Contact");
+    await waitFor(() =>
+      expect(screen.getByText(/Plain-text \/ Markdown version/)).toHaveAttribute(
+        "href",
+        "/kevin-mccalley-resume-frontend.md"
+      )
+    );
+  });
+
+  it("marks the page noindex and sets its own title", async () => {
+    renderApp();
+    await waitForLoad();
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute("content", "noindex");
+    expect(document.title).toContain("Senior Front-End & Design Engineer");
   });
 });

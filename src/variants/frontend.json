@@ -1,0 +1,147 @@
+{
+  "id": "frontend",
+  "path": "/frontend",
+  "role": ["Senior Front-End &", "Design Engineer"],
+  "where": "Portugal · remote, EU or US hours",
+  "pdfFileName": "Kevin_McCalley_Resume_Front-End.pdf",
+  "markdownResume": "/kevin-mccalley-resume-frontend.md",
+  "meta": {
+    "title": "Kevin McCalley — Senior Front-End & Design Engineer",
+    "description": "Kevin McCalley — Senior Front-End & Design Engineer. React, TypeScript, design systems and accessibility (WCAG / Section 508), from Figma to production.",
+    "shortDescription": "React, TypeScript, design systems and accessibility — interfaces designed and built, from Figma to production."
+  },
+  "order": [
+    "overview",
+    "experience",
+    "highlights",
+    "accessibility",
+    "builds",
+    "prototypes",
+    "ai-engineering",
+    "how-i-work",
+    "case-groundswell",
+    "history",
+    "education",
+    "strengths",
+    "uses",
+    "contact",
+    "colophon"
+  ],
+  "sections": {
+    "overview": {
+      "subtitle": "Kevin McCalley — Senior Front-End & Design Engineer",
+      "tagline": "React · TypeScript · Design Systems · Accessibility (WCAG / Section 508)",
+      "content": [
+        {
+          "type": "markdown",
+          "text": "I'm a senior front-end engineer with a design background. I design interfaces and build them: **React** and **TypeScript** components, **design systems**, and accessible, responsive layouts. I have done both halves of that job on product teams since 2020, and for clients for twelve years before that."
+        },
+        {
+          "type": "markdown",
+          "text": "**Accessibility engineering** is my specialism. At 365 Retail Markets and Gaine Solutions I built WCAG-compliant interfaces, led UI reviews, and was recognized for leadership in accessibility and design standardization. I have since built **AccessBridge**, an automated WCAG / ADA auditing platform that renders every page in a real browser (axe-core + Playwright), and I hold my own products to WCAG 2.1 AA — AAA where it counts."
+        },
+        {
+          "type": "markdown",
+          "text": "I prototype in **Figma** and **Penpot** and take the result to production myself, so the design intent survives the build. I also write: documentation, onboarding guides, and front-end style guidelines have been part of every role I've held."
+        },
+        {
+          "type": "markdown",
+          "text": "Since 2025 I have designed, built, and operated several live products on my own, including **Groundswell**, a surf-forecasting service in five languages. That work extended my front-end practice into APIs, data, authentication, and billing."
+        },
+        {
+          "type": "markdown",
+          "text": "I'm based in **Portugal** and work comfortably with European teams and with the US working day."
+        }
+      ]
+    },
+    "experience": {
+      "content": [
+        {
+          "type": "position",
+          "title": "Independent",
+          "date": "2025 – Present",
+          "location": "Remote",
+          "role": "Product Engineer — Design, Front End, Full Stack"
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• **Design, build, and operate production web applications end to end** — interface design, **React** / **TypeScript** front end, API, database, and deployment."
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• **Built AccessBridge**, an accessibility-auditing platform: real-browser scanning (**Playwright + axe-core**), plain-language results with AI-written code fixes, and an interface held to WCAG 2.1 AA."
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• **Shipped Groundswell**, a global surf-forecasting service: an installable PWA with one report surface serving five languages and eight colour themes, with charts and maps over live forecast data."
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• **Built token-based design systems and clickable prototypes** in self-hosted Penpot, kept synchronized with production code."
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• **Test-gated delivery:** AI-assisted development (Claude Code) with **Vitest** and **Playwright + axe-core** suites deciding what ships."
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• _Stack:_ React, TypeScript, Next.js, Tailwind CSS, Hono, Node, PostgreSQL / Drizzle, Vercel"
+        },
+        {
+          "type": "position",
+          "title": "365 Retail Markets / FullCount",
+          "date": "2022 – 2025",
+          "location": "Remote",
+          "role": "Senior UI/UX Designer & React Developer"
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• **Designed and built touchscreen and support apps** for senior living facilities using React and Material UI."
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• **Created detailed Figma prototypes** and implemented accessible, inclusive interfaces for diverse user groups."
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• **Ensured WCAG-compliant layouts**, optimized asset delivery, and improved performance across browsers."
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• **Authored internal documentation and onboarding guides**, streamlining developer ramp-up time."
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• **Led UI reviews and design consistency efforts** within Agile sprints."
+        },
+        {
+          "type": "position",
+          "title": "Gaine Solutions",
+          "date": "2020 – 2022",
+          "location": "Remote",
+          "role": "UI Developer / Technical Writer"
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• **Designed and developed Angular + TypeScript web tools** for enterprise data governance."
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• **Built the Coperor Console app** with reusable UI components and accessible layouts."
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• **Produced Adobe XD prototypes** and front-end style guidelines for engineering teams."
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• **Recognized for leadership in UX accessibility and design standardization initiatives**."
+        },
+        {
+          "type": "markdownListitem",
+          "text": "• _Stack:_ Angular, TypeScript, Material UI, Adobe XD, Jira, Confluence, Agile"
+        }
+      ]
+    }
+  }
+}

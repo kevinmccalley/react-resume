@@ -182,9 +182,11 @@ const RenderContent = ({ content }) => {
   return <Text>{content}</Text>;
 };
 
-const ResumePDF = () => {
+// `sections` lets a résumé variant (see variant.js) supply its own framing;
+// the default is the main résumé.
+const ResumePDF = ({ sections: source = sectionsData }) => {
   const PDF_OMIT = ["prototypes", "case-groundswell", "uses", "colophon"];
-  const sections = sectionsData.filter((s) => !PDF_OMIT.includes(s.id));
+  const sections = source.filter((s) => !PDF_OMIT.includes(s.id));
   const overview = sections.find((s) => s.id === "overview");
   const rest = sections.filter((s) => s.id !== "overview");
 
