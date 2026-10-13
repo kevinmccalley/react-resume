@@ -33,7 +33,7 @@ AI-native product development using Claude Code and MCP-connected tooling. I use
 
 ## Skills
 
-- Languages & Frameworks: React, TypeScript, JavaScript (ES6+), Node.js, HTML5, CSS3, SCSS, Next.js, Hono, Express
+- Languages & Frameworks: React, Redux, TypeScript, JavaScript (ES6+), Node.js, HTML5, CSS3, SCSS, Next.js, Hono, Express
 - Back End & Data: PostgreSQL (Neon), Drizzle ORM, SQLite, REST API design, background jobs and scheduled tasks
 - AI Applications & Tooling: Anthropic API (Claude) in production features, Claude Code, AI-driven design iteration (Figma or Penpot via MCP)
 - Platform & Tooling: Vercel, Railway, Docker, Git, Vite, npm / pnpm, Stripe, Clerk / OAuth, Postman, Jira, Confluence
@@ -62,6 +62,7 @@ Remote | 2022 - 2025
 - Designed and built touchscreen and support applications for senior living facilities using React and Material UI.
 - Created detailed Figma prototypes and implemented accessible, inclusive interfaces for diverse user groups.
 - Ensured WCAG-compliant layouts, optimized asset delivery, and improved performance across browsers.
+- Refactored application state management to Redux as part of the front-end team.
 - Authored internal documentation and onboarding guides, reducing developer ramp-up time.
 - Led UI reviews and design-consistency efforts within Agile sprints.
 

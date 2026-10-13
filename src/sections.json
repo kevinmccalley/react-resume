@@ -63,7 +63,7 @@
       },
       {
         "type": "markdownListitem",
-        "text": "• **Languages & Frameworks:** React, TypeScript, JavaScript (ES6+), Node.js, HTML5, CSS3, SCSS; Next.js, Hono, Express"
+        "text": "• **Languages & Frameworks:** React, Redux, TypeScript, JavaScript (ES6+), Node.js, HTML5, CSS3, SCSS; Next.js, Hono, Express"
       },
       {
         "type": "markdownListitem",
@@ -291,6 +291,10 @@
       {
         "type": "markdownListitem",
         "text": "• **Ensured WCAG-compliant layouts**, optimized asset delivery, and improved performance across browsers."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Refactored application state management to Redux** as part of the front-end team."
       },
       {
         "type": "markdownListitem",

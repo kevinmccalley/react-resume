@@ -40,6 +40,7 @@ Remote | 2022 - 2025
 - Designed and built touchscreen and support applications for senior living facilities using React and Material UI.
 - Created detailed Figma prototypes and implemented accessible, inclusive interfaces for diverse user groups.
 - Ensured WCAG-compliant layouts, optimized asset delivery, and improved performance across browsers.
+- Refactored application state management to Redux as part of the front-end team.
 - Authored internal documentation and onboarding guides, reducing developer ramp-up time.
 - Led UI reviews and design-consistency efforts within Agile sprints.
 
@@ -57,7 +58,7 @@ Remote | 2020 - 2022
 
 ## Skills
 
-- Languages & Frameworks: React, TypeScript, JavaScript (ES6+), HTML5, CSS3, SCSS, Next.js, Node.js, Hono, Express
+- Languages & Frameworks: React, Redux, TypeScript, JavaScript (ES6+), HTML5, CSS3, SCSS, Next.js, Node.js, Hono, Express
 - UI & Design: Figma, Penpot, Adobe XD, Photoshop, Illustrator, Tailwind CSS, Material UI, Framer Motion, design systems, responsive design, usability testing
 - Accessibility Engineering: WCAG 2.1 AA / AAA, Section 508, ADA, automated auditing with axe-core + Playwright
 - Testing: Vitest, Testing Library, Playwright

@@ -130,12 +130,14 @@ const BuildRow = ({ b }) => (
   </View>
 );
 
-// `flush` drops the space under the final item, for the last section of the document.
-const RenderContent = ({ content, flush = false }) => {
+// `start` / `end` render a slice of the items while keeping each item's styling
+// decisions (such as "last bullet in a run") based on the whole list.
+const RenderContent = ({ content, start = 0, end = Infinity }) => {
   if (!content) return null;
 
   if (Array.isArray(content)) {
     return content.map((item, idx, arr) => {
+      if (idx < start || idx >= end) return null;
       switch (item.type) {
         case "paragraph":
         case "markdown":
@@ -150,10 +152,7 @@ const RenderContent = ({ content, flush = false }) => {
           const isLast =
             idx === arr.length - 1 || arr[idx + 1].type !== "markdownListitem";
           return (
-            <Text
-              key={idx}
-              style={isLast && !(flush && idx === arr.length - 1) ? styles.listItemLast : styles.listItem}
-            >
+            <Text key={idx} style={isLast ? styles.listItemLast : styles.listItem}>
               • {parseMarkdown(text)}
             </Text>
           );
@@ -240,18 +239,26 @@ const ResumePDF = ({ sections: source = sectionsData, site = SITE, breakBefore =
           </View>
         )}
 
-        {rest.map((section, i) => (
-          // No margin under the final section: trailing space must not spill onto a blank page.
+        {rest.map((section, i) => {
+          // A section that ends a page (the last one, or one before a forced break) takes
+          // back its trailing space, so that space can't spill over onto a blank page.
+          const endsPage = i === rest.length - 1 || breakBefore.includes(rest[i + 1].id);
+          return (
           <View
             key={section.id}
-            style={{ marginBottom: i === rest.length - 1 ? 0 : 8 }}
+            style={{ marginBottom: endsPage ? -12 : 8 }}
             break={breakBefore.includes(section.id)}
           >
-            {/* minPresenceAhead keeps a heading from being stranded at the foot of a page */}
-            <Text style={styles.sectionTitle} minPresenceAhead={60}>{section.title}</Text>
-            <RenderContent content={section.content} flush={i === rest.length - 1} />
+            {/* The heading and the first item move together, so a heading is never
+                stranded at the foot of a page. */}
+            <View wrap={false}>
+              <Text style={styles.sectionTitle}>{section.title}</Text>
+              <RenderContent content={section.content} end={1} />
+            </View>
+            <RenderContent content={section.content} start={1} />
           </View>
-        ))}
+          );
+        })}
       </Page>
     </Document>
   );

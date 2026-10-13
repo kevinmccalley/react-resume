@@ -109,6 +109,10 @@
         },
         {
           "type": "markdownListitem",
+          "text": "• **Refactored application state management to Redux** as part of the front-end team."
+        },
+        {
+          "type": "markdownListitem",
           "text": "• **Authored internal documentation and onboarding guides**, streamlining developer ramp-up time."
         },
         {
