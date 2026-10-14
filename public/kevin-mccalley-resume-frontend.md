@@ -29,6 +29,7 @@ Remote | 2025 - Present
 - Design, build, and operate production web applications end to end: interface design, React / TypeScript front end, API, database, and deployment.
 - Built AccessBridge (accessbridge.app), an accessibility-auditing platform: real-browser scanning (Playwright + axe-core), plain-language results with AI-written code fixes, and an interface held to WCAG 2.1 AA.
 - Shipped Groundswell (groundswell.surf), a global surf-forecasting service: an installable PWA with one report surface serving five languages and eight colour themes, with charts and maps over live forecast data.
+- Built Groundswell's internationalization (i18n) layer from scratch: five locales (English, Spanish, French, Brazilian and European Portuguese), ~670 keys each, loaded on demand with English fallback; locale detection from URL, saved preference, and browser; server and client rendering kept in sync via cookie; hreflang for multilingual SEO; per-language blog content in the Sanity CMS.
 - Built token-based design systems and clickable prototypes in Penpot, kept synchronized with production code; equally at home in Figma.
 - Test-gated delivery: AI-assisted development (Claude Code) with Vitest and Playwright + axe-core suites deciding what ships.
 - Stack: React, TypeScript, Next.js, Tailwind CSS, Hono, Node.js, PostgreSQL / Drizzle, Vercel.
@@ -61,6 +62,7 @@ Remote | 2020 - 2022
 - Languages & Frameworks: React, Redux, TypeScript, JavaScript (ES6+), HTML5, CSS3, SCSS, Next.js, Node.js, Hono, Express
 - UI & Design: Figma, Penpot, Adobe XD, Photoshop, Illustrator, Tailwind CSS, Material UI, Framer Motion, design systems, responsive design, usability testing
 - Accessibility Engineering: WCAG 2.1 AA / AAA, Section 508, ADA, automated auditing with axe-core + Playwright
+- Internationalization: i18n / l10n, custom locale systems in Next.js (5 locales) and React (9 locales), locale detection, server + client rendering, multilingual SEO (hreflang)
 - Testing: Vitest, Testing Library, Playwright
 - Back End & Data: PostgreSQL (Neon), Drizzle ORM, SQLite, REST API design, background jobs and scheduled tasks
 - Platform & Tooling: Vercel, Railway, Docker, Git, Vite, npm / pnpm, Stripe, Clerk / OAuth, Postman, Jira, Confluence

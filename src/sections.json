@@ -83,6 +83,10 @@
       },
       {
         "type": "markdownListitem",
+        "text": "• **Internationalization:** i18n / l10n — custom locale systems in Next.js (5 locales) and React (9 locales), locale detection, server + client rendering, multilingual SEO (hreflang)"
+      },
+      {
+        "type": "markdownListitem",
         "text": "• **UI & Design:** Figma, Penpot, Adobe XD, Photoshop, Illustrator, Framer Motion, Tailwind CSS, Material UI"
       },
       {
@@ -264,6 +268,10 @@
       {
         "type": "markdownListitem",
         "text": "• **Shipped Groundswell** ([groundswell.surf](https://groundswell.surf)), a global surf-forecasting service, as a live subscription product, alongside several smaller tools, each maintained in production."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Built Groundswell's internationalization (i18n) layer from scratch** — five locales (English, Spanish, French, Brazilian and European Portuguese), ~670 keys each, loaded on demand with English fallback; locale detection from URL, saved preference, and browser; server and client rendering kept in sync via cookie; **hreflang** for multilingual SEO; per-language blog content in the **Sanity** CMS."
       },
       {
         "type": "markdownListitem",

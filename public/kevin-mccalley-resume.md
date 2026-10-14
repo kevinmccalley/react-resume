@@ -38,6 +38,7 @@ AI-native product development using Claude Code and MCP-connected tooling. I use
 - AI Applications & Tooling: Anthropic API (Claude) in production features, Claude Code, AI-driven design iteration (Figma or Penpot via MCP)
 - Platform & Tooling: Vercel, Railway, Docker, Git, Vite, npm / pnpm, Stripe, Clerk / OAuth, Postman, Jira, Confluence
 - Accessibility Engineering: WCAG 2.1 AA / AAA, Section 508, ADA, automated auditing with axe-core + Playwright
+- Internationalization: i18n / l10n, custom locale systems in Next.js (5 locales) and React (9 locales), locale detection, server + client rendering, multilingual SEO (hreflang)
 - UI & Design: Figma, Penpot, Adobe XD, Photoshop, Illustrator, Tailwind CSS, Material UI, Framer Motion, design systems, responsive design, usability testing
 - Ways of working: Agile, technical writing
 
@@ -52,6 +53,7 @@ Remote | 2025 - Present
 - Design, build, and operate production web applications end to end: interface, API, database, authentication, billing, and deployment.
 - Built and operate AccessBridge (accessbridge.app), a production accessibility-auditing SaaS: real-browser scanning (Playwright + axe-core), a Hono API on Neon Postgres / Drizzle, Clerk authentication, Stripe subscription billing with plan-based usage limits, a background job queue (Upstash QStash), transactional email and alerts (Resend), and AI-written explanations and code fixes (Anthropic API).
 - Shipped Groundswell (groundswell.surf), a global surf-forecasting service, as a live subscription product, alongside several smaller tools, each maintained in production.
+- Built Groundswell's internationalization (i18n) layer from scratch: five locales (English, Spanish, French, Brazilian and European Portuguese), ~670 keys each, loaded on demand with English fallback; locale detection from URL, saved preference, and browser; server and client rendering kept in sync via cookie; hreflang for multilingual SEO; per-language blog content in the Sanity CMS.
 - Adopted AI-assisted development (Claude Code) to compress delivery time while keeping architectural decisions and code review in-house.
 - Stack: React, TypeScript, Next.js, Hono, Node.js, PostgreSQL / Drizzle, Stripe, Clerk, Vercel, Railway.
 
