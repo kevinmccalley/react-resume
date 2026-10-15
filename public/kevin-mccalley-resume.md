@@ -132,7 +132,7 @@ Additional shipped projects: LunchLanguage (kids' language-learning game; React 
 
 ## Education
 
-Bachelor of Arts, English - University of California, Berkeley - 1994
+Bachelor of Arts, English - University of California, Berkeley
 
 ---
 

@@ -121,7 +121,7 @@ Irvine, CA | 2002 - 2007
 
 ## Education
 
-Bachelor of Arts, English - University of California, Berkeley - 1994
+Bachelor of Arts, English - University of California, Berkeley
 
 ---
 

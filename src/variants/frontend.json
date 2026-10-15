@@ -5,7 +5,8 @@
   "where": "Portugal · remote, EU or US hours",
   "pdfFileName": "Kevin_McCalley_Resume_Front-End.pdf",
   "markdownResume": "/kevin-mccalley-resume-frontend.md",
-  "pdfBreakBefore": ["builds"],
+  "pdfOmit": ["accessibility", "strengths"],
+  "pdfBuilds": ["AccessBridge", "Groundswell", "GoodStockPress", "LunchLanguage"],
   "meta": {
     "title": "Kevin McCalley — Senior Front-End & Design Engineer",
     "description": "Kevin McCalley — Senior Front-End & Design Engineer. React, TypeScript, design systems and accessibility (WCAG / Section 508), from Figma to production.",

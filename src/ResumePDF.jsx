@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Font,
   Link,
+  Image,
 } from "@react-pdf/renderer";
 import sectionsData from "./sections.json";
 
@@ -49,8 +50,8 @@ const styles = StyleSheet.create({
     lineHeight: 1.45,
     color: "#1a1a18",
   },
-  header: { fontFamily: "Fraunces", fontSize: 22, fontWeight: 600, marginBottom: 8 },
-  subheader: { fontSize: 11.5, color: "#444", marginBottom: 12 },
+  header: { fontFamily: "Fraunces", fontSize: 24, fontWeight: 600, lineHeight: 1.2, marginBottom: 6 },
+  subheader: { fontSize: 12.5, color: "#333", marginBottom: 12 },
   tagline: { fontSize: 10, color: "#666", marginTop: -8, marginBottom: 12 },
   headerLinks: { fontSize: 8.5, color: "#444", marginTop: -8, marginBottom: 12 },
   sectionTitle: {
@@ -75,7 +76,33 @@ const styles = StyleSheet.create({
   buildDetail: { fontSize: 9.5, color: "#333" },
   contact: { marginBottom: 12 },
   link: { color: "#1a1a18", textDecoration: "none" },
+  screens: { flexDirection: "row", justifyContent: "space-between", marginTop: 2, marginBottom: 4 },
+  screen: { width: "23.5%" },
+  screenImage: { width: "100%", borderWidth: 0.5, borderColor: "#ccc" },
+  screenCaption: { fontSize: 8, color: "#555", marginTop: 3, textAlign: "center" },
 });
+
+// Product screenshots shown under the overview, so a reader of the PDF sees the visual
+// work without visiting the site. Picked by name from the builds grid.
+const SCREENS = ["AccessBridge", "Groundswell", "GoodStockPress", "LunchLanguage"];
+
+const ScreenStrip = ({ sections, assetBase }) => {
+  const grid = sections
+    .find((s) => s.id === "builds")
+    ?.content?.find((c) => c.type === "buildGrid");
+  const shots = SCREENS.map((name) => grid?.items?.find((b) => b.name === name && b.image)).filter(Boolean);
+  if (shots.length === 0) return null;
+  return (
+    <View style={styles.screens} wrap={false}>
+      {shots.map((b) => (
+        <View key={b.name} style={styles.screen}>
+          <Image src={`${assetBase}${b.image}`} style={styles.screenImage} />
+          <Text style={styles.screenCaption}>{b.name}</Text>
+        </View>
+      ))}
+    </View>
+  );
+};
 
 // A link whose text is already its address ("accessbridge.app") prints as-is and stays clickable.
 const isBareUrl = (label, url) => url.replace(/^https?:\/\//, "").replace(/\/$/, "") === label;
@@ -200,10 +227,32 @@ const SITE = "kevinmccalley.vercel.app";
 
 // `sections`, `site` and `breakBefore` let a résumé variant (see variant.js)
 // supply its own framing, address and page breaks; the defaults are the main résumé.
-const ResumePDF = ({ sections: source = sectionsData, site = SITE, breakBefore = [] }) => {
-  // "contact" is omitted because its details are in the header line.
-  const PDF_OMIT = ["prototypes", "case-groundswell", "uses", "colophon", "contact"];
-  const sections = source.filter((s) => !PDF_OMIT.includes(s.id));
+// `omit` drops further sections and `builds` limits the builds grid to the named products,
+// so a variant can keep its PDF short. `assetBase` prefixes image paths: empty in the
+// browser (same origin), a folder path in Node.
+const ResumePDF = ({
+  sections: source = sectionsData,
+  site = SITE,
+  breakBefore = [],
+  omit = [],
+  builds = null,
+  assetBase = "",
+}) => {
+  // "contact" is omitted because its details are in the header line; "how-i-work"
+  // is long-form prose that reads better on the site than in a screener's PDF.
+  const PDF_OMIT = ["prototypes", "case-groundswell", "how-i-work", "uses", "colophon", "contact", ...omit];
+  const sections = source
+    .filter((s) => !PDF_OMIT.includes(s.id))
+    .map((s) =>
+      s.id === "builds" && builds && Array.isArray(s.content)
+        ? {
+            ...s,
+            content: s.content.map((c) =>
+              c.type === "buildGrid" ? { ...c, items: c.items.filter((b) => builds.includes(b.name)) } : c
+            ),
+          }
+        : s
+    );
   const overview = sections.find((s) => s.id === "overview");
   const rest = sections.filter((s) => s.id !== "overview");
 
@@ -219,13 +268,18 @@ const ResumePDF = ({ sections: source = sectionsData, site = SITE, breakBefore =
     },
   ].filter(Boolean);
 
+  // The subtitle reads "Name — Role"; the PDF leads with the name, not the section title.
+  const [name, role] = (overview?.subtitle || "").split(" — ");
+
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         {overview && (
           <View style={{ marginBottom: 10 }}>
-            <Text style={styles.header}>{overview.title}</Text>
-            {overview.subtitle && <Text style={styles.subheader}>{overview.subtitle}</Text>}
+            <Text style={styles.header}>{role ? name : overview.title}</Text>
+            {(role || overview.subtitle) && (
+              <Text style={styles.subheader}>{role || overview.subtitle}</Text>
+            )}
             {overview.tagline && <Text style={styles.tagline}>{overview.tagline}</Text>}
             <Text style={styles.headerLinks}>
               {headerLinks.map(({ label, href }, i) => (
@@ -236,6 +290,7 @@ const ResumePDF = ({ sections: source = sectionsData, site = SITE, breakBefore =
               ))}
             </Text>
             <RenderContent content={overview.content} />
+            <ScreenStrip sections={sections} assetBase={assetBase} />
           </View>
         )}
 

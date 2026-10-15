@@ -11,6 +11,7 @@ vi.mock("@react-pdf/renderer", () => ({
   StyleSheet: { create: (styles) => styles },
   Font: { register: vi.fn() },
   Link: ({ children, src }) => <a href={src}>{children}</a>,
+  Image: ({ src }) => <img data-testid="pdf-image" src={src} alt="" />,
 }));
 
 import { render, screen } from "@testing-library/react";
@@ -30,18 +31,22 @@ describe("ResumePDF", () => {
     expect(page).toHaveAttribute("data-size", "A4");
   });
 
-  it("renders the overview title", () => {
+  it("leads with the name as the headline, not the section title", () => {
     render(<ResumePDF />);
-    const overviewSection = sectionsData.find((s) => s.id === "overview");
-    expect(screen.getByText(overviewSection.title)).toBeInTheDocument();
+    expect(screen.getByText("Kevin McCalley")).toBeInTheDocument();
+    expect(screen.getByText("Senior Full-Stack / Product Engineer")).toBeInTheDocument();
+    expect(screen.queryByText("Overview")).not.toBeInTheDocument();
   });
 
-  it("renders the overview subtitle", () => {
-    render(<ResumePDF />);
-    const overviewSection = sectionsData.find((s) => s.id === "overview");
-    if (overviewSection.subtitle) {
-      expect(screen.getByText(overviewSection.subtitle)).toBeInTheDocument();
-    }
+  it("shows four product screenshots under the overview", () => {
+    render(<ResumePDF assetBase="/base" />);
+    const images = screen.getAllByTestId("pdf-image");
+    expect(images.map((i) => i.getAttribute("src"))).toEqual([
+      "/base/assets/shot_accessbridge.jpg",
+      "/base/assets/shot_groundswell.jpg",
+      "/base/assets/shot_goodstockpress.jpg",
+      "/base/assets/shot_lunchlanguage.jpg",
+    ]);
   });
 
   it("excludes the design prototypes section from PDF", () => {
@@ -119,7 +124,7 @@ describe("ResumePDF", () => {
 
   it("renders every section that isn't PDF-omitted", () => {
     render(<ResumePDF />);
-    const omit = ["prototypes", "case-groundswell", "uses", "colophon", "contact"];
+    const omit = ["overview", "prototypes", "case-groundswell", "how-i-work", "uses", "colophon", "contact"];
     sectionsData
       .filter((s) => !omit.includes(s.id))
       .forEach((section) => {
@@ -133,9 +138,9 @@ describe("ResumePDF", () => {
     expect(screen.queryByText(/honest surf forecasting/i)).not.toBeInTheDocument();
   });
 
-  it("includes the How I Work section in the PDF", () => {
+  it("leaves the How I Work essay to the site", () => {
     render(<ResumePDF />);
-    expect(screen.getByText("How I Work")).toBeInTheDocument();
+    expect(screen.queryByText("How I Work")).not.toBeInTheDocument();
   });
 
   it("renders the product builds section", () => {
@@ -236,16 +241,16 @@ describe("ResumePDF parseMarkdown", () => {
     expect(document.querySelectorAll('[data-break="true"]').length).toBe(0);
   });
 
-  it("gives a variant its own address and starts the listed sections on a new page", () => {
+  it("gives a variant its own name line and address", () => {
     const sections = applyVariant(sectionsData, VARIANTS.frontend);
-    render(
-      <ResumePDF
-        sections={sections}
-        site="kevinmccalley.vercel.app/frontend"
-        breakBefore={VARIANTS.frontend.pdfBreakBefore}
-      />
-    );
+    render(<ResumePDF sections={sections} site="kevinmccalley.vercel.app/frontend" />);
     expect(screen.getByText("kevinmccalley.vercel.app/frontend")).toBeInTheDocument();
+    expect(screen.getByText("Senior Front-End & Design Engineer")).toBeInTheDocument();
+    expect(document.querySelectorAll('[data-break="true"]').length).toBe(0);
+  });
+
+  it("starts the listed sections on a new page", () => {
+    render(<ResumePDF breakBefore={["builds"]} />);
     const broken = [...document.querySelectorAll('[data-break="true"]')];
     expect(broken).toHaveLength(1);
     expect(broken[0].textContent).toContain("Selected Product Builds");

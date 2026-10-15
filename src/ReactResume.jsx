@@ -701,6 +701,8 @@ export default function ReactResume() {
                   sections={sections}
                   site={`kevinmccalley.vercel.app${variant.path}`}
                   breakBefore={variant.pdfBreakBefore}
+                  omit={variant.pdfOmit}
+                  builds={variant.pdfBuilds}
                 />
               ) : (
                 <ResumePDF />
