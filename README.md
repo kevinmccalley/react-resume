@@ -1,0 +1,27 @@
+# Kevin McCalley — Interactive Résumé
+
+**Live:** https://react-resume-kdm2026.vercel.app
+
+My résumé, built as a small React app instead of a static document.
+
+## Features
+- **Themes** with a theme selector (context-based theming)
+- **PDF export** generated in the browser with `@react-pdf/renderer`
+- **Variants** of the résumé for different roles, driven from structured JSON (`sections.json`)
+- **Contact form**
+- **Accessible by default:** skip link, semantic structure, keyboard support
+
+## Stack
+React · Vite · @react-pdf/renderer · Vitest + Testing Library · Vercel
+
+## Run locally
+```bash
+npm install
+npm run dev        # dev server
+npm run test       # unit tests
+npm run test:coverage
+```
+
+## Built with AI-assisted workflows
+Developed with Claude Code using a project-level `CLAUDE.md` that holds the project's conventions
+and memory setup.
