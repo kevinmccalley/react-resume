@@ -1,6 +1,6 @@
 # Kevin McCalley — Interactive Résumé
 
-**Live:** https://react-resume-kdm2026.vercel.app
+**Live:** https://kevinmccalley.com
 
 My résumé, built as a small React app instead of a static document.
 
