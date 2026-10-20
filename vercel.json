@@ -1,36 +1,69 @@
 {
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/",
       "has": [
         {
           "type": "host",
           "value": "kevinmccalley.vercel.app"
         }
       ],
-      "destination": "https://kevinmccalley.com/:path*",
+      "destination": "https://kevinmccalley.com/",
       "permanent": true
     },
     {
-      "source": "/:path*",
+      "source": "/",
       "has": [
         {
           "type": "host",
           "value": "react-resume-kdm2026.vercel.app"
         }
       ],
-      "destination": "https://kevinmccalley.com/:path*",
+      "destination": "https://kevinmccalley.com/",
       "permanent": true
     },
     {
-      "source": "/:path*",
+      "source": "/",
       "has": [
         {
           "type": "host",
           "value": "www.kevinmccalley.com"
         }
       ],
-      "destination": "https://kevinmccalley.com/:path*",
+      "destination": "https://kevinmccalley.com/",
+      "permanent": true
+    },
+    {
+      "source": "/:path+",
+      "has": [
+        {
+          "type": "host",
+          "value": "kevinmccalley.vercel.app"
+        }
+      ],
+      "destination": "https://kevinmccalley.com/:path+",
+      "permanent": true
+    },
+    {
+      "source": "/:path+",
+      "has": [
+        {
+          "type": "host",
+          "value": "react-resume-kdm2026.vercel.app"
+        }
+      ],
+      "destination": "https://kevinmccalley.com/:path+",
+      "permanent": true
+    },
+    {
+      "source": "/:path+",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kevinmccalley.com"
+        }
+      ],
+      "destination": "https://kevinmccalley.com/:path+",
       "permanent": true
     }
   ],
