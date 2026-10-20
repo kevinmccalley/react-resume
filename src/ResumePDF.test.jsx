@@ -216,9 +216,9 @@ describe("ResumePDF parseMarkdown", () => {
 
   it("lists the site, GitHub and LinkedIn under the name", () => {
     render(<ResumePDF />);
-    expect(screen.getByText("kevinmccalley.vercel.app")).toHaveAttribute(
+    expect(screen.getByText("kevinmccalley.com")).toHaveAttribute(
       "href",
-      "https://kevinmccalley.vercel.app"
+      "https://kevinmccalley.com"
     );
     expect(screen.getByText("github.com/kevinmccalley")).toHaveAttribute(
       "href",
@@ -243,8 +243,8 @@ describe("ResumePDF parseMarkdown", () => {
 
   it("gives a variant its own name line and address", () => {
     const sections = applyVariant(sectionsData, VARIANTS.frontend);
-    render(<ResumePDF sections={sections} site="kevinmccalley.vercel.app/frontend" />);
-    expect(screen.getByText("kevinmccalley.vercel.app/frontend")).toBeInTheDocument();
+    render(<ResumePDF sections={sections} site="kevinmccalley.com/frontend" />);
+    expect(screen.getByText("kevinmccalley.com/frontend")).toBeInTheDocument();
     expect(screen.getByText("Senior Front-End & Design Engineer")).toBeInTheDocument();
     expect(document.querySelectorAll('[data-break="true"]').length).toBe(0);
   });

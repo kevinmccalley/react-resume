@@ -9,7 +9,7 @@ React · TypeScript · AI Applications · Node.js · PostgreSQL
 - Email: kevinmccalley@proton.me
 - LinkedIn: linkedin.com/in/kevin-mccalley
 - GitHub: github.com/kevinmccalley
-- Portfolio: kevinmccalley.vercel.app
+- Portfolio: kevinmccalley.com
 
 ---
 

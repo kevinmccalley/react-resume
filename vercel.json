@@ -1,17 +1,71 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "kevinmccalley.vercel.app"
+        }
+      ],
+      "destination": "https://kevinmccalley.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "react-resume-kdm2026.vercel.app"
+        }
+      ],
+      "destination": "https://kevinmccalley.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kevinmccalley.com"
+        }
+      ],
+      "destination": "https://kevinmccalley.com/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/frontend", "destination": "/frontend/index.html" },
-    { "source": "/frontend/(.*)", "destination": "/frontend/index.html" },
-    { "source": "/(.*)", "destination": "/" }
+    {
+      "source": "/frontend",
+      "destination": "/frontend/index.html"
+    },
+    {
+      "source": "/frontend/(.*)",
+      "destination": "/frontend/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
   ],
   "headers": [
     {
       "source": "/frontend(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
     },
     {
       "source": "/kevin-mccalley-resume-frontend.md",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
     }
   ]
 }

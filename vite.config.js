@@ -9,7 +9,7 @@ import react from '@vitejs/plugin-react'
 // title and description, marked noindex.
 const BASE_TITLE = 'Kevin McCalley — Senior Full-Stack / Product Engineer'
 const BASE_ROLE = 'Senior Full-Stack / Product Engineer'
-const BASE_URL = 'https://kevinmccalley.vercel.app'
+const BASE_URL = 'https://kevinmccalley.com'
 const escapeAttr = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;')
 
 function variantHtml(html, variant) {

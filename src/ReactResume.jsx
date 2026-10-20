@@ -699,7 +699,7 @@ export default function ReactResume() {
               variant ? (
                 <ResumePDF
                   sections={sections}
-                  site={`kevinmccalley.vercel.app${variant.path}`}
+                  site={`kevinmccalley.com${variant.path}`}
                   breakBefore={variant.pdfBreakBefore}
                   omit={variant.pdfOmit}
                   builds={variant.pdfBuilds}

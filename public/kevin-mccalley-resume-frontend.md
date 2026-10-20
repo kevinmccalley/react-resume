@@ -8,7 +8,7 @@ React · TypeScript · Design Systems · Accessibility (WCAG / Section 508)
 - Email: kevinmccalley@proton.me
 - LinkedIn: linkedin.com/in/kevin-mccalley
 - GitHub: github.com/kevinmccalley
-- Portfolio: kevinmccalley.vercel.app/frontend
+- Portfolio: kevinmccalley.com/frontend
 
 ---
 

@@ -223,7 +223,7 @@ const RenderContent = ({ content, start = 0, end = Infinity }) => {
   return <Text>{content}</Text>;
 };
 
-const SITE = "kevinmccalley.vercel.app";
+const SITE = "kevinmccalley.com";
 
 // `sections`, `site` and `breakBefore` let a résumé variant (see variant.js)
 // supply its own framing, address and page breaks; the defaults are the main résumé.
