@@ -17,7 +17,7 @@ React · TypeScript · AI Applications · Node.js · PostgreSQL
 
 Senior full-stack engineer who ships and operates production web products end to end: React and TypeScript interfaces, Node.js APIs, PostgreSQL data models, authentication, payments, background jobs, and deployment. Builds AI applications on the Anthropic API. Currently runs several live products, including Groundswell (global surf forecasting) and GoodStockPress (18 browser-based personalization apps sold on Etsy).
 
-Specialized second track in accessibility engineering: built and operates AccessBridge, an automated WCAG / ADA auditing platform using real-browser axe-core + Playwright scans. Background in product and interface design; designs and prototypes in Figma and in self-hosted Penpot, with either one connected to Claude through MCP, so design and code iterate together.
+Specialized second track in accessibility engineering: built and operates AccessBridge, an automated WCAG / ADA auditing platform using real-browser axe-core + Playwright scans. Also runs Design Code Ship (designcodeship.com), an independent studio that makes React and AI-built apps launch-ready (secure, accessible, fast) and offers fixed-price WCAG 2.2 AA audits. Background in product and interface design; designs and prototypes in Figma and in self-hosted Penpot, with either one connected to Claude through MCP, so design and code iterate together.
 
 ---
 
@@ -54,6 +54,7 @@ Remote | 2025 - Present
 - Built and operate AccessBridge (accessbridge.app), a production accessibility-auditing SaaS: real-browser scanning (Playwright + axe-core), a Hono API on Neon Postgres / Drizzle, Clerk authentication, Stripe subscription billing with plan-based usage limits, a background job queue (Upstash QStash), transactional email and alerts (Resend), and AI-written explanations and code fixes (Anthropic API).
 - Shipped Groundswell (groundswell.surf), a global surf-forecasting service, as a live subscription product, alongside several smaller tools, each maintained in production.
 - Built Groundswell's internationalization (i18n) layer from scratch: five locales (English, Spanish, French, Brazilian and European Portuguese), ~670 keys each, loaded on demand with English fallback; locale detection from URL, saved preference, and browser; server and client rendering kept in sync via cookie; hreflang for multilingual SEO; per-language blog content in the Sanity CMS.
+- Launched Design Code Ship (designcodeship.com), an independent studio for launch-readiness work: fixed-price MVP rescue for React and AI-built apps (security, accessibility, performance), WCAG 2.2 AA audits with plain-language reports and draft accessibility statements, and white-label React development for agencies. Designed and built the site, plus a public teardown of an AI-built booking app.
 - Adopted AI-assisted development (Claude Code) to compress delivery time while keeping architectural decisions and code review in-house.
 - Stack: React, TypeScript, Next.js, Hono, Node.js, PostgreSQL / Drizzle, Stripe, Clerk, Vercel, Railway.
 

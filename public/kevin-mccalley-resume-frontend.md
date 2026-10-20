@@ -31,6 +31,7 @@ Remote | 2025 - Present
 - Shipped Groundswell (groundswell.surf), a global surf-forecasting service: an installable PWA with one report surface serving five languages and eight colour themes, with charts and maps over live forecast data.
 - Built Groundswell's internationalization (i18n) layer from scratch: five locales (English, Spanish, French, Brazilian and European Portuguese), ~670 keys each, loaded on demand with English fallback; locale detection from URL, saved preference, and browser; server and client rendering kept in sync via cookie; hreflang for multilingual SEO; per-language blog content in the Sanity CMS.
 - Built token-based design systems and clickable prototypes in Penpot, kept synchronized with production code; equally at home in Figma.
+- Launched Design Code Ship (designcodeship.com), an independent studio that makes React and AI-built apps launch-ready (security, accessibility, performance), with fixed-price WCAG 2.2 AA audits and white-label React work for agencies. Designed and built the site, plus a public teardown of an AI-built booking app.
 - Test-gated delivery: AI-assisted development (Claude Code) with Vitest and Playwright + axe-core suites deciding what ships.
 - Stack: React, TypeScript, Next.js, Tailwind CSS, Hono, Node.js, PostgreSQL / Drizzle, Vercel.
 

@@ -20,6 +20,10 @@
       },
       {
         "type": "markdown",
+        "text": "I also run **Design Code Ship** ([designcodeship.com](https://designcodeship.com)), my independent studio. It takes React and AI-built apps that look finished but aren't ready to launch and makes them secure, accessible and fast. It also offers fixed-price **WCAG 2.2 AA** accessibility audits, and white-label React and accessibility work for agencies. Its first public piece is a [teardown of a vibe-coded booking app](https://designcodeship.com/work/classly/)."
+      },
+      {
+        "type": "markdown",
         "text": "My background is in product and interface design, and it still shapes how I build. I design and prototype in **Figma** and in self-hosted **Penpot**, and with either one connected to Claude through MCP, design and code iterate together instead of being handed off."
       },
       {
@@ -272,6 +276,10 @@
       {
         "type": "markdownListitem",
         "text": "• **Built Groundswell's internationalization (i18n) layer from scratch** — five locales (English, Spanish, French, Brazilian and European Portuguese), ~670 keys each, loaded on demand with English fallback; locale detection from URL, saved preference, and browser; server and client rendering kept in sync via cookie; **hreflang** for multilingual SEO; per-language blog content in the **Sanity** CMS."
+      },
+      {
+        "type": "markdownListitem",
+        "text": "• **Launched Design Code Ship** ([designcodeship.com](https://designcodeship.com)), an independent studio for launch-readiness work: fixed-price MVP rescue for React and AI-built apps (security, accessibility, performance), WCAG 2.2 AA audits with plain-language reports and draft accessibility statements, and white-label React development for agencies. Designed and built the site, plus a public teardown of an AI-built booking app."
       },
       {
         "type": "markdownListitem",
